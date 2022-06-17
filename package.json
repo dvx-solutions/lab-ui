@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -17,7 +17,7 @@
       "require": "./dist/index.cjs.js",
       "import": "./dist/index.es.js"
     },
-    "./dist/LabUI.css": "./dist/LabUI.css"
+    "./dist/style.css": "./dist/style.css"
   },
   "sideEffects": false,
   "files": [
