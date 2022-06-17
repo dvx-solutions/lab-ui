@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  jit: true,
   content: ["./src/**/*.tsx"],
   theme: {
     extend: {
@@ -7,5 +8,8 @@ module.exports = {
     },
   },
   plugins: [],
+  corePlugins: {
+    preflight: false,
+  },
   important: true,
 };
