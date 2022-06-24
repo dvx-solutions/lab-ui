@@ -10,13 +10,13 @@ import { FieldError } from "react-hook-form";
 
 import { Label } from "+/components/form/Label";
 import { classNames } from "+/lib/formatters";
-import { ISelectOption } from "+/types/select-option";
+import { TSelectOption } from "+/types/global";
 
 interface SelectProps extends ChakraSelectProps {
   name: string;
   label?: string;
   labelColor?: string;
-  options: ISelectOption[] | null;
+  options: TSelectOption[] | null;
   error?: FieldError;
   placeholder?: string;
   widthShouldFit?: boolean;

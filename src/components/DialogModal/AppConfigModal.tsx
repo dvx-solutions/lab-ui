@@ -11,7 +11,7 @@ import { Button } from "+/components/Button";
 import { DialogModal } from "+/components/DialogModal";
 import { Input } from "+/components/form/Input";
 import { Select } from "+/components/form/Select";
-import { ISelectOption } from "+/types/select-option";
+import { TSelectOption } from "+/types/global";
 
 const useAppConfigModalDisclousere = () => {
   const [isOpenModalOpen, setIsOpen] = useState(false);
@@ -44,7 +44,7 @@ export type TAppConfig = {
 };
 
 export interface AppConfigModalProps {
-  empresasSelectOptions: ISelectOption[] | null;
+  empresasSelectOptions: TSelectOption[] | null;
   appConfigData: TAppConfig;
   setAppConfigData: SetterOrUpdater<TAppConfig | null>;
 }
