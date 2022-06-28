@@ -1,0 +1,3 @@
+//subindo no NPM.
+
+npm publish --access public
