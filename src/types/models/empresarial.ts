@@ -170,7 +170,9 @@ export interface IUnidadeCentro {
   empresaAnoFiscalId: number;
   unidadeNegocioId: number;
   unidadeId: number;
+  unidade: IUnidade;
   centroId: number;
+  centro: ICentro;
   responsavelId: number;
   compartilhado: boolean;
   inicioValidade: string;
