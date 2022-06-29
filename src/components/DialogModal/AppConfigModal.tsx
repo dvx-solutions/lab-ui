@@ -11,7 +11,7 @@ import { Button } from "+/components/Button";
 import { DialogModal } from "+/components/DialogModal";
 import { Input } from "+/components/form/Input";
 import { Select } from "+/components/form/Select";
-import { TSelectOption } from "+/types/global";
+import { TSelectOption } from "+/types";
 
 const useAppConfigModalDisclousere = () => {
   const [isOpenModalOpen, setIsOpen] = useState(false);
