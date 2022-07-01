@@ -1,3 +1,60 @@
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
+
+export const convertToCurrency = (value: number) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(value);
+};
+
+export const convertToDecimal = (value: string | number) => {
+  if (value.toString().trim() === "") {
+    return "0,00";
+  }
+
+  return new Intl.NumberFormat("pt-BR", {
+    style: "decimal",
+    currency: "BRL",
+    minimumFractionDigits: 2,
+    compactDisplay: "long",
+    signDisplay: "never",
+  }).format(+Number(value).toFixed(2));
+};
+
+export const convertToFloat = (value: string) => {
+  if (value !== undefined && value.trim() !== "") {
+    return parseFloat(value.replace(/[.]/g, "").replace(",", "."));
+  }
+
+  return 0;
+};
+
+export const devexextremeCurrencyFormat = {
+  style: "currency",
+  currency: "BRL",
+  precision: 2,
+};
+
+export const yesOrNoCellDevextremeCellRender = ({
+  displayValue,
+}: {
+  displayValue: number | string;
+}) => (Number(displayValue) === 0 ? "Não" : "Sim");
+
+export const convertEnumToSelectOptions = (
+  enumobj: Record<string, number | string>
+) => {
+  return Object.entries(enumobj)
+    .filter((f) => !Number.isNaN(Number(f[1])))
+    .map((x) => ({
+      text: x[0].trim(),
+      value: x[1],
+    }))
+    .sort((a, b) => a.text.localeCompare(b.text));
+};
+
+export const convertCurrencyInputValueToNumber = (value: string) => {
+  return Number(value.replaceAll(".", "").replaceAll(",", "."));
+};

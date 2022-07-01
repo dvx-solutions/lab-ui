@@ -1,5 +1,10 @@
 import { IEmpresaAnoFiscal } from "./models/empresarial";
 
+export * from "./axios";
+export * from "./enum";
+export * from "./models";
+export * from "+/lib/formatters";
+
 export type TSelectOption = {
   value: string | number;
   text: string;
@@ -29,6 +34,3 @@ export type TAppConfig = {
   ano: number;
   empresaAnoFiscal: IEmpresaAnoFiscal;
 };
-
-export * from "./models";
-export * from "./axios";
