@@ -489,14 +489,10 @@ export enum ENfseAmbienteEmissao {
 
 export enum ETipoVinculoColaborador {
   "Mensalista" = 1,
-
   "Horista" = 2,
-
   "Estagiário" = 3,
-
-  "Jovem Aprendiz" = 4,
-
-  "Prestador de Serviço" = 5,
+  "Jovem aprendiz" = 4,
+  "Prestador de serviço" = 5,
 }
 
 export enum ETipoEmail {

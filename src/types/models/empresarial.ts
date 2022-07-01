@@ -89,6 +89,7 @@ export interface IEmpresa {
 export interface IEmpresaAnoFiscal {
   id: number;
   empresaId: number;
+  empresa: IEmpresa;
   ano: number;
   planoUnidadeId: number;
   planoCentroId: number;
