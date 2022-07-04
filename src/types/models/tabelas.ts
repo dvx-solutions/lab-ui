@@ -19,4 +19,5 @@ export interface INaturezaJuridica {
     inicioValidade: string;
     terminoValidade: string;
     ativo: boolean;
+    id: number;
   }
