@@ -1,6 +1,6 @@
 export interface IAtividadeEconomica {
     id: number;
-    codigo: string;
+    codigo:string
     nome: string;
     nivelHierarquia: number;
     divisao: string;
@@ -12,3 +12,11 @@ export interface IAtividadeEconomica {
     terminoValidade: string;
     ativo: boolean
 }
+
+export interface INaturezaJuridica {
+    codigo: string;
+    nome: string;
+    inicioValidade: string;
+    terminoValidade: string;
+    ativo: boolean;
+  }
