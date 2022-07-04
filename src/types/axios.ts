@@ -12,7 +12,7 @@ export interface IBodyRequest<T = string> {
   type?: "get";
 }
 
-export interface IAPIResponse<T> {
+export interface IAPIPaginatedResponse<T> {
   currentPage: number;
   data: T;
   hasNextPage: boolean;
@@ -20,4 +20,16 @@ export interface IAPIResponse<T> {
   pageSize: number;
   totalCount: number;
   totalPages: number;
+}
+
+export interface IAPIResponse<T> {
+    success: boolean,
+    message: string,
+    notifications: [
+      {
+        key: string,
+        message: string
+      }
+    ],
+    data: T;
 }
