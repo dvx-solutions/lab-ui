@@ -14,7 +14,7 @@ export interface IAgrupador {
 }
 
 export interface ICentro {
-  agrupadord: number;
+  agrupadorId: number;
   analitico: boolean;
   ativo: boolean;
   classificacaoCentro: string;
