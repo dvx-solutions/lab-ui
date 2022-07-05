@@ -1,3 +1,5 @@
+import { IEmpresa, IEmpresaAnoFiscal } from "./empresarial";
+
 export interface ICargo {
   ativo: boolean;
   codigo: string;
@@ -50,13 +52,33 @@ export interface IColaborador {
 }
 
 export interface IEvento {
-  ativo: boolean;
   codigo: string;
+  codigoEventoFolha: string;
+  descricao: string;
   empresaId: number;
+  formulaCalculo: string;
+  formulaInterna: string;
   id: number;
-  inicioValidade: string;
+  nivelValorizacao: number;
   nome: string;
-  terminoValidade: string;
+  origemPrevisao: number;
+  origemRealizacao: number;
+}
+
+export interface IEventoValor {
+  Colaborador: IColaborador;
+  empresa: IEmpresa;
+  empresaAnoFiscal: IEmpresaAnoFiscal;
+  empresaAnoFiscalId: number;
+  empresaId: number;
+  evento: IEvento;
+  eventoId: number;
+  id: number;
+  mes: number;
+  recursoId: number;
+  valorPrevisto: number;
+  valorReal: number;
+  valorRevisado: number;
 }
 
 export interface IFuncaoConfianca {
