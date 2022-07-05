@@ -63,3 +63,15 @@ export interface IProjetoProduto {
   titulo: string;
   descricao: string;
 }
+
+export interface ITipoProjetoTipoDescritivo {
+  ativo: boolean;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  obrigatorio: boolean;
+  sequencia: number;
+  terminoValidade: string;
+  tipoProjetoId: number;
+}
