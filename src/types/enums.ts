@@ -1,9 +1,9 @@
 export enum ESimNao {
-  "Sim" = "true",
-  "Não" = "false",
+  "Sim" = 1,
+  "Não" = 0,
 }
 
 export enum EAtivoInativo {
-  "Ativo" = "true",
-  "Inativo" = "false",
+  "Ativo" = 1,
+  "Inativo" = 0,
 }

@@ -58,3 +58,7 @@ export const convertEnumToSelectOptions = (
 export const convertCurrencyInputValueToNumber = (value: string) => {
   return Number(value.replaceAll(".", "").replaceAll(",", "."));
 };
+
+export const formatBoolToNumber = (value: boolean) => {
+  return value ? 1 : 0;
+}
