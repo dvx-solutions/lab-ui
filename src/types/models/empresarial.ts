@@ -45,7 +45,7 @@ export interface ICentro {
 }
 
 export interface IContaOrcamentaria {
-  agrupadorContaOrcamentariaId: number;
+  agrupadorId: number;
   analitico: boolean;
   ativo: boolean;
   codigo: string;
@@ -69,7 +69,7 @@ export interface IContaOrcamentaria {
   nomeNivel5: string;
   origemConta: number;
   origemValorConta: number;
-  planoContaOrcamentariaId: number;
+  planoId: number;
   subordinadas: string[];
   superiorId: number;
   terminoValidade: string;
