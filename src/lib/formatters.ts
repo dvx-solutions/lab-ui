@@ -1,3 +1,5 @@
+import { IBodyRequest } from "+/types/axios";
+
 export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(" ");
 };
@@ -61,4 +63,18 @@ export const convertCurrencyInputValueToNumber = (value: string) => {
 
 export const formatBoolToNumber = (value: boolean) => {
   return value ? 1 : 0;
-}
+};
+
+export const convertAdvancedSearchToReactQueryKeys = (
+  advancedSearch: IBodyRequest["advancedSearch"]
+) => {
+  return (
+    advancedSearch
+      ?.map((x) =>
+        x.fields[0] !== "recursoId" && x.fields[0] !== "colaboradorId"
+          ? `${x.fields[0]}-${x.keyword}`
+          : ""
+      )
+      .join(",") ?? ""
+  );
+};
