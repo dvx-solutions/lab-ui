@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query';
 import { AxiosInstance } from 'axios';
 
-import { IAPIResponse, IBodyRequest } from '+/types';
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { IEmpresa } from '+/types/models/empresarial';
 
 interface IUseEmpresasProps {
@@ -12,10 +12,12 @@ export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) =>
   useQuery(
     'empresas',
     async () => {
-      const { data } = await API_Instance.post<IAPIResponse<IEmpresa[]>>(
-        'empresarial/empresas/listar',
-        { pageNumber: 1, pageSize: 9999 } as IBodyRequest
-      );
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<IEmpresa[]>
+      >('empresarial/empresas/listar', {
+        pageNumber: 1,
+        pageSize: 9999,
+      } as IBodyRequest);
 
       return data;
     },
