@@ -1,41 +1,41 @@
-import { IBodyRequest } from "+/types/axios";
+import { IBodyRequest } from 'types/axios';
 
 export const classNames = (...classes: string[]) => {
-  return classes.filter(Boolean).join(" ");
+  return classes.filter(Boolean).join(' ');
 };
 
 export const convertToCurrency = (value: number) => {
-  return new Intl.NumberFormat("pt-BR", {
-    style: "currency",
-    currency: "BRL",
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'currency',
+    currency: 'BRL',
   }).format(value);
 };
 
 export const convertToDecimal = (value: string | number) => {
-  if (value.toString().trim() === "") {
-    return "0,00";
+  if (value.toString().trim() === '') {
+    return '0,00';
   }
 
-  return new Intl.NumberFormat("pt-BR", {
-    style: "decimal",
-    currency: "BRL",
+  return new Intl.NumberFormat('pt-BR', {
+    style: 'decimal',
+    currency: 'BRL',
     minimumFractionDigits: 2,
-    compactDisplay: "long",
-    signDisplay: "never",
+    compactDisplay: 'long',
+    signDisplay: 'never',
   }).format(+Number(value).toFixed(2));
 };
 
 export const convertToFloat = (value: string) => {
-  if (value !== undefined && value.trim() !== "") {
-    return parseFloat(value.replace(/[.]/g, "").replace(",", "."));
+  if (value !== undefined && value.trim() !== '') {
+    return parseFloat(value.replace(/[.]/g, '').replace(',', '.'));
   }
 
   return 0;
 };
 
 export const devexextremeCurrencyFormat = {
-  style: "currency",
-  currency: "BRL",
+  style: 'currency',
+  currency: 'BRL',
   precision: 2,
 };
 
@@ -43,14 +43,14 @@ export const yesOrNoCellDevextremeCellRender = ({
   displayValue,
 }: {
   displayValue: number | string;
-}) => (Number(displayValue) === 0 ? "Não" : "Sim");
+}) => (Number(displayValue) === 0 ? 'Não' : 'Sim');
 
 export const convertEnumToSelectOptions = (
   enumobj: Record<string, number | string>
 ) => {
   return Object.entries(enumobj)
-    .filter((f) => !Number.isNaN(Number(f[1])))
-    .map((x) => ({
+    .filter(f => !Number.isNaN(Number(f[1])))
+    .map(x => ({
       text: x[0].trim(),
       value: x[1],
     }))
@@ -58,7 +58,7 @@ export const convertEnumToSelectOptions = (
 };
 
 export const convertCurrencyInputValueToNumber = (value: string) => {
-  return Number(value.replaceAll(".", "").replaceAll(",", "."));
+  return Number(value.replaceAll('.', '').replaceAll(',', '.'));
 };
 
 export const formatBoolToNumber = (value: boolean) => {
@@ -66,15 +66,15 @@ export const formatBoolToNumber = (value: boolean) => {
 };
 
 export const convertAdvancedSearchToReactQueryKeys = (
-  advancedSearch: IBodyRequest["advancedSearch"]
+  advancedSearch: IBodyRequest['advancedSearch']
 ) => {
   return (
     advancedSearch
-      ?.map((x) =>
-        x.fields[0] !== "recursoId" && x.fields[0] !== "colaboradorId"
+      ?.map(x =>
+        x.fields[0] !== 'recursoId' && x.fields[0] !== 'colaboradorId'
           ? `${x.fields[0]}-${x.keyword}`
-          : ""
+          : ''
       )
-      .join(",") ?? ""
+      .join(',') ?? ''
   );
 };

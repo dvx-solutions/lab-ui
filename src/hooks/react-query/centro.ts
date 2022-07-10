@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
-import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
-import { ICentro } from '+/types/models/empresarial';
+import { convertAdvancedSearchToReactQueryKeys } from 'lib/formatters';
+import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
+import { ICentro } from 'types/models/empresarial';
 
 interface IUseCentros {
   advancedSearch?: IBodyRequest<keyof ICentro>['advancedSearch'];

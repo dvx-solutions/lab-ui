@@ -1,17 +1,17 @@
-import { Tooltip } from "@chakra-ui/react";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import { BsGear } from "react-icons/bs";
-import { toast } from "react-toastify";
-import { SetterOrUpdater } from "recoil";
-import * as yup from "yup";
+import { Tooltip } from '@chakra-ui/react';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { BsGear } from 'react-icons/bs';
+import { toast } from 'react-toastify';
+import { SetterOrUpdater } from 'recoil';
+import * as yup from 'yup';
 
-import { Button } from "+/components/Button";
-import { DialogModal } from "+/components/DialogModal";
-import { Input } from "+/components/form/Input";
-import { Select } from "+/components/form/Select";
-import { TSelectOption } from "+/types";
+import { Button } from 'components/Button';
+import { DialogModal } from 'components/DialogModal';
+import { Input } from 'components/form/Input';
+import { Select } from 'components/form/Select';
+import { TSelectOption } from 'types';
 
 const useAppConfigModalDisclousere = () => {
   const [isOpenModalOpen, setIsOpen] = useState(false);
@@ -28,14 +28,14 @@ const useAppConfigModalDisclousere = () => {
 const formSchemaValidation = yup.object().shape({
   empresaId: yup
     .number()
-    .typeError("Campo obrigatório")
-    .required("Campo obrigatório"),
+    .typeError('Campo obrigatório')
+    .required('Campo obrigatório'),
   ano: yup
     .number()
-    .min(2000, "O ano não pode ser antes de 2000")
-    .max(2100, "O ano não pode ser depois de 2100")
-    .typeError("Campo obrigatório")
-    .required("Campo obrigatório"),
+    .min(2000, 'O ano não pode ser antes de 2000')
+    .max(2100, 'O ano não pode ser depois de 2100')
+    .typeError('Campo obrigatório')
+    .required('Campo obrigatório'),
 });
 
 export type TAppConfig = {
@@ -62,7 +62,7 @@ export function AppConfigModal({
     handleSubmit,
     formState: { errors, isValid },
   } = useForm<TAppConfig>({
-    mode: "all",
+    mode: 'all',
     defaultValues: { ...appConfigData },
     resolver: yupResolver(formSchemaValidation),
   });
@@ -70,7 +70,7 @@ export function AppConfigModal({
   const onFormSubmitRequest = (formValues: TAppConfig) => {
     setAppConfigData(formValues);
     onCloseModalRequest();
-    toast.info("Configurações salvas");
+    toast.info('Configurações salvas');
   };
 
   return (
@@ -91,14 +91,14 @@ export function AppConfigModal({
       >
         <form className="gap-3" onSubmit={handleSubmit(onFormSubmitRequest)}>
           <Select
-            {...register("empresaId", { valueAsNumber: true })}
+            {...register('empresaId', { valueAsNumber: true })}
             error={errors.empresaId}
             label="Empresa"
             options={empresasSelectOptions}
           />
 
           <Input
-            {...register("ano", { valueAsNumber: true })}
+            {...register('ano', { valueAsNumber: true })}
             error={errors.ano}
             label="Ano"
             type="number"

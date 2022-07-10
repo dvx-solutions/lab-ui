@@ -4,13 +4,13 @@ import {
   Select as ChakraSelect,
   SelectProps as ChakraSelectProps,
   FormErrorMessage,
-} from "@chakra-ui/react";
-import { forwardRef, ForwardRefRenderFunction } from "react";
-import { FieldError } from "react-hook-form";
+} from '@chakra-ui/react';
+import { forwardRef, ForwardRefRenderFunction } from 'react';
+import { FieldError } from 'react-hook-form';
 
-import { Label } from "+/components/form/Label";
-import { classNames } from "+/lib/formatters";
-import { TSelectOption } from "+/types";
+import { Label } from 'components/form/Label';
+import { classNames } from 'lib/formatters';
+import { TSelectOption } from 'types';
 
 interface SelectProps extends ChakraSelectProps {
   name: string;
@@ -28,9 +28,9 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
     label,
     options,
     error = null,
-    placeholder = "Selecione uma opção",
+    placeholder = 'Selecione uma opção',
     widthShouldFit = false,
-    className = "",
+    className = '',
     ...rest
   },
   ref
@@ -46,9 +46,9 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
         placeholder={placeholder}
         className={classNames(
           className,
-          "h-10 appearance-none rounded-lg border px-5 text-gray-400 outline-none focus:border-purple-600 ",
-          widthShouldFit ? "w-fit" : "w-full",
-          error ? "border-red-500" : "border-gray-500"
+          'h-10 appearance-none rounded-lg border px-5 text-gray-400 outline-none focus:border-purple-600 ',
+          widthShouldFit ? 'w-fit' : 'w-full',
+          error ? 'border-red-500' : 'border-gray-500'
         )}
         {...rest}
       >

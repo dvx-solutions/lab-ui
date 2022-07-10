@@ -7,18 +7,18 @@ import {
   InputGroup,
   InputRightElement,
   InputLeftElement,
-} from "@chakra-ui/react";
+} from '@chakra-ui/react';
 import {
   forwardRef,
   ForwardRefRenderFunction,
   ReactNode,
   HTMLInputTypeAttribute,
-} from "react";
-import { FieldError } from "react-hook-form";
-import NumberFormat from "react-number-format";
+} from 'react';
+import { FieldError } from 'react-hook-form';
+import NumberFormat from 'react-number-format';
 
-import { Label } from "+/components/form/Label";
-import { classNames } from "+/lib/formatters";
+import { Label } from 'components/form/Label';
+import { classNames } from 'lib/formatters';
 
 interface InputProps extends ChakraInputProps {
   name: string;
@@ -34,19 +34,19 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   {
     name,
     error = null,
-    type = "text",
+    type = 'text',
     label,
     rightIcon,
     leftIcon,
-    className = "",
+    className = '',
     isCurrencyInput = false,
     ...props
   },
   ref
 ) => {
   const currencyInputProps = {
-    thousandSeparator: ".",
-    decimalSeparator: ",",
+    thousandSeparator: '.',
+    decimalSeparator: ',',
     fixedDecimalScale: true,
     allowEmptyFormatting: false,
     decimalScale: 2,
@@ -66,15 +66,15 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
         <ChakraInput
           name={name}
           id={name}
-          type={isCurrencyInput ? "text" : type}
+          type={isCurrencyInput ? 'text' : type}
           ref={ref}
           as={isCurrencyInput ? NumberFormat : ChakraInput}
           className={classNames(
             className,
-            "h-10 w-full rounded-lg border text-gray-400 outline-none focus:border-purple-600",
-            error ? "border-red-500" : "border-gray-500",
-            leftIcon ? "pl-10" : "pl-3",
-            rightIcon ? "pr-10" : "pr-3"
+            'h-10 w-full rounded-lg border text-gray-400 outline-none focus:border-purple-600',
+            error ? 'border-red-500' : 'border-gray-500',
+            leftIcon ? 'pl-10' : 'pl-3',
+            rightIcon ? 'pr-10' : 'pr-3'
           )}
           {...props}
           {...(isCurrencyInput ? { ...currencyInputProps } : {})}

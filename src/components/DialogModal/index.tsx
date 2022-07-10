@@ -1,9 +1,9 @@
-import { BoxProps } from "@chakra-ui/react";
-import { Dialog, Transition } from "@headlessui/react";
-import { Fragment, ReactNode } from "react";
-import { FiX } from "react-icons/fi";
+import { BoxProps } from '@chakra-ui/react';
+import { Dialog, Transition } from '@headlessui/react';
+import { Fragment, ReactNode } from 'react';
+import { FiX } from 'react-icons/fi';
 
-import { Button } from "+/components/Button";
+import { Button } from 'components/Button';
 
 interface Props extends BoxProps {
   isOpen: boolean;
@@ -23,7 +23,7 @@ export function DialogModal({
     <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as="div"
-        className="backdrop:backdrop-blur relative z-10"
+        className="relative z-10 backdrop:backdrop-blur"
         onClose={closeModal}
         {...rest}
       >

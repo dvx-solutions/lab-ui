@@ -1,8 +1,8 @@
-import { useQuery } from 'react-query';
 import { AxiosInstance } from 'axios';
+import { useQuery } from 'react-query';
 
-import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
-import { IEmpresa } from '+/types/models/empresarial';
+import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
+import { IEmpresa } from 'types/models/empresarial';
 
 interface IUseEmpresasProps {
   API_Instance: AxiosInstance;
