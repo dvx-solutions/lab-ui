@@ -8,7 +8,8 @@
     "build": "run-p build:*",
     "build:scripts": "vite build",
     "build:types": "tsc --emitDeclarationOnly && tsc-alias",
-    "dev-publish": "yarn build && yarn publish --access public"
+    "dev-publish": "yarn build && yarn publish --access public",
+    "prepare": "husky install"
   },
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
@@ -57,6 +58,8 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "framer-motion": "^6",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.14",
     "postcss-import": "^14.1.0",
