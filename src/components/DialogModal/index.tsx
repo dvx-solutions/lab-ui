@@ -3,7 +3,7 @@ import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, ReactNode } from 'react';
 import { FiX } from 'react-icons/fi';
 
-import { Button } from 'components/Button';
+import { Button } from '+/components/Button';
 
 interface Props extends BoxProps {
   isOpen: boolean;

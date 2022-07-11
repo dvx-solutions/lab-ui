@@ -1,6 +1,6 @@
 import { ButtonProps, Button as ChakraButton } from '@chakra-ui/react';
 
-import { classNames } from 'lib/formatters';
+import { classNames } from '+/lib/formatters';
 
 export function Button({ children, className = '', ...props }: ButtonProps) {
   return (

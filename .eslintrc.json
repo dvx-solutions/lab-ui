@@ -78,15 +78,16 @@
           "module",
           "/^@shared/",
           [
-            "/^components/",
-            "/^contexts/",
-            "/^graphql/",
-            "/^hooks/",
-            "/^lib/",
-            "/^services/",
-            "/^styles/",
-            "/^types/",
-            "/^utils/"
+            "/^[+]/App/",
+            "/^[+]/components/",
+            "/^[+]/contexts/",
+            "/^[+]/graphql/",
+            "/^[+]/hooks/",
+            "/^[+]/lib/",
+            "/^[+]/services/",
+            "/^[+]/styles/",
+            "/^[+]/types/",
+            "/^[+]/utils/"
           ],
           ["parent", "sibling", "index"]
         ],

@@ -1,22 +1,22 @@
-import { defineConfig } from "vite";
-import { resolve } from "path";
-import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
+import react from '@vitejs/plugin-react';
+import { resolve } from 'path';
+import { defineConfig } from 'vite';
+import dts from 'vite-plugin-dts';
 
-import { peerDependencies, dependencies } from "./package.json";
+import { peerDependencies, dependencies } from './package.json';
 
 export default defineConfig({
   plugins: [react(), dts()],
   resolve: {
     alias: {
-      "+": resolve(__dirname, "src"),
+      '+': resolve(__dirname, 'src'),
     },
   },
   build: {
     lib: {
-      entry: resolve(__dirname, "src", "index.ts"),
-      formats: ["es", "cjs"],
-      fileName: (ext) => `index.${ext}.js`,
+      entry: resolve(__dirname, 'src', 'index.ts'),
+      formats: ['es', 'cjs'],
+      fileName: ext => `index.${ext}.js`,
     },
     rollupOptions: {
       output: {
@@ -27,10 +27,10 @@ export default defineConfig({
         ...Object.keys(dependencies),
       ],
     },
-    target: "esnext",
+    target: 'esnext',
     sourcemap: true,
   },
   define: {
-    "process.env": {},
+    'process.env': {},
   },
 });

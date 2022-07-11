@@ -9,7 +9,7 @@ export interface IBodyRequest<T = string> {
   pageNumber: number;
   pageSize: number;
   orderBy?: T[];
-  type?: "get";
+  type?: 'get';
 }
 
 export interface IAPIPaginatedResponse<T> {
@@ -23,13 +23,13 @@ export interface IAPIPaginatedResponse<T> {
 }
 
 export interface IAPIResponse<T> {
-    success: boolean,
-    message: string,
-    notifications: [
-      {
-        key: string,
-        message: string
-      }
-    ],
-    data: T;
+  success: boolean;
+  message: string;
+  notifications: [
+    {
+      key: string;
+      message: string;
+    }
+  ];
+  data: T;
 }

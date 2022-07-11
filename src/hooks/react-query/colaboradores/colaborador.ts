@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from 'types';
-import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
-import { IColaborador } from 'types/models/colaboradores';
+import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { IColaborador } from '+/types/models/colaboradores';
 
 interface IUseColaboradores {
   advancedSearch?: IBodyRequest['advancedSearch'];
@@ -35,7 +35,7 @@ export const useColaboradores = ({
         pageNumber,
         pageSize,
         advancedSearch,
-        empresaId: empresaId,
+        empresaId,
       } as IBodyRequest<keyof IColaborador>);
 
       return data;

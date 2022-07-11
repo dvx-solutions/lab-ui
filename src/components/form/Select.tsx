@@ -8,9 +8,9 @@ import {
 import { forwardRef, ForwardRefRenderFunction } from 'react';
 import { FieldError } from 'react-hook-form';
 
-import { Label } from 'components/form/Label';
-import { classNames } from 'lib/formatters';
-import { TSelectOption } from 'types';
+import { Label } from '+/components/form/Label';
+import { classNames } from '+/lib/formatters';
+import { TSelectOption } from '+/types';
 
 interface SelectProps extends ChakraSelectProps {
   name: string;

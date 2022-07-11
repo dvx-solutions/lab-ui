@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from 'types';
-import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
-import { ICargo } from 'types/models/colaboradores';
+import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { ICargo } from '+/types/models/colaboradores';
 
 interface IUseCargos {
   advancedSearch?: IBodyRequest['advancedSearch'];

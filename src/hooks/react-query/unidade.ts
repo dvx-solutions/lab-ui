@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
-import { IUnidade } from 'types/models/empresarial';
-import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
-import { convertAdvancedSearchToReactQueryKeys } from 'lib/formatters';
+import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { IUnidade } from '+/types/models/empresarial';
 
 interface IUseUnidades {
   API_Instance: AxiosInstance;

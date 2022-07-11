@@ -1,9 +1,9 @@
 import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from 'lib/formatters';
-import { IAPIPaginatedResponse, IBodyRequest } from 'types/axios';
-import { IUnidadeCentro } from 'types/models/empresarial';
+import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { IUnidadeCentro } from '+/types/models/empresarial';
 
 interface IUseUnidadeCentros {
   advancedSearch?: IBodyRequest<keyof IUnidadeCentro>['advancedSearch'];

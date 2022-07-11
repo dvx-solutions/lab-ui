@@ -4,7 +4,6 @@ export * from './axios';
 export * from './enums';
 export * from './models-enums';
 export * from './models';
-export * from 'lib/formatters';
 
 export type TSelectOption = {
   value: string | number;

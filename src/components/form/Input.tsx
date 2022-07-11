@@ -17,8 +17,8 @@ import {
 import { FieldError } from 'react-hook-form';
 import NumberFormat from 'react-number-format';
 
-import { Label } from 'components/form/Label';
-import { classNames } from 'lib/formatters';
+import { Label } from '+/components/form/Label';
+import { classNames } from '+/lib/formatters';
 
 interface InputProps extends ChakraInputProps {
   name: string;

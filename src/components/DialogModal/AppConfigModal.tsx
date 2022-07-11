@@ -7,11 +7,11 @@ import { toast } from 'react-toastify';
 import { SetterOrUpdater } from 'recoil';
 import * as yup from 'yup';
 
-import { Button } from 'components/Button';
-import { DialogModal } from 'components/DialogModal';
-import { Input } from 'components/form/Input';
-import { Select } from 'components/form/Select';
-import { TSelectOption } from 'types';
+import { Button } from '+/components/Button';
+import { DialogModal } from '+/components/DialogModal';
+import { Input } from '+/components/form/Input';
+import { Select } from '+/components/form/Select';
+import { TSelectOption } from '+/types';
 
 const useAppConfigModalDisclousere = () => {
   const [isOpenModalOpen, setIsOpen] = useState(false);

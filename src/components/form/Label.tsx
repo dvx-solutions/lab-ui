@@ -1,6 +1,6 @@
 import { FormLabel, FormLabelProps } from '@chakra-ui/react';
 
-import { classNames } from 'lib/formatters';
+import { classNames } from '+/lib/formatters';
 
 interface Props extends FormLabelProps {
   name: string;
