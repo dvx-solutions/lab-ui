@@ -11,6 +11,12 @@
     "dev-publish": "yarn build && yarn publish --access public",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "*.{ts,tsx}": "eslint",
+    "*": "prettier --ignore-unknown --write",
+    "*.{js,jsx,ts,tsx,md,html,css}": "prettier --write",
+    "*.{png,jpeg,jpg,gif,svg}": "imagemin-lint-staged"
+  },
   "main": "dist/index.cjs.js",
   "module": "dist/index.es.js",
   "types": "dist/index.d.ts",
