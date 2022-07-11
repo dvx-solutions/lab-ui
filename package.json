@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -29,8 +29,7 @@
   },
   "sideEffects": false,
   "files": [
-    "dist",
-    "dist/hooks"
+    "dist"
   ],
   "dependencies": {
     "@chakra-ui/react": "^2.2.3",
