@@ -9,6 +9,7 @@ interface IUseUnidadeCentros {
   advancedSearch?: IBodyRequest<keyof IUnidadeCentro>['advancedSearch'];
   API_Instance: AxiosInstance;
   centroId?: number;
+  empresaAnoFiscalId: number;
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
   unidadeId: number;
@@ -18,8 +19,9 @@ export const useUnidadeCentros = ({
   advancedSearch,
   API_Instance,
   centroId,
+  empresaAnoFiscalId,
   pageNumber = 1,
-  pageSize = 9999,
+  pageSize = 25,
   unidadeId,
 }: IUseUnidadeCentros) => {
   return useQuery(
@@ -27,6 +29,7 @@ export const useUnidadeCentros = ({
       'unidade-centros',
       `unidade-id-${unidadeId}`,
       `centro-id-${centroId}`,
+      `empresa-ano-fiscal-${empresaAnoFiscalId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       `pageNumber-${pageNumber}`,
       `pageSize-${pageSize}`,
@@ -35,16 +38,12 @@ export const useUnidadeCentros = ({
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IUnidadeCentro[]>
       >('empresarial/unidades-centros/listar', {
+        advancedSearch,
+        centroId,
+        empresaAnoFiscalId,
         pageNumber,
         pageSize,
-        advancedSearch: [
-          advancedSearch && { ...advancedSearch },
-          { fields: ['unidadeId'], keyword: unidadeId.toString() },
-          centroId && {
-            fields: ['centroId'],
-            keyword: centroId?.toString() ?? '',
-          },
-        ].filter(x => x),
+        unidadeId,
       } as IBodyRequest<keyof IUnidadeCentro>);
 
       return data;
