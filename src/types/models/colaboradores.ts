@@ -1,4 +1,5 @@
-import { IEmpresa, IEmpresaAnoFiscal } from "./empresarial";
+/* eslint-disable no-use-before-define */
+import { IEmpresa, IEmpresaAnoFiscal } from './empresarial';
 
 export interface ICargo {
   ativo: boolean;
@@ -6,6 +7,7 @@ export interface ICargo {
   docente: boolean;
   empresaId: number;
   funcaoConfianca: boolean;
+  grupoCargo: IGrupoCargo;
   grupoCargoId: number;
   id: number;
   inicioValidade: string;
@@ -32,6 +34,7 @@ export interface IClasseCargo {
 
 export interface IColaborador {
   cargaHoraria: number;
+  cargo: ICargo;
   cargoId: number;
   classeCargoId: number;
   codigo: string;

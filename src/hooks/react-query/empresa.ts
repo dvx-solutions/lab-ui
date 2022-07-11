@@ -1,21 +1,23 @@
-import { useQuery } from "react-query";
-import { AxiosInstance } from "axios";
+import { AxiosInstance } from 'axios';
+import { useQuery } from 'react-query';
 
-import { IAPIResponse, IBodyRequest } from "+/types";
-import { IEmpresa } from "+/types/models/empresarial";
+import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { IEmpresa } from '+/types/models/empresarial';
 
 interface IUseEmpresasProps {
   API_Instance: AxiosInstance;
 }
 
-export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) => {
-  return useQuery(
-    "empresas",
+export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) =>
+  useQuery(
+    'empresas',
     async () => {
-      const { data } = await API_Instance.post<IAPIResponse<IEmpresa[]>>(
-        "empresarial/empresas/listar",
-        { pageNumber: 1, pageSize: 9999 } as IBodyRequest
-      );
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<IEmpresa[]>
+      >('empresarial/empresas/listar', {
+        pageNumber: 1,
+        pageSize: 9999,
+      } as IBodyRequest);
 
       return data;
     },
@@ -25,4 +27,3 @@ export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) => {
       keepPreviousData: true,
     }
   );
-};
