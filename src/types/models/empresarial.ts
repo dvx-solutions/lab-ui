@@ -1,3 +1,4 @@
+/* eslint-disable no-use-before-define */
 export interface IAgrupador {
   analitico: boolean;
   ativo: boolean;
@@ -113,9 +114,11 @@ export interface IEmpresa {
   id: number;
   nome: string;
   situacao: number;
-  subordinadas: IEmpresa[];
+  subordinadas: TEmpresaSubordinada[];
   superiorId: number;
 }
+
+type TEmpresaSubordinada = Omit<IEmpresa, 'subordinadas'>;
 
 export interface IEmpresaAnoFiscal {
   id: number;
