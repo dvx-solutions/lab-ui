@@ -448,25 +448,29 @@ export enum ETipoCargo {
 }
 
 export enum ENivelValorizacaoEvento {
-  'Geral' = 0,
-
   'Empresa' = 1,
 
   'Colaborador' = 2,
 }
 
 export enum EOrigemValorEvento {
-  'Manual' = 0,
+  'NaoProcessa ' = 0,
 
-  'Fórmula' = 1,
+  'Manual' = 1,
 
   'Tabela Salarial' = 2,
 
   'Função de Confiança' = 3,
 
-  'Evento da Folha Mensal' = 4,
+  'Periculosidade' = 4,
 
-  'Maior Valor Folha Últmos 12 Meses' = 5,
+  'Insalubridade ' = 5,
+
+  'Evento da Folha Mensal' = 20,
+
+  'Maior Valor Folha Últmos 12 Meses' = 21,
+
+  'Fórmula' = 30,
 }
 
 export enum ENaturezaContaFluxo {
