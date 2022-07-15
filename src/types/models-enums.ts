@@ -440,11 +440,10 @@ export enum ENivelCargo {
 }
 
 export enum ETipoCargo {
+  'Estagiário' = 2,
+  'Funcao de confiança' = 3,
+  'Menor aprendiz' = 4,
   'Padrão' = 1,
-
-  'Estágio' = 2,
-
-  'Função de Confiança' = 3,
 }
 
 export enum ENivelValorizacaoEvento {
@@ -492,11 +491,9 @@ export enum ENfseAmbienteEmissao {
 }
 
 export enum ETipoVinculoColaborador {
-  'Mensalista' = 1,
-  'Horista' = 2,
-  'Estagiário' = 3,
-  'Jovem aprendiz' = 4,
-  'Prestador de serviço' = 5,
+  'Prestador de serviço' = 2,
+  Horista = 2,
+  Mensalista = 1,
 }
 
 export enum ETipoEmail {
