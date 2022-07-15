@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { ICargo } from '+/types/models/colaboradores';
 
@@ -40,7 +41,12 @@ export const useCargos = ({
         } as IBodyRequest<keyof ICargo>
       );
 
-      return data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: x.nome,
+        value: x.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };

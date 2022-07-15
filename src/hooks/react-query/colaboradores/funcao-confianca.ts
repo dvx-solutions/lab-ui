@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib';
+import { TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { IFuncaoConfianca } from '+/types/models/colaboradores';
 
@@ -27,7 +28,7 @@ export const useFuncaoConfianca = ({
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
     ],
     async () => {
-      const response = await API_Instance.post<
+      const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IFuncaoConfianca[]>
       >('colaboradores/funcoes-confiancas/listar', {
         advancedSearch,
@@ -36,7 +37,12 @@ export const useFuncaoConfianca = ({
         pageSize,
       } as IBodyRequest<keyof IFuncaoConfianca>);
 
-      return response.data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: x.nome,
+        value: x.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };
