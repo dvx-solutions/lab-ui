@@ -411,7 +411,6 @@ export enum EModeloGestaoContrato {
   FaturamentoAntecipado,
   FaturamentoConclusaoContrato,
 }
-//---------------------
 
 export enum ETipoComposicaoProduto {
   'Produto Consumido' = 0,
@@ -420,55 +419,41 @@ export enum ETipoComposicaoProduto {
 }
 
 export enum ESituacaoColaborador {
-  'Ativo' = 0,
-
-  'Desligado' = 1,
-
-  'A Contratar' = 3,
+  Ativo = 1,
+  Desligado = 0,
 }
 
 export enum ENivelIntegracaoProjeto {
   'Projeto' = 0,
-
   'Etapa' = 1,
 }
 
 export enum ENivelCargo {
-  'Nível Médio' = 1,
-
-  'Nível Superior' = 2,
+  'Nível médio' = 1,
+  'Nível superior' = 2,
 }
 
 export enum ETipoCargo {
   'Estagiário' = 2,
-  'Funcao de confiança' = 3,
+  'Função de confiança' = 3,
   'Menor aprendiz' = 4,
   'Padrão' = 1,
 }
 
 export enum ENivelValorizacaoEvento {
   'Empresa' = 1,
-
   'Colaborador' = 2,
 }
 
 export enum EOrigemValorEvento {
-  'NaoProcessa ' = 0,
-
+  'Não processa' = 0,
   'Manual' = 1,
-
-  'Tabela Salarial' = 2,
-
-  'Função de Confiança' = 3,
-
+  'Tabela salarial' = 2,
+  'Função de confiança' = 3,
   'Periculosidade' = 4,
-
   'Insalubridade ' = 5,
-
-  'Evento da Folha Mensal' = 20,
-
-  'Maior Valor Folha Últmos 12 Meses' = 21,
-
+  'Evento da folha mensal' = 20,
+  'Maior valor folha últmos 12 meses' = 21,
   'Fórmula' = 30,
 }
 
