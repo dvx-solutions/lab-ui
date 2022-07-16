@@ -476,9 +476,9 @@ export enum ENfseAmbienteEmissao {
 }
 
 export enum ETipoVinculoColaborador {
-  'Prestador de serviço' = 2,
-  Horista = 2,
   Mensalista = 1,
+  Horista = 2,
+  'Prestador de serviço' = 3,
 }
 
 export enum ETipoEmail {
