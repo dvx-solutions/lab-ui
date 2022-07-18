@@ -97,7 +97,7 @@ export interface IEventoValor {
   recursoId: number;
   valorPrevisto: number;
   valorReal: number;
-  valorRevisado: number;
+  valorRevisto: number;
 }
 
 export interface IFuncaoConfianca {
