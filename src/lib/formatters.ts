@@ -4,7 +4,21 @@ export const classNames = (...classes: string[]) => {
   return classes.filter(Boolean).join(' ');
 };
 
-export const convertToCurrency = (value: number) => {
+export const convertToCurrency = (
+  value: number,
+  shouldNotRenderSign?: boolean
+) => {
+  shouldNotRenderSign = shouldNotRenderSign || false;
+
+  if (shouldNotRenderSign)
+    return new Intl.NumberFormat('pt-BR', {
+      style: 'decimal',
+      currency: 'BRL',
+      minimumFractionDigits: 2,
+      compactDisplay: 'long',
+      signDisplay: 'never',
+    }).format(Number(value));
+
   return new Intl.NumberFormat('pt-BR', {
     style: 'currency',
     currency: 'BRL',
