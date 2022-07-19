@@ -95,9 +95,48 @@ export interface IEventoValor {
   id: number;
   mes: number;
   recursoId: number;
-  valorPrevisto: number;
-  valorReal: number;
-  valorRevisado: number;
+  valorPrevisto: {
+    ValorPrevisto01: number;
+    ValorPrevisto02: number;
+    ValorPrevisto03: number;
+    ValorPrevisto04: number;
+    ValorPrevisto05: number;
+    ValorPrevisto06: number;
+    ValorPrevisto07: number;
+    ValorPrevisto08: number;
+    ValorPrevisto09: number;
+    ValorPrevisto10: number;
+    ValorPrevisto11: number;
+    ValorPrevisto12: number;
+  };
+  valorReal: {
+    ValorReal01: number;
+    ValorReal02: number;
+    ValorReal03: number;
+    ValorReal04: number;
+    ValorReal05: number;
+    ValorReal06: number;
+    ValorReal07: number;
+    ValorReal08: number;
+    ValorReal09: number;
+    ValorReal10: number;
+    ValorReal11: number;
+    ValorReal12: number;
+  };
+  valorRevisto: {
+    ValorRevisto01: number;
+    ValorRevisto02: number;
+    ValorRevisto03: number;
+    ValorRevisto04: number;
+    ValorRevisto05: number;
+    ValorRevisto06: number;
+    ValorRevisto07: number;
+    ValorRevisto08: number;
+    ValorRevisto09: number;
+    ValorRevisto10: number;
+    ValorRevisto11: number;
+    ValorRevisto12: number;
+  };
 }
 
 export interface IFuncaoConfianca {
