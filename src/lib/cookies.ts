@@ -4,10 +4,17 @@ import { ILoggedUser, IJWTDecoded } from '../types';
 
 interface ISetAuthCookies {
   APIResponse: ILoggedUser & IJWTDecoded;
+  isProductionEnvironment: boolean;
   tenant: string;
 }
 
-export const destroyAllCookies = () => {
+interface IDestroyAllCookies {
+  isProductionEnvironment: ISetAuthCookies['isProductionEnvironment'];
+}
+
+export const destroyAllCookies = ({
+  isProductionEnvironment,
+}: IDestroyAllCookies) => {
   const cookiesToDestroy = [
     '@dvx-security:accessToken',
     '@dvx-security:refreshToken',
@@ -19,14 +26,16 @@ export const destroyAllCookies = () => {
   cookiesToDestroy.forEach(key => {
     destroyCookie(null, key, {
       path: '/',
-      domain:
-        process.env.NEXT_PUBLIC_COOKIE_DOMAIN !== 'empty' &&
-        '.orquestraerp.com',
+      domain: isProductionEnvironment && '.orquestraerp.com',
     });
   });
 };
 
-export const setAuthCookies = ({ APIResponse, tenant }: ISetAuthCookies) => {
+export const setAuthCookies = ({
+  APIResponse,
+  isProductionEnvironment,
+  tenant,
+}: ISetAuthCookies) => {
   const cookiesToSet = [
     { key: '@dvx-security:accessToken', value: APIResponse.token },
     { key: '@dvx-security:refreshToken', value: APIResponse.refreshToken },
@@ -48,9 +57,7 @@ export const setAuthCookies = ({ APIResponse, tenant }: ISetAuthCookies) => {
     setCookie(null, key, value ?? '', {
       maxAge: 604800,
       path: '/',
-      domain:
-        process.env.NEXT_PUBLIC_COOKIE_DOMAIN !== 'empty' &&
-        '.orquestraerp.com',
+      domain: isProductionEnvironment && '.orquestraerp.com',
     });
   });
 };
