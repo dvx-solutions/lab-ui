@@ -8,8 +8,7 @@
     "build": "run-p build:*",
     "build:scripts": "vite build",
     "build:types": "tsc --emitDeclarationOnly && tsc-alias",
-    "pub": "npm version patch --force && npm publish --access public",
-    "dev-publish": "yarn build && yarn pub",
+    "dev-publish": "yarn build && yarn publish --access public",
     "prepare": "husky install"
   },
   "lint-staged": {

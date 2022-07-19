@@ -989,3 +989,12 @@ export enum ETipoLotacaoColaborador {
 
   'Lotação Orçamentária' = 1,
 }
+
+export enum ETipoSalarioCargo {
+  Mensal = 1,
+  Horista = 2,
+  Semanal = 3,
+  Diario = 4,
+  Horario = 5,
+  Tarefa = 6,
+}
