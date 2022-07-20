@@ -17,6 +17,7 @@ export const destroyAllCookies = ({
 }: IDestroyAllCookies) => {
   const cookiesToDestroy = [
     '@dvx-security:accessToken',
+    '@dvx-security:api-url',
     '@dvx-security:refreshToken',
     '@dvx-security:refreshTokenExpiryTime',
     '@dvx-security:tenant',
