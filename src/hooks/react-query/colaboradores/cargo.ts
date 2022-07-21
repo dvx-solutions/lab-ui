@@ -42,7 +42,7 @@ export const useCargos = ({
       );
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: x.nome,
+        text: `${x.codigo} - ${x.nome}`,
         value: x.id,
       }));
 

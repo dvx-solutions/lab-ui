@@ -38,7 +38,7 @@ export const useFuncaoConfianca = ({
       } as IBodyRequest<keyof IFuncaoConfianca>);
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: x.nome,
+        text: `${x.codigo} - ${x.nome}`,
         value: x.id,
       }));
 
