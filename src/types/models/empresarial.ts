@@ -46,8 +46,8 @@ export interface ICentro {
 }
 
 export interface IContaOrcamentaria {
-  agrupadorId: number;
-  analitico: boolean;
+  agrupadorContaOrcamentariaId: number;
+  analitico: true;
   ativo: boolean;
   codigo: string;
   codigoMascara: string;
@@ -70,12 +70,14 @@ export interface IContaOrcamentaria {
   nomeNivel5: string;
   origemConta: number;
   origemValorConta: number;
-  planoId: number;
-  subordinadas: string[];
+  planoContaOrcamentariaId: number;
+  subordinadas: TContaOrcamentariaSubordinada[];
   superiorId: number;
   terminoValidade: string;
   tipoValorConta: number;
 }
+
+type TContaOrcamentariaSubordinada = Omit<IContaOrcamentaria, 'subordinadas'>;
 
 export interface IContaContabil {
   id: number;
@@ -138,19 +140,22 @@ export interface IEmpresaAnoFiscal {
 }
 
 export interface INaturezaConta {
-  id: number;
-  superiorId: number;
-  codigo: string;
-  nome: string;
-  descricao: string;
-  origemConta: number;
-  inicioValidade: string;
-  terminoValidade: string;
-  nivel: number;
   analitico: boolean;
   ativo: boolean;
-  subordinadas: string[];
+  codigo: string;
+  contasOrcamentarias: IContaOrcamentaria[];
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  nivel: number;
+  nome: string;
+  origemConta: number;
+  subordinadas: TNaturezaContaSubordinada[];
+  superiorId: number;
+  terminoValidade: string;
 }
+
+type TNaturezaContaSubordinada = Omit<INaturezaConta, 'subordinadas'>;
 
 export interface IPlano {
   id: number;
