@@ -2,6 +2,7 @@ import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { IUnidadeCentro } from '+/types/models/empresarial';
 
@@ -46,7 +47,12 @@ export const useUnidadeCentros = ({
         unidadeId,
       } as IBodyRequest<keyof IUnidadeCentro>);
 
-      return data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: `${x.centro.codigo} - ${x.centro.nome}`,
+        value: x.centro.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };
