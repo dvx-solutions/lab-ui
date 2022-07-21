@@ -12,7 +12,7 @@ interface IUseNaturezaOrcamento {
   pageSize?: IBodyRequest['pageSize'];
 }
 
-export const useNaturezaOrcamento = async ({
+export const useNaturezaOrcamento = ({
   API_Instance,
   advancedSearch,
   pageNumber = 1,
@@ -25,17 +25,15 @@ export const useNaturezaOrcamento = async ({
       `page-${pageNumber}-size-${pageSize}`,
     ],
     async () => {
-      const payload: IBodyRequest<keyof INaturezaOrcamento> = {
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<INaturezaOrcamento[]>
+      >('empresarial/planos/listar', {
         advancedSearch,
         pageNumber,
         pageSize,
-      };
+      } as IBodyRequest);
 
-      const { data } = await API_Instance.post<
-        IAPIPaginatedResponse<INaturezaOrcamento[]>
-      >('orcamentos/naturezas-orcamentos/listar', payload);
-
-      const options: TSelectOption[] = data.data.map(x => ({
+      const options: TSelectOption[] = data.data?.map(x => ({
         text: `${x.codigo} - ${x.nome}`,
         value: x.id,
       }));
