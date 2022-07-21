@@ -2,23 +2,24 @@ import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
+import { TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { IUnidade } from '+/types/models/empresarial';
 
 interface IUseUnidades {
+  advancedSearch?: IBodyRequest<keyof IUnidade>['advancedSearch'];
   API_Instance: AxiosInstance;
-  planoId: number;
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
-  advancedSearch?: IBodyRequest<keyof IUnidade>['advancedSearch'];
+  planoId: number;
 }
 
 export const useUnidades = ({
-  API_Instance,
-  planoId,
   advancedSearch,
+  API_Instance,
   pageNumber = 1,
   pageSize = 9999,
+  planoId,
 }: IUseUnidades) => {
   return useQuery(
     [
@@ -40,7 +41,12 @@ export const useUnidades = ({
         ],
       } as IBodyRequest<keyof IUnidade>);
 
-      return data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: `${x.codigo} - ${x.nome}`,
+        value: x.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };
