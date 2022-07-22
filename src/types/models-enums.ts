@@ -434,10 +434,11 @@ export enum ENivelCargo {
 }
 
 export enum ETipoCargo {
+  'Colaborador padrão' = 1,
   'Estagiário' = 2,
   'Função de confiança' = 3,
   'Menor aprendiz' = 4,
-  'Padrão' = 1,
+  'Autônomo' = 5,
 }
 
 export enum ENivelValorizacaoEvento {
@@ -994,7 +995,13 @@ export enum ETipoSalarioCargo {
   Mensal = 1,
   Horista = 2,
   Semanal = 3,
-  Diario = 4,
-  Horario = 5,
+  'Diário' = 4,
+  'Horário' = 5,
   Tarefa = 6,
+}
+
+export enum OrigemValorSalario {
+  'Tabela salarial' = 1,
+  'Função de confiança' = 2,
+  Horista = 3,
 }
