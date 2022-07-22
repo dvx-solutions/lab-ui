@@ -161,4 +161,5 @@ export interface IGrupoCargo {
   nome: string;
   quantidadeClasses: number;
   terminoValidade: string;
+  tipoCargo: number;
 }

@@ -419,8 +419,10 @@ export enum ETipoComposicaoProduto {
 }
 
 export enum ESituacaoColaborador {
-  Ativo = 1,
   Desligado = 0,
+  Ativo = 1,
+  Afastado = 2,
+  'Férias' = 3,
 }
 
 export enum ENivelIntegracaoProjeto {
@@ -449,12 +451,14 @@ export enum ENivelValorizacaoEvento {
 export enum EOrigemValorEvento {
   'Não processa' = 0,
   'Manual' = 1,
-  'Tabela salarial' = 2,
-  'Função de confiança' = 3,
+  'Salario contratual' = 2,
+  'Função de Confiança' = 3,
   'Periculosidade' = 4,
-  'Insalubridade ' = 5,
+  'Insalubridade' = 5,
+  'Bolsa estágio' = 6,
   'Evento da folha mensal' = 20,
-  'Maior valor folha últmos 12 meses' = 21,
+  'Maior valor folha últimos 12 meses' = 21,
+  'Média valor folha últimos 12 meses' = 22,
   'Fórmula' = 30,
 }
 
@@ -992,7 +996,7 @@ export enum ETipoLotacaoColaborador {
 }
 
 export enum ETipoSalarioCargo {
-  Mensal = 1,
+  'Mensalista' = 1,
   Horista = 2,
   Semanal = 3,
   'Diário' = 4,
