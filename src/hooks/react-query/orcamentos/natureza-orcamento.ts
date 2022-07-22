@@ -27,7 +27,7 @@ export const useNaturezaOrcamento = ({
     async () => {
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<INaturezaOrcamento[]>
-      >('empresarial/planos/listar', {
+      >('orcamentos/naturezas-orcamentos/listar', {
         advancedSearch,
         pageNumber,
         pageSize,
