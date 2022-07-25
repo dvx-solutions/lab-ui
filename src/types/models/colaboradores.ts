@@ -64,7 +64,7 @@ export interface IEvento {
   id: number;
   nivelValorizacao: number;
   nome: string;
-  origemPrevisao: number;
+  origemEvento: number;
   origemRealizacao: number;
 }
 
