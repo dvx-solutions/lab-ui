@@ -42,6 +42,8 @@ export const useTetoOrcamento = ({
         advancedSearch,
         empresaAnoFiscalId,
         naturezaOrcamentoId,
+        pageNumber,
+        pageSize,
       });
 
       return data;

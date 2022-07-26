@@ -163,3 +163,18 @@ export interface IGrupoCargo {
   terminoValidade: string;
   tipoCargo: number;
 }
+
+export interface ISetor {
+  ativo: boolean;
+  codigo: string;
+  empresa: {
+    codigo: string;
+    id: number;
+    nome: string;
+  };
+  empresaId: number;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  terminoValidade: string;
+}
