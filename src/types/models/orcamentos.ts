@@ -9,3 +9,20 @@ export interface INaturezaOrcamento {
   nome: string;
   terminoValidade: string;
 }
+
+export interface ITetoOrcamento {
+  centroId: number;
+  classificacaoNaturezaConta: number;
+  descricao: string;
+  empresaAnoFiscalId: number;
+  id: number;
+  naturezaContaId: number;
+  naturezaOrcamentoId: number;
+  nivelTetoOrcamento: number;
+  origemConta: number;
+  unidadeCentroId: number;
+  unidadeId: number;
+  valorPrevisto: number;
+  valorReal: number;
+  valorRevisto: number;
+}
