@@ -7,7 +7,7 @@ import {
 } from '+/lib/formatters';
 import { TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
-import { IUnidadeCentro } from '+/types/models/empresarial';
+import { ICentro, IUnidade, IUnidadeCentro } from '+/types/models/empresarial';
 
 interface IUseUnidadeCentros {
   advancedSearch?: IBodyRequest<keyof IUnidadeCentro>['advancedSearch'];
@@ -84,17 +84,17 @@ export const useUnidadeCentrosListarUnidades = ({
     ],
     async () => {
       const { data } = await API_Instance.post<
-        IAPIPaginatedResponse<IUnidadeCentro[]>
+        IAPIPaginatedResponse<IUnidade[]>
       >('empresarial/unidades-centros/listar-unidades', {
         advancedSearch,
         empresaAnoFiscalId,
         pageNumber,
         pageSize,
-      } as IBodyRequest<keyof IUnidadeCentro>);
+      } as IBodyRequest<keyof IUnidade>);
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: `${x.unidade.codigo} - ${x.unidade.nome}`,
-        value: x.unidade.id,
+        text: `${x.codigo} - ${x.nome}`,
+        value: x.id,
       }));
 
       return { ...data, options };
@@ -118,17 +118,17 @@ export const useUnidadeCentrosListarCentros = ({
     ],
     async () => {
       const { data } = await API_Instance.post<
-        IAPIPaginatedResponse<IUnidadeCentro[]>
+        IAPIPaginatedResponse<ICentro[]>
       >('empresarial/unidades-centros/listar-centros', {
         advancedSearch,
         empresaAnoFiscalId,
         pageNumber,
         pageSize,
-      } as IBodyRequest<keyof IUnidadeCentro>);
+      } as IBodyRequest<keyof ICentro>);
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: `${x.centro.codigo} - ${x.centro.nome}`,
-        value: x.centro.id,
+        text: `${x.codigo} - ${x.nome}`,
+        value: x.id,
       }));
 
       return { ...data, options };
