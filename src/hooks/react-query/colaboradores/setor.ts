@@ -5,7 +5,12 @@ import {
   convertAdvancedSearchToReactQueryKeys,
   getReactQueryPaginationKeys,
 } from '+/lib';
-import { IAPIPaginatedResponse, IBodyRequest, ISetor } from '+/types';
+import {
+  IAPIPaginatedResponse,
+  IBodyRequest,
+  ISetor,
+  TSelectOption,
+} from '+/types';
 
 interface IProps {
   advancedSearch?: IBodyRequest<keyof ISetor>['advancedSearch'];
@@ -42,7 +47,12 @@ export const useSetor = ({
         payload
       );
 
-      return data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: `${x.codigo} - ${x.nome}`,
+        value: x.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };
