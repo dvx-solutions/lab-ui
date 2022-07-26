@@ -14,7 +14,6 @@ interface IProps {
   naturezaOrcamentoId: number;
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
-  unidadeId: number;
 }
 
 export const useTetoOrcamento = ({
@@ -24,18 +23,18 @@ export const useTetoOrcamento = ({
   naturezaOrcamentoId,
   pageNumber = 1,
   pageSize = 25,
-  unidadeId,
 }: IProps) => {
   return useQuery(
     [
       'teto-orcamento',
+      `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      `naturezaOrcamentoId-${naturezaOrcamentoId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
       if (empresaAnoFiscalId === 0) return null;
       if (naturezaOrcamentoId === 0) return null;
-      if (unidadeId === 0) return null;
 
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<ITetoOrcamento[]>
@@ -43,7 +42,6 @@ export const useTetoOrcamento = ({
         advancedSearch,
         empresaAnoFiscalId,
         naturezaOrcamentoId,
-        unidadeId,
       });
 
       return data;

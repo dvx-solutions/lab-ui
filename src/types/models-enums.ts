@@ -1009,3 +1009,10 @@ export enum OrigemValorSalario {
   'Função de confiança' = 2,
   Horista = 3,
 }
+
+export enum ENivelTetoOrcamento {
+  'Resultado por Unidade' = 1,
+  'Resultado por Unidade / Centro' = 2,
+  'Natureza de Conta por Unidade' = 3,
+  'Natureza de Conta Por Unidade / Centro ' = 4,
+}
