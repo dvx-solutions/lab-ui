@@ -1,5 +1,7 @@
-import '+/index.css';
-
 export default function App() {
-  return <h1>App</h1>;
+  return (
+    <div>
+      <h1>haha</h1>
+    </div>
+  );
 }
