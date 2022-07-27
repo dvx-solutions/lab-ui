@@ -1,15 +1,21 @@
 import { FormLabel } from '@chakra-ui/react';
 
+import { classNames } from '+/lib';
+
 interface Props {
-  name: string;
+  isForCheckbox?: boolean;
   label: string;
+  name: string;
 }
 
-export function Label({ label, name }: Props) {
+export function Label({ label, name, isForCheckbox = false }: Props) {
   return (
     <FormLabel
       htmlFor={name}
-      className="mb-2 text-base font-normal text-[#52566E]"
+      className={classNames(
+        'text-base font-normal text-slate-600',
+        isForCheckbox ? 'mb-0' : 'mb-2 '
+      )}
     >
       {label}
     </FormLabel>

@@ -22,9 +22,9 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
 ) => (
   <FormControl
     isInvalid={!!error}
-    className="flex w-full items-center justify-evenly"
+    className="flex w-full items-center justify-center gap-2"
   >
-    {!!label && <Label label={label} name={name} />}
+    {!!label && <Label label={label} name={name} isForCheckbox />}
 
     <input
       {...props}

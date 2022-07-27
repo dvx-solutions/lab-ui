@@ -1,0 +1,9 @@
+@layer components {
+  .default-form-element {
+    @apply h-8 rounded text-sm;
+  }
+
+  .form-element-with-height-fitted {
+    @apply h-fit rounded text-xs;
+  }
+}
