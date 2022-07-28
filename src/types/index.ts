@@ -31,6 +31,5 @@ export interface ISignInCredentials {
 
 export type TAppConfig = {
   empresaId: number;
-  ano: number;
   empresaAnoFiscal: IEmpresaAnoFiscal;
 };

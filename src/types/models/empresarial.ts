@@ -123,20 +123,17 @@ export interface IEmpresa {
 type TEmpresaSubordinada = Omit<IEmpresa, 'subordinadas'>;
 
 export interface IEmpresaAnoFiscal {
-  id: number;
-  empresaId: number;
-  empresa: IEmpresa;
   ano: number;
-  planoUnidadeId: number;
+  configOrcamento: { mesAberto: number; situacao: number };
+  empresa: IEmpresa;
+  empresaId: number;
+  id: number;
   planoCentroId: number;
-  planoProdutoId: number;
-  planoContaOrcamentariaId: number;
   planoContaContabilId: number;
   planoContaFluxoId: number;
-  configOrcamento: {
-    mesAberto: number;
-    situacao: number;
-  };
+  planoContaOrcamentariaId: number;
+  planoProdutoId: number;
+  planoUnidadeId: number;
 }
 
 export interface INaturezaConta {
