@@ -1016,3 +1016,9 @@ export enum ENivelTetoOrcamento {
   'Natureza de Conta por Unidade' = 3,
   'Natureza de Conta Por Unidade / Centro ' = 4,
 }
+
+export enum ETipoConsultaTabelaSalarioPorCargo {
+  Horista = 1,
+  'Estagiário' = 2,
+  'Função de confiança' = 3,
+}
