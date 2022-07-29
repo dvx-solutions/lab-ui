@@ -1,5 +1,12 @@
 /* eslint-disable no-use-before-define */
-import { IEmpresa, IEmpresaAnoFiscal } from './empresarial';
+import {
+  ICentro,
+  IEmpresa,
+  IEmpresaAnoFiscal,
+  IUnidade,
+  IUnidadeCentro,
+  IUnidadeNegocio,
+} from './empresarial';
 
 export interface ICargo {
   ativo: boolean;
@@ -68,6 +75,22 @@ export interface IEvento {
   origemRealizacao: number;
 }
 
+export interface IRateioPlanejamentoColaborador {
+  centro: ICentro;
+  centroId: number;
+  mes: number;
+  percentualPrevisto: number;
+  percentualReal: number;
+  percentualRevisto: number;
+  tipoLotacaoColaborador: number;
+  unidade: IUnidade;
+  unidadeCentro: IUnidadeCentro;
+  unidadeCentroId: number;
+  unidadeId: number;
+  unidadeNegocio: IUnidadeNegocio;
+  unidadeNegocioId: number;
+}
+
 export interface IPlanejamentoColaborador {
   cargo: ICargo;
   cargoId: number;
@@ -84,6 +107,7 @@ export interface IPlanejamentoColaborador {
   funcaoConfiancaId: number;
   id: number;
   nome: string;
+  rateios: IRateioPlanejamentoColaborador[];
   setorId: number;
   situacao: number;
   tipoVinculo: number;
@@ -177,11 +201,7 @@ export interface IGrupoCargo {
 export interface ISetor {
   ativo: boolean;
   codigo: string;
-  empresa: {
-    codigo: string;
-    id: number;
-    nome: string;
-  };
+  empresa: IEmpresa;
   empresaId: number;
   id: number;
   inicioValidade: string;
