@@ -1022,3 +1022,12 @@ export enum ETipoConsultaTabelaSalarioPorCargo {
   'Estagiário' = 2,
   'Função de confiança' = 3,
 }
+
+export enum ESituacaoPlanejamentoColaborador {
+  Desligado = 0,
+  Ativo = 1,
+  Afastado = 2,
+  'Férias' = 3,
+  'Vaga disponível' = 4,
+  'Vaga cancelada' = 5,
+}
