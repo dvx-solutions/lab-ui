@@ -24,6 +24,8 @@ export interface ICargo {
   tipoCargo: number;
 }
 
+export type TCargoWithoutGrupoCargo = Omit<ICargo, 'grupoCargo'>;
+
 export interface IClasseCargo {
   ativo: boolean;
   codigo: string;
@@ -186,7 +188,7 @@ export interface IFuncaoConfianca {
 export interface IGrupoCargo {
   ativo: boolean;
   cargaHoraria: number;
-  cargos: ICargo[];
+  cargos: TCargoWithoutGrupoCargo[];
   classes: IClasseCargo[];
   codigo: string;
   empresaId: number;
