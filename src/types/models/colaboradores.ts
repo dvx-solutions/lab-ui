@@ -94,6 +94,7 @@ export interface IRateioPlanejamentoColaborador {
 }
 
 export interface IPlanejamentoColaborador {
+  cargaHoraria: number;
   cargo: ICargo;
   cargoId: number;
   centroId: number;
