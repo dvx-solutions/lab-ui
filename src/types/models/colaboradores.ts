@@ -69,17 +69,27 @@ export interface IEvento {
 }
 
 export interface IPlanejamentoColaborador {
-  cargaHoraria: number;
+  cargo: ICargo;
   cargoId: number;
+  centroId: number;
+  classeCargo: IClasseCargo;
   classeCargoId: number;
   codigo: string;
+  colaborador: IColaborador;
+  colaboradorId: number;
   dataEntrada: string;
+  dataSaida: string;
   empresaAnoFiscalId: number;
+  funcaoConfianca: IFuncaoConfianca;
   funcaoConfiancaId: number;
   id: number;
   nome: string;
-  novoColaborador: boolean;
+  setorId: number;
+  situacao: number;
   tipoVinculo: number;
+  unidadeCentroId: number;
+  unidadeId: number;
+  unidadeNegocioId: number;
   valorHora: number;
   valorMensal: number;
 }
