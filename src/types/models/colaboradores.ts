@@ -211,3 +211,23 @@ export interface ISetor {
   nome: string;
   terminoValidade: string;
 }
+
+export interface IColaboradorMovimentacao {
+  cargaHoraria: number;
+  cargoId: number;
+  centroId: number;
+  classeCargoId: number;
+  colaboradorId: number;
+  dataMovimentacao: string;
+  descricao: string;
+  funcaoConfiancaId: number;
+  origemMovimentacao: number;
+  percentual: number;
+  planejamentoColaboradorId: number;
+  processoId: number;
+  setorId: number;
+  tipoMovimentacao: number;
+  unidadeCentroId: number;
+  unidadeId: number;
+  unidadeNegocioId: number;
+}
