@@ -1031,3 +1031,17 @@ export enum ESituacaoPlanejamentoColaborador {
   'Vaga disponível' = 4,
   'Vaga cancelada' = 5,
 }
+
+export enum EOrigemMovimentacaoColaborador {
+  Previsto = 1,
+  Revisto = 2,
+  Realizado = 3,
+}
+
+export enum ETipoMovimentacaoColaborador {
+  'Contratação' = 1,
+  Desligamento = 2,
+  'Movimentação de pessoal' = 3,
+  'Alocação orçamentária' = 4,
+  'Alteração de cargo' = 5,
+}
