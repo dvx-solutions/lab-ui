@@ -1,26 +1,34 @@
-import { AxiosInstance } from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
-import { TSelectOption } from '+/types';
-import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import { IQueryParams, TSelectOption } from '+/types';
+import { IAPIPaginatedResponse } from '+/types/axios';
 import { ICentro } from '+/types/models/empresarial';
 
-interface IUseCentros {
-  advancedSearch?: IBodyRequest<keyof ICentro>['advancedSearch'];
-  API_Instance: AxiosInstance;
-  pageNumber?: IBodyRequest['pageNumber'];
-  pageSize?: IBodyRequest['pageSize'];
+interface IUseCentros extends IQueryParams<keyof ICentro> {
   planoId: number;
 }
 
 export const useCentros = ({
   advancedSearch,
   API_Instance,
+  keyword,
+  orderBy,
   pageNumber = 1,
   pageSize = 9999,
   planoId,
 }: IUseCentros) => {
+  const payload = {
+    advancedSearch: [
+      advancedSearch ? { ...advancedSearch } : {},
+      { fields: ['planoId'], keyword: planoId.toString() },
+    ],
+    keyword,
+    orderBy,
+    pageNumber,
+    pageSize,
+  };
+
   return useQuery(
     [
       'centros',
@@ -32,14 +40,7 @@ export const useCentros = ({
     async () => {
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<ICentro[]>
-      >('empresarial/centros/listar', {
-        pageNumber,
-        pageSize,
-        advancedSearch: [
-          advancedSearch ? { ...advancedSearch } : {},
-          { fields: ['planoId'], keyword: planoId.toString() },
-        ],
-      } as IBodyRequest<keyof ICentro>);
+      >('empresarial/centros/listar', payload);
 
       const options: TSelectOption[] = data.data.map(x => ({
         text: `${x.codigo} - ${x.nome}`,

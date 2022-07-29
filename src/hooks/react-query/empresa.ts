@@ -1,21 +1,33 @@
-import { AxiosInstance } from 'axios';
-import { useQuery } from 'react-query';
+import { useQuery } from '@tanstack/react-query';
 
-import { TSelectOption } from '+/types';
-import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
-import { IEmpresa } from '+/types/models/empresarial';
+import { convertAdvancedSearchToReactQueryKeys } from '+/lib';
+import {
+  IAPIPaginatedResponse,
+  IBodyRequest,
+  IEmpresa,
+  IQueryParams,
+  TSelectOption,
+} from '+/types';
 
-interface IUseEmpresasProps {
-  API_Instance: AxiosInstance;
-}
-
-export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) =>
+export const useEmpresas = ({
+  advancedSearch,
+  API_Instance,
+  pageNumber = 1,
+  pageSize = 25,
+  ...rest
+}: IQueryParams<keyof IEmpresa>) =>
   useQuery(
-    'empresas',
+    [
+      'empresas',
+      convertAdvancedSearchToReactQueryKeys(advancedSearch),
+      `page-${pageNumber}-size-${pageSize}`,
+    ],
     async () => {
       const payload = {
-        pageNumber: 1,
-        pageSize: 9999,
+        advancedSearch,
+        pageNumber,
+        pageSize,
+        ...rest,
       } as IBodyRequest;
 
       const { data } = await API_Instance.post<
@@ -28,10 +40,5 @@ export const useEmpresas = ({ API_Instance }: IUseEmpresasProps) =>
       }));
 
       return { ...data, options };
-    },
-    {
-      refetchIntervalInBackground: true,
-      refetchOnWindowFocus: true,
-      keepPreviousData: true,
     }
   );

@@ -1,5 +1,5 @@
+import { useQuery } from '@tanstack/react-query';
 import { AxiosInstance } from 'axios';
-import { useQuery } from 'react-query';
 
 import {
   convertAdvancedSearchToReactQueryKeys,

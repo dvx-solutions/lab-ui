@@ -4,6 +4,7 @@ export * from './axios';
 export * from './enums';
 export * from './models-enums';
 export * from './models';
+export * from './react-query';
 
 export type TSelectOption = {
   value: string | number;
