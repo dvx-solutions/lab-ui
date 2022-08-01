@@ -2,7 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosInstance } from 'axios';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
-import { IQueryParams } from '+/types';
+import { IQueryParams, TSelectOption } from '+/types';
 import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
 import { IUnidade } from '+/types/models/empresarial';
 
@@ -41,7 +41,12 @@ export const useUnidades = ({
         ],
       } as IBodyRequest<keyof IUnidade>);
 
-      return data;
+      const options: TSelectOption[] = data.data.map(x => ({
+        text: `${x.codigo} - ${x.nome}`,
+        value: x.id,
+      }));
+
+      return { ...data, options };
     }
   );
 };
