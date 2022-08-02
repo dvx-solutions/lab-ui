@@ -14,10 +14,11 @@ interface Props extends InputHTMLAttributes<HTMLInputElement> {
   error?: FieldError;
   label?: string;
   name: string;
+  heightShouldFit?: boolean;
 }
 
 const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
-  { name, error, label, className = '', ...props },
+  { name, error, label, heightShouldFit = false, className = '', ...props },
   ref
 ) => (
   <FormControl
@@ -26,7 +27,12 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   >
     <input
       {...props}
-      className={classNames(className, 'default-form-element h-6 w-6')}
+      className={classNames(
+        className,
+        heightShouldFit
+          ? 'default-form-element h-4 w-4'
+          : 'default-form-element h-6 w-6'
+      )}
       name={name}
       ref={ref}
       type="checkbox"

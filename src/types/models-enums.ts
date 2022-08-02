@@ -1041,7 +1041,7 @@ export enum EOrigemMovimentacaoColaborador {
 export enum ETipoMovimentacaoColaborador {
   'Contratação' = 1,
   Desligamento = 2,
-  'Movimentação de pessoal' = 3,
+  'Alteração de setor' = 3,
   'Alocação orçamentária' = 4,
   'Alteração de cargo' = 5,
 }
