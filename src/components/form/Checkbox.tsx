@@ -33,6 +33,7 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
           ? 'default-form-element h-4 w-4'
           : 'default-form-element h-6 w-6'
       )}
+      id={name}
       name={name}
       ref={ref}
       type="checkbox"
