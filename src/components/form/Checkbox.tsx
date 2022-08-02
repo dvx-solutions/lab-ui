@@ -23,7 +23,7 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
 ) => (
   <FormControl
     isInvalid={!!error}
-    className="flex w-full items-center justify-evenly"
+    className="flex w-full items-center justify-start"
   >
     <input
       {...props}
