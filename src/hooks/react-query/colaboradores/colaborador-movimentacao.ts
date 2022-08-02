@@ -6,20 +6,19 @@ import {
 } from '+/lib';
 import {
   IAPIPaginatedResponse,
+  IBodyRequest,
   IColaboradorMovimentacao,
   IQueryParams,
 } from '+/types';
 
 interface IUseColaboradorMovimentacao
   extends IQueryParams<keyof IColaboradorMovimentacao> {
-  colaboradorId?: number;
-  planejamentoColaboradorId?: number;
+  planejamentoColaboradorId: number;
 }
 
 export const useColaboradorMovimentacao = ({
-  API_Instance,
   advancedSearch,
-  colaboradorId,
+  API_Instance,
   keyword,
   orderBy,
   pageNumber = 1,
@@ -28,19 +27,17 @@ export const useColaboradorMovimentacao = ({
 }: IUseColaboradorMovimentacao) => {
   const payload = {
     advancedSearch,
-    colaboradorId,
     keyword,
     orderBy,
     pageNumber,
     pageSize,
     planejamentoColaboradorId,
-  };
+  } as IBodyRequest;
 
   return useQuery(
     [
       'colaborador-movimentacao',
-      `colaboradorId-${colaboradorId}`,
-      `planejamentoColaboradorId-${planejamentoColaboradorId}`,
+      `planejamento-colaborador-id-${planejamentoColaboradorId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
