@@ -1,4 +1,5 @@
 /* eslint-disable no-use-before-define */
+import { TDTOSimples } from '../index';
 import {
   ICentro,
   IEmpresa,
@@ -230,4 +231,32 @@ export interface IColaboradorMovimentacao {
   unidadeCentroId: number;
   unidadeId: number;
   unidadeNegocioId: number;
+}
+
+export type TValorTabelaSalario = {
+  valor01: number;
+  valor02: number;
+  valor03: number;
+  valor04: number;
+  valor05: number;
+  valor06: number;
+  valor07: number;
+  valor08: number;
+  valor09: number;
+  valor10: number;
+  valor11: number;
+  valor12: number;
+};
+
+export interface ITabelaSalario {
+  cargo: TDTOSimples;
+  cargoId: number;
+  classeCargo: TDTOSimples;
+  classeCargoId: number;
+  empresaAnoFiscalId: number;
+  grupoCargo: TDTOSimples;
+  grupoCargoId: number;
+  id: number;
+  origemSalario: number;
+  valor: TValorTabelaSalario;
 }

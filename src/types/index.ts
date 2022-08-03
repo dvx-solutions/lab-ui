@@ -34,3 +34,9 @@ export type TAppConfig = {
   empresaId: number;
   empresaAnoFiscal: IEmpresaAnoFiscal;
 };
+
+export type TDTOSimples = {
+  codigo: string;
+  id: number;
+  nome: string;
+};

@@ -6,3 +6,4 @@ export * from './eventos';
 export * from './funcao-confianca';
 export * from './grupo-cargo';
 export * from './setor';
+export * from './tabelas-salarios';
