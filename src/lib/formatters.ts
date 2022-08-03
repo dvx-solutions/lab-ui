@@ -61,11 +61,11 @@ export const yesOrNoCellDevextremeCellRender = ({
 
 export const convertEnumToSelectOptions = (
   enumobj: Record<string, number | string>,
-  fieldsToExclude?: string[]
+  fieldsToExclude?: number[]
 ) => {
   return Object.entries(enumobj)
     .filter(f => !Number.isNaN(Number(f[1])))
-    .filter(f => !fieldsToExclude?.includes(f[0]))
+    .filter(f => !fieldsToExclude?.includes(Number(f[1])))
     .map(x => ({
       text: x[0].trim(),
       value: x[1],
