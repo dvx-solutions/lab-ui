@@ -34,6 +34,10 @@ export const useContasOrcamentarias = ({
   return useQuery(
     [
       'contas-orcamentarias',
+      `planoId-${planoId}`,
+      `analitico-${analitico}`,
+      `classificacao-${classificacao}`,
+      `origem-${origem}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],

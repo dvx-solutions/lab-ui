@@ -814,26 +814,16 @@ export enum EOrigemConta {
 }
 
 export enum EClassificacaoNaturezaConta {
-  'Pessoal' = 1,
-
+  'Despesas Pessoal' = 1,
   'Ocupação e Utilidade' = 2,
-
   'Material' = 3,
-
   'Transporte e Viagens' = 4,
-
   'Serviços de Terceiros' = 5,
-
   'Arrendamento Mercantil' = 6,
-
   'Impostos e Taxas' = 7,
-
   'Despesas Diversas' = 8,
-
   'Transferencias Correntes' = 9,
-
   'Despesa Capital' = 10,
-
   'Receita de Serviço' = 100,
 }
 

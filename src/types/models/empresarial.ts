@@ -60,7 +60,7 @@ export interface IContaOrcamentaria {
   descricao: string;
   id: number;
   inicioValidade: string;
-  naturezaConta: IContaOrcamentaria;
+  naturezaConta: Omit<INaturezaConta, 'contasOrcamentarias'>;
   naturezaContaId: number;
   nivel: number;
   nome: string;
