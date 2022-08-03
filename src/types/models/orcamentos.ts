@@ -8,6 +8,7 @@ export interface INaturezaOrcamento {
   naturezasContas: INaturezaConta[];
   nome: string;
   terminoValidade: string;
+  utilizaTetoOrcamento: boolean;
 }
 
 export interface ITetoOrcamento {

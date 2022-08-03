@@ -137,20 +137,16 @@ export interface IEmpresaAnoFiscal {
 export interface INaturezaConta {
   analitico: boolean;
   ativo: boolean;
+  classificacaoNaturezaConta: number;
   codigo: string;
-  contasOrcamentarias: IContaOrcamentaria[];
   descricao: string;
   id: number;
   inicioValidade: string;
   nivel: number;
   nome: string;
   origemConta: number;
-  subordinadas: TNaturezaContaSubordinada[];
-  superiorId: number;
   terminoValidade: string;
 }
-
-type TNaturezaContaSubordinada = Omit<INaturezaConta, 'subordinadas'>;
 
 export interface IPlano {
   id: number;
