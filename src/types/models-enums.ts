@@ -1035,3 +1035,10 @@ export enum ETipoMovimentacaoColaborador {
   'Alocação orçamentária' = 4,
   'Alteração de cargo' = 5,
 }
+
+export enum EOrigemSalario {
+  'Tabela Salarial' = 1,
+  'Função de Confiança' = 2,
+  'Horista' = 3,
+  'Estagiário' = 4,
+}
