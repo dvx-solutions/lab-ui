@@ -222,6 +222,7 @@ export interface IColaboradorMovimentacao {
   dataMovimentacao: string;
   descricao: string;
   funcaoConfiancaId: number;
+  identificadorMovimentacao: string;
   origemMovimentacao: number;
   percentual: number;
   planejamentoColaboradorId: number;
