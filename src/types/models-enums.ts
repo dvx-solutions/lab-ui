@@ -987,11 +987,7 @@ export enum ETipoLotacaoColaborador {
 
 export enum ETipoSalarioCargo {
   'Mensalista' = 1,
-  Horista = 2,
-  Semanal = 3,
-  'Diário' = 4,
-  'Horário' = 5,
-  Tarefa = 6,
+  Horista = 5,
 }
 
 export enum OrigemValorSalario {
