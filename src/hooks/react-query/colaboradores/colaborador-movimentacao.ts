@@ -13,12 +13,14 @@ import {
 
 interface IUseColaboradorMovimentacao
   extends IQueryParams<keyof IColaboradorMovimentacao> {
+  identificadorMovimentacao?: IColaboradorMovimentacao['identificadorMovimentacao'];
   planejamentoColaboradorId: number;
 }
 
 export const useColaboradorMovimentacao = ({
   advancedSearch,
   API_Instance,
+  identificadorMovimentacao,
   keyword,
   orderBy,
   pageNumber = 1,
@@ -27,6 +29,7 @@ export const useColaboradorMovimentacao = ({
 }: IUseColaboradorMovimentacao) => {
   const payload = {
     advancedSearch,
+    identificadorMovimentacao,
     keyword,
     orderBy,
     pageNumber,
@@ -37,6 +40,7 @@ export const useColaboradorMovimentacao = ({
   return useQuery(
     [
       'colaborador-movimentacao',
+      `identificadorMovimentacao-${identificadorMovimentacao}`,
       `planejamento-colaborador-id-${planejamentoColaboradorId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
