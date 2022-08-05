@@ -1,18 +1,20 @@
-@layer components {
-  .button {
-    @apply rounded-lg py-2 px-6 font-semibold transition-all duration-200;
-  }
+.button {
+  @apply h-fit w-fit rounded-lg py-1.5 px-3 text-sm font-semibold transition-all duration-500;
+}
 
-  .primary-button {
-    @apply h-10 w-full rounded-lg bg-purple-500 px-6 text-base font-semibold text-white shadow-md transition-all duration-300 hover:bg-opacity-75 hover:shadow-none;
-  }
+.primary-button {
+  @apply bg-brand-primary text-white shadow-md hover:bg-opacity-75 hover:shadow-none hover:disabled:bg-opacity-100;
+}
 
-  .secondary-button {
-    @apply h-10 w-fit rounded-lg bg-transparent px-6 text-base font-semibold bg-purple-500 transition-all duration-300 hover:bg-purple-500/[.15];
-  }
+.secondary-button {
+  @apply border border-brand-primary bg-white text-brand-primary shadow-md hover:bg-brand-primary hover:text-white disabled:opacity-40 hover:disabled:bg-transparent;
+}
+
+.icon-button {
+  @apply rounded-full bg-transparent p-1.5  disabled:opacity-40 hover:disabled:bg-transparent;
 }
 
 button[data-loading],
 button:disabled {
-  @apply cursor-not-allowed opacity-40 shadow-none hover:bg-opacity-100;
+  @apply cursor-not-allowed opacity-70;
 }
