@@ -215,22 +215,35 @@ export interface ISetor {
 
 export interface IColaboradorMovimentacao {
   cargaHoraria: number;
+  cargo: TDTOSimples;
   cargoId: number;
+  centro: TDTOSimples;
   centroId: number;
+  classeCargo: TDTOSimples;
   classeCargoId: number;
+  colaborador: TDTOSimples;
   colaboradorId: number;
   dataMovimentacao: string;
   descricao: string;
+  funcaoConfianca: TDTOSimples;
   funcaoConfiancaId: number;
+  id: number;
   identificadorMovimentacao: string;
   origemMovimentacao: number;
   percentual: number;
+  planejamentoColaborador: TDTOSimples;
   planejamentoColaboradorId: number;
   processoId: number;
+  setor: TDTOSimples;
   setorId: number;
   tipoMovimentacao: number;
+  unidade: TDTOSimples;
+  unidadeCentro: TDTOSimples;
   unidadeCentroId: number;
   unidadeId: number;
+  unidadeNegocio: Omit<TDTOSimples, 'nome'> & {
+    nomeFantasia: 'string';
+  };
   unidadeNegocioId: number;
 }
 
