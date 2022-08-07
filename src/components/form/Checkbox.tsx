@@ -28,10 +28,10 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
     <input
       {...props}
       className={classNames(
-        className,
         heightShouldFit
           ? 'default-form-element h-4 w-4'
-          : 'default-form-element h-6 w-6'
+          : 'default-form-element h-6 w-6',
+        className
       )}
       id={name}
       name={name}
