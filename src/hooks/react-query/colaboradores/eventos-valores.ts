@@ -60,6 +60,25 @@ export const useEventosValores = ({
 
       if (empresaAnoFiscalId <= 0) return null;
 
+      switch (tipoListagemEventoValor) {
+        case ETipoListagemEventoValor.Colaborador: {
+          if (!planejamentoColaboradorId || planejamentoColaboradorId <= 0)
+            return null;
+
+          break;
+        }
+
+        case ETipoListagemEventoValor.Evento: {
+          if (!eventoId || eventoId <= 0) return null;
+
+          break;
+        }
+
+        default: {
+          break;
+        }
+      }
+
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IEventoValor[]>
       >('colaboradores/eventos-valores/listar', payload);
