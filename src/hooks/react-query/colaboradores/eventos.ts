@@ -6,8 +6,8 @@ import {
 } from '+/lib';
 import { getDataAsSelectOptions } from '+/lib/getDataAsSelectOptions';
 import {
+  EOrigemValorEvento,
   IAPIPaginatedResponse,
-  IBodyRequest,
   IEvento,
   IQueryParams,
 } from '+/types';
@@ -15,6 +15,7 @@ import {
 interface Props extends IQueryParams<keyof IEvento> {
   empresaId: number;
   nivelValorizacao?: number;
+  origemEvento?: EOrigemValorEvento;
 }
 
 export const useEventos = ({
@@ -24,6 +25,7 @@ export const useEventos = ({
   keyword,
   nivelValorizacao,
   orderBy,
+  origemEvento,
   pageNumber = 1,
   pageSize = 25,
 }: Props) => {
@@ -32,6 +34,7 @@ export const useEventos = ({
       'eventos',
       `empresaId-${empresaId}`,
       `nivelValorizacao-${nivelValorizacao}`,
+      `origemEvento-${origemEvento}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
@@ -42,13 +45,16 @@ export const useEventos = ({
         keyword,
         nivelValorizacao,
         orderBy,
+        origemEvento,
         pageNumber,
         pageSize,
-      } as IBodyRequest;
+      };
 
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IEvento[]>
       >('colaboradores/eventos/listar', payload);
+
+      data.data = data.data.filter(x => x.origemEvento === origemEvento);
 
       const options = getDataAsSelectOptions(data);
 

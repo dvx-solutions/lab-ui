@@ -1,15 +1,14 @@
 import { Button } from './components';
-import { useEventosValores } from './hooks/react-query/colaboradores/eventos-valores';
+import { useEventos } from './hooks';
 import { internal_api } from './lib/internal_api';
-import { ENivelValorizacaoEvento, ETipoListagemEventoValor } from './types';
+import { ENivelValorizacaoEvento, EOrigemValorEvento } from './types';
 
 export default function App() {
-  const { refetch } = useEventosValores({
+  const { refetch } = useEventos({
     API_Instance: internal_api,
-    empresaAnoFiscalId: 1,
-    nivelValorizacaoEvento: ENivelValorizacaoEvento.Colaborador,
-    planejamentoColaboradorId: 1,
-    tipoListagemEventoValor: ETipoListagemEventoValor.Colaborador,
+    empresaId: 2,
+    origemEvento: EOrigemValorEvento.Manual,
+    nivelValorizacao: ENivelValorizacaoEvento.Colaborador,
   });
 
   return (
