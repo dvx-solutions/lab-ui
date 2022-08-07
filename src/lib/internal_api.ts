@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseURL = 'https://api.orquestraerp.com/api/v1';
+const baseURL = 'https://hmg-api.orquestraerp.com/api/v1';
 
 export const internal_api = axios.create({
   baseURL,
@@ -16,7 +16,7 @@ internal_api.interceptors.request.use(async request => {
       },
       {
         headers: {
-          tenant: 'root',
+          tenant: 'fiea',
         },
       }
     )

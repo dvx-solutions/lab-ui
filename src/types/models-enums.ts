@@ -1038,3 +1038,15 @@ export enum EOrigemSalario {
   'Horista' = 3,
   'Estagiário' = 4,
 }
+
+export enum ETipoListagemEventoValor {
+  Empresa = 1,
+  Colaborador = 2,
+  Evento = 3,
+}
+
+export enum ETipoValorEvento {
+  Previsto = 1,
+  Revisto = 2,
+  Realizado = 3,
+}

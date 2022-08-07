@@ -1,9 +1,9 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "1.3.1",
+  "version": "1.3.2",
   "license": "MIT",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --port 3013",
     "preview": "vite preview",
     "build": "run-p build:*",
     "build:scripts": "vite build",

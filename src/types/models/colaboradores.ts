@@ -3,7 +3,6 @@ import { TDTOSimples } from '../index';
 import {
   ICentro,
   IEmpresa,
-  IEmpresaAnoFiscal,
   IUnidade,
   IUnidadeCentro,
   IUnidadeNegocio,
@@ -123,58 +122,33 @@ export interface IPlanejamentoColaborador {
 }
 
 export interface IEventoValor {
-  planejamentoColaborador: IPlanejamentoColaborador;
-  empresa: IEmpresa;
-  empresaAnoFiscal: IEmpresaAnoFiscal;
+  cargoId: number;
+  classeCargoId: number;
+  codigoCargo: string;
+  codigoClasseCargo: string;
+  codigoEmpresa: string;
+  codigoGrupoCargo: string;
   empresaAnoFiscalId: number;
   empresaId: number;
-  evento: IEvento;
-  eventoId: number;
+  grupoCargoId: number;
   id: number;
-  mes: number;
-  recursoId: number;
-  valorPrevisto: {
-    ValorPrevisto01: number;
-    ValorPrevisto02: number;
-    ValorPrevisto03: number;
-    ValorPrevisto04: number;
-    ValorPrevisto05: number;
-    ValorPrevisto06: number;
-    ValorPrevisto07: number;
-    ValorPrevisto08: number;
-    ValorPrevisto09: number;
-    ValorPrevisto10: number;
-    ValorPrevisto11: number;
-    ValorPrevisto12: number;
-  };
-  valorReal: {
-    ValorReal01: number;
-    ValorReal02: number;
-    ValorReal03: number;
-    ValorReal04: number;
-    ValorReal05: number;
-    ValorReal06: number;
-    ValorReal07: number;
-    ValorReal08: number;
-    ValorReal09: number;
-    ValorReal10: number;
-    ValorReal11: number;
-    ValorReal12: number;
-  };
-  valorRevisto: {
-    ValorRevisto01: number;
-    ValorRevisto02: number;
-    ValorRevisto03: number;
-    ValorRevisto04: number;
-    ValorRevisto05: number;
-    ValorRevisto06: number;
-    ValorRevisto07: number;
-    ValorRevisto08: number;
-    ValorRevisto09: number;
-    ValorRevisto10: number;
-    ValorRevisto11: number;
-    ValorRevisto12: number;
-  };
+  nomeCargo: string;
+  nomeEmpresa: string;
+  nomeGrupoCargo: string;
+  origemSalario: number;
+  valor01: number;
+  valor02: number;
+  valor03: number;
+  valor04: number;
+  valor05: number;
+  valor06: number;
+  valor07: number;
+  valor08: number;
+  valor09: number;
+  valor10: number;
+  valor11: number;
+  valor12: number;
+  valorAnual: number;
 }
 
 export interface IFuncaoConfianca {
@@ -262,15 +236,20 @@ export type TValorTabelaSalario = {
   valor12: number;
 };
 
-export interface ITabelaSalario {
-  cargo: TDTOSimples;
+export interface ITabelaSalario extends TValorTabelaSalario {
   cargoId: number;
-  classeCargo: TDTOSimples;
   classeCargoId: number;
+  codigoCargo: string;
+  codigoClasseCargo: string;
+  codigoEmpresa: string;
+  codigoGrupoCargo: string;
   empresaAnoFiscalId: number;
-  grupoCargo: TDTOSimples;
+  empresaId: number;
   grupoCargoId: number;
   id: number;
+  nomeCargo: string;
+  nomeEmpresa: string;
+  nomeGrupoCargo: string;
   origemSalario: number;
-  valor: TValorTabelaSalario;
+  valorAnual: number;
 }

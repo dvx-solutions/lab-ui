@@ -8,5 +8,5 @@
 @tailwind utilities;
 
 html {
-  @apply font-['Poppins'];
+  @apply bg-blue-100 font-['Poppins'];
 }

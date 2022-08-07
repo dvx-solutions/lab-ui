@@ -1,11 +1,22 @@
-import { Checkbox } from './components';
+import { Button } from './components';
+import { useEventosValores } from './hooks/react-query/colaboradores/eventos-valores';
+import { internal_api } from './lib/internal_api';
+import { ENivelValorizacaoEvento, ETipoListagemEventoValor } from './types';
 
 export default function App() {
+  const { refetch } = useEventosValores({
+    API_Instance: internal_api,
+    empresaAnoFiscalId: 1,
+    nivelValorizacaoEvento: ENivelValorizacaoEvento.Colaborador,
+    planejamentoColaboradorId: 1,
+    tipoListagemEventoValor: ETipoListagemEventoValor.Colaborador,
+  });
+
   return (
-    <form className="grid w-[50rem] grid-cols-3 items-end bg-red-100">
-      <input type="text" />
-      <Checkbox name="teste" label="Teste" />
-      <input type="text" />
-    </form>
+    <div className="flex items-center justify-center">
+      <Button onClick={() => refetch()} className="cursor-pointer">
+        Refetch
+      </Button>
+    </div>
   );
 }
