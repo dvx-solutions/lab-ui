@@ -122,20 +122,19 @@ export interface IPlanejamentoColaborador {
 }
 
 export interface IEventoValor {
-  cargoId: number;
-  classeCargoId: number;
-  codigoCargo: string;
-  codigoClasseCargo: string;
   codigoEmpresa: string;
-  codigoGrupoCargo: string;
+  codigoEvento: string;
+  codigoPlanejamentoColaborador: string;
   empresaAnoFiscalId: number;
   empresaId: number;
-  grupoCargoId: number;
+  eventoId: number;
   id: number;
-  nomeCargo: string;
+  nivelValorizacao: number;
   nomeEmpresa: string;
-  nomeGrupoCargo: string;
-  origemSalario: number;
+  nomeEvento: string;
+  nomePlanejamentoColaborador: string;
+  planejamentoColaboradorId: number;
+  tipoValorEvento: number;
   valor01: number;
   valor02: number;
   valor03: number;
@@ -216,27 +215,12 @@ export interface IColaboradorMovimentacao {
   unidadeCentroId: number;
   unidadeId: number;
   unidadeNegocio: Omit<TDTOSimples, 'nome'> & {
-    nomeFantasia: 'string';
+    nomeFantasia: string;
   };
   unidadeNegocioId: number;
 }
 
-export type TValorTabelaSalario = {
-  valor01: number;
-  valor02: number;
-  valor03: number;
-  valor04: number;
-  valor05: number;
-  valor06: number;
-  valor07: number;
-  valor08: number;
-  valor09: number;
-  valor10: number;
-  valor11: number;
-  valor12: number;
-};
-
-export interface ITabelaSalario extends TValorTabelaSalario {
+export interface ITabelaSalario {
   cargoId: number;
   classeCargoId: number;
   codigoCargo: string;
@@ -251,5 +235,17 @@ export interface ITabelaSalario extends TValorTabelaSalario {
   nomeEmpresa: string;
   nomeGrupoCargo: string;
   origemSalario: number;
+  valor01: number;
+  valor02: number;
+  valor03: number;
+  valor04: number;
+  valor05: number;
+  valor06: number;
+  valor07: number;
+  valor08: number;
+  valor09: number;
+  valor10: number;
+  valor11: number;
+  valor12: number;
   valorAnual: number;
 }
