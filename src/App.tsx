@@ -1,21 +1,18 @@
-import { Button } from './components';
-import { useEventos } from './hooks';
-import { internal_api } from './lib/internal_api';
-import { ENivelValorizacaoEvento, EOrigemValorEvento } from './types';
+import { useForm } from 'react-hook-form';
+
+import { CurrencyInput } from './components/form/CurrencyInput';
 
 export default function App() {
-  const { refetch } = useEventos({
-    API_Instance: internal_api,
-    empresaId: 2,
-    origemEvento: EOrigemValorEvento.Manual,
-    nivelValorizacao: ENivelValorizacaoEvento.Colaborador,
-  });
+  const { control, register } = useForm<{ teste: string }>();
 
   return (
-    <div className="flex items-center justify-center">
-      <Button onClick={() => refetch()} className="cursor-pointer">
-        Refetch
-      </Button>
-    </div>
+    <form className="flex w-[25vw] items-center justify-center rounded bg-white p-3 shadow-lg">
+      <CurrencyInput
+        {...register('teste')}
+        control={control}
+        error={{ type: 'required', message: 'This field is required' }}
+        label="Teste"
+      />
+    </form>
   );
 }

@@ -53,7 +53,7 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         <Label name={name} label={label} />
         <div
           className={classNames(
-            'bg-brand-primary/[.15] hover:bg-brand-primary/[.25] flex w-full cursor-pointer items-center justify-center gap-2 rounded border-2 border-dashed border-brand-primary py-4 text-sm transition-colors duration-300',
+            'flex w-full cursor-pointer items-center justify-center gap-2 rounded border-2 border-dashed border-brand-primary bg-brand-primary/[.15] py-4 text-sm transition-colors duration-300 hover:bg-brand-primary/[.25]',
             className
           )}
         >

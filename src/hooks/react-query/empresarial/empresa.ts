@@ -1,6 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from '+/lib';
+import {
+  convertAdvancedSearchToReactQueryKeys,
+  getReactQueryPaginationKeys,
+} from '+/lib';
 import {
   IAPIPaginatedResponse,
   IBodyRequest,
@@ -20,7 +23,7 @@ export const useEmpresas = ({
     [
       'empresas',
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
-      `page-${pageNumber}-size-${pageSize}`,
+      getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
       const payload = {

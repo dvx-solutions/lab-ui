@@ -1,5 +1,4 @@
 /* eslint-disable react/function-component-definition */
-import { FormControl, FormErrorMessage } from '@chakra-ui/react';
 import {
   forwardRef,
   ForwardRefRenderFunction,
@@ -21,32 +20,29 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
   { name, error, label, heightShouldFit = false, className = '', ...props },
   ref
 ) => (
-  <FormControl
-    isInvalid={!!error}
-    className="flex w-full items-center justify-start gap-2"
-  >
-    <input
-      {...props}
-      className={classNames(
-        heightShouldFit
-          ? 'default-form-element h-4 w-4'
-          : 'default-form-element h-6 w-6',
-        className
-      )}
-      id={name}
-      name={name}
-      ref={ref}
-      type="checkbox"
-    />
+  <div className="flex w-full flex-col items-start justify-start">
+    <div className="flex items-center justify-start gap-2">
+      <input
+        {...props}
+        className={classNames(
+          heightShouldFit
+            ? 'default-form-element h-4 w-4'
+            : 'default-form-element m-0 h-8 w-8',
+          className
+        )}
+        id={name}
+        name={name}
+        ref={ref}
+        type="checkbox"
+      />
 
-    {!!label && <Label label={label} name={name} isForCheckbox />}
+      {!!label && <Label label={label} name={name} isForCheckbox />}
+    </div>
 
     {!!error && (
-      <FormErrorMessage className="mt-1 text-xs text-red-500">
-        {error.message}
-      </FormErrorMessage>
+      <span className="mt-1 text-sm text-red-500">{error.message}</span>
     )}
-  </FormControl>
+  </div>
 );
 
 export const Checkbox = forwardRef(BaseComponent);

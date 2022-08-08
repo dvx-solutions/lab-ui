@@ -1,5 +1,7 @@
 export * from './centro';
 export * from './contas-orcamentarias';
+export * from './empresa';
+export * from './empresas-anos-fiscais';
 export * from './naturezas-contas';
 export * from './plano';
 export * from './unidade-centro';

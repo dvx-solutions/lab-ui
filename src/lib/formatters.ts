@@ -1,6 +1,8 @@
 import { IBodyRequest } from '+/types/axios';
 
-export const classNames = (...classes: string[]) => {
+export const classNames = (
+  ...classes: HTMLDivElement['className'][]
+): HTMLDivElement['className'] => {
   return classes.filter(Boolean).join(' ');
 };
 
