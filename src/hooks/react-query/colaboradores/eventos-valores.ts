@@ -8,16 +8,22 @@ import {
   ENivelValorizacaoEvento,
   ETipoListagemEventoValor,
   IAPIPaginatedResponse,
+  IAPIResponse,
   IEventoValor,
   IQueryParams,
 } from '+/types';
 
-interface Props extends IQueryParams<keyof IEventoValor> {
+interface IUseEventosValoresProps extends IQueryParams<keyof IEventoValor> {
   empresaAnoFiscalId: number;
   eventoId?: number;
   nivelValorizacaoEvento: ENivelValorizacaoEvento;
   planejamentoColaboradorId?: number;
   tipoListagemEventoValor: ETipoListagemEventoValor;
+}
+
+interface IUseEventosValoresPorIdProps
+  extends IQueryParams<keyof IEventoValor> {
+  id: number;
 }
 
 export const useEventosValores = ({
@@ -32,7 +38,7 @@ export const useEventosValores = ({
   pageSize = 25,
   planejamentoColaboradorId,
   tipoListagemEventoValor,
-}: Props) => {
+}: IUseEventosValoresProps) => {
   return useQuery(
     [
       'eventos-valores',
@@ -86,4 +92,19 @@ export const useEventosValores = ({
       return data;
     }
   );
+};
+
+export const useEventosValoresPorId = ({
+  API_Instance,
+  id,
+}: IUseEventosValoresPorIdProps) => {
+  return useQuery(['eventos-valores', `id-${id}`], async () => {
+    if (id <= 0) return null;
+
+    const { data } = await API_Instance.get<IAPIResponse<IEventoValor>>(
+      `colaboradores/eventos-valores/${id}`
+    );
+
+    return data;
+  });
 };
