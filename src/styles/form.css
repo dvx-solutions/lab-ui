@@ -1,13 +1,11 @@
-@layer components {
-  .form-element-style {
-    @apply w-full rounded px-2 text-gray-600 outline-none;
-  }
+.form-element-style {
+  @apply w-full rounded px-2 text-gray-600 outline-none;
+}
 
-  .form-element-with-default-height {
-    @apply h-8 text-sm;
-  }
+.form-element-with-default-height {
+  @apply h-8 text-sm;
+}
 
-  .form-element-with-fitted-height {
-    @apply h-fit text-xs;
-  }
+.form-element-with-fitted-height {
+  @apply h-fit text-xs;
 }

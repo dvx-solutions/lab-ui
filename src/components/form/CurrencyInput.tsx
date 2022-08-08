@@ -36,16 +36,6 @@ const BaseComponent: ForwardRefRenderFunction<
     thousandSeparator: '.',
   };
 
-  const inpClassname = classNames(
-    className,
-    'w-full border text-gray-600 outline-none',
-    error ? 'border-red-500' : 'form-element-with-focus',
-    heightShouldFit
-      ? 'form-element-with-height-fitted'
-      : 'default-form-element',
-    rightIcon || leftIcon ? 'pr-10' : 'pr-3'
-  );
-
   return (
     <Controller
       control={control as ControllerProps['control']}
@@ -56,7 +46,15 @@ const BaseComponent: ForwardRefRenderFunction<
             {...currencyInputProps}
             {...field}
             {...rest}
-            className={inpClassname}
+            className={classNames(
+              className,
+              'w-full border text-gray-600 outline-none',
+              error ? 'border-red-500' : 'form-element-with-focus',
+              heightShouldFit
+                ? 'form-element-with-height-fitted'
+                : 'default-form-element',
+              rightIcon || leftIcon ? 'pr-10' : 'pr-3'
+            )}
             customInput={Input}
             defaultValue={currencyInputProps.defaultValue}
             onChange={field.onChange}

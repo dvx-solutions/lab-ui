@@ -7,7 +7,10 @@ module.exports = {
     extend: {
       fontFamily: ['Poppins'],
       colors: {
-        'brand-primary': '',
+        brand: {
+          primary: 'rgb(var(--color-primary) / <alpha-value>)',
+          secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+        },
       },
     },
   },

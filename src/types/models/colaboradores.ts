@@ -127,13 +127,13 @@ export interface IEventoValor {
   codigoPlanejamentoColaborador: string;
   empresaAnoFiscalId: number;
   empresaId: number;
-  evento?: IEvento;
   eventoId: number;
   id: number;
   nivelValorizacao: number;
   nomeEmpresa: string;
   nomeEvento: string;
   nomePlanejamentoColaborador: string;
+  origemEvento: number;
   planejamentoColaboradorId: number;
   tipoValorEvento: number;
   valor01: number;

@@ -33,16 +33,6 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
   },
   ref
 ) => {
-  const elementClassname = classNames(
-    'form-element-style border focus:border-brand-primary',
-    className,
-    error ? 'border-red-500' : 'border-gray-500',
-    heightShouldFit
-      ? 'form-element-with-fitted-height'
-      : 'form-element-with-default-height',
-    rightIcon || leftIcon ? 'pr-9' : ''
-  );
-
   return (
     <div className="flex w-full flex-col items-start justify-start">
       {!!label && <Label label={label} name={name} />}
@@ -50,7 +40,15 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (
       <div className="relative flex w-full items-center justify-center">
         <input
           {...props}
-          className={elementClassname}
+          className={classNames(
+            'form-element-style border focus:border-brand-primary',
+            className,
+            error ? 'border-red-500' : 'border-gray-500',
+            heightShouldFit
+              ? 'form-element-with-fitted-height'
+              : 'form-element-with-default-height',
+            rightIcon || leftIcon ? 'pr-9' : ''
+          )}
           id={name}
           name={name}
           ref={ref}
