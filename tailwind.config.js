@@ -7,7 +7,7 @@ module.exports = {
     extend: {
       fontFamily: ['Poppins'],
       colors: {
-        'brand-primary': 'inherit',
+        'brand-primary': '',
       },
     },
   },
@@ -15,4 +15,5 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
+  important: true,
 };
