@@ -8,8 +8,8 @@ module.exports = {
       fontFamily: ['Poppins'],
       colors: {
         brand: {
-          primary: 'current',
-          secondary: 'current',
+          primary: 'currentcolor',
+          secondary: 'currentcolor',
         },
       },
     },
@@ -18,5 +18,4 @@ module.exports = {
   corePlugins: {
     preflight: false,
   },
-  important: true,
 };
