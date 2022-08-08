@@ -8,8 +8,8 @@ module.exports = {
       fontFamily: ['Poppins'],
       colors: {
         brand: {
-          primary: 'inherit',
-          secondary: 'inherit',
+          primary: '',
+          secondary: '',
         },
       },
     },
