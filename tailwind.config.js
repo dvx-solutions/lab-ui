@@ -7,10 +7,7 @@ module.exports = {
     extend: {
       fontFamily: ['Poppins'],
       colors: {
-        brand: {
-          primary: 'currentcolor',
-          secondary: 'currentcolor',
-        },
+        'brand-primary': 'inherit',
       },
     },
   },
