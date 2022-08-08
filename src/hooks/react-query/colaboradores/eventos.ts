@@ -6,6 +6,7 @@ import {
 } from '+/lib';
 import { getDataAsSelectOptions } from '+/lib/getDataAsSelectOptions';
 import {
+  ENivelValorizacaoEvento,
   EOrigemValorEvento,
   IAPIPaginatedResponse,
   IEvento,
@@ -14,7 +15,7 @@ import {
 
 interface Props extends IQueryParams<keyof IEvento> {
   empresaId: number;
-  nivelValorizacao?: number;
+  nivelValorizacao: ENivelValorizacaoEvento;
   origemEvento?: EOrigemValorEvento;
 }
 
@@ -54,7 +55,8 @@ export const useEventos = ({
         IAPIPaginatedResponse<IEvento[]>
       >('colaboradores/eventos/listar', payload);
 
-      data.data = data.data.filter(x => x.origemEvento === origemEvento);
+      if (origemEvento)
+        data.data = data.data.filter(x => x.origemEvento === origemEvento);
 
       const options = getDataAsSelectOptions(data);
 
