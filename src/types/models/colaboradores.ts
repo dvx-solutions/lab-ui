@@ -1,5 +1,5 @@
 /* eslint-disable no-use-before-define */
-import { TDTOSimples } from '../index';
+import { EOrigemValorEvento, TDTOSimples } from '../index';
 import {
   ICentro,
   IEmpresa,
@@ -73,7 +73,7 @@ export interface IEvento {
   id: number;
   nivelValorizacao: number;
   nome: string;
-  origemEvento: number;
+  origemEvento: EOrigemValorEvento;
   origemRealizacao: number;
 }
 
@@ -127,6 +127,7 @@ export interface IEventoValor {
   codigoPlanejamentoColaborador: string;
   empresaAnoFiscalId: number;
   empresaId: number;
+  evento?: IEvento;
   eventoId: number;
   id: number;
   nivelValorizacao: number;
