@@ -113,12 +113,14 @@ export interface IPlanejamentoColaborador {
   nome: string;
   processaOrcamento: true;
   rateios: IRateioPlanejamentoColaborador[];
+  setor: ISetor;
   setorId: number;
   situacao: number;
   statusProcessamento: number;
   tipoVinculo: number;
   unidadeCentroId: number;
   unidadeId: number;
+  unidadeNegocio: IUnidadeNegocio;
   unidadeNegocioId: number;
   valorHora: number;
   valorMensal: number;
