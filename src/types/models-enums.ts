@@ -1052,7 +1052,7 @@ export enum ETipoValorEvento {
   Realizado = 3,
 }
 
-export enum StatusProcessamento {
+export enum EStatusProcessamento {
   'Não processa' = 0,
   Pendente = 1,
   'Em processamento' = 2,
