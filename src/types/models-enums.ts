@@ -1035,8 +1035,9 @@ export enum ETipoMovimentacaoColaborador {
 export enum EOrigemSalario {
   'Tabela Salarial' = 1,
   'Função de Confiança' = 2,
-  'Horista' = 3,
+  Horista = 3,
   'Estagiário' = 4,
+  'Menor Aprendiz' = 5,
 }
 
 export enum ETipoListagemEventoValor {

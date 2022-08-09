@@ -109,10 +109,13 @@ export interface IPlanejamentoColaborador {
   funcaoConfianca: IFuncaoConfianca;
   funcaoConfiancaId: number;
   id: number;
+  mensagemProcessamento: string;
   nome: string;
+  processaOrcamento: true;
   rateios: IRateioPlanejamentoColaborador[];
   setorId: number;
   situacao: number;
+  statusProcessamento: number;
   tipoVinculo: number;
   unidadeCentroId: number;
   unidadeId: number;
