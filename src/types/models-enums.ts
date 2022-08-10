@@ -997,10 +997,9 @@ export enum OrigemValorSalario {
 }
 
 export enum ENivelTetoOrcamento {
-  'Resultado por Unidade' = 1,
-  'Resultado por Unidade / Centro' = 2,
-  'Natureza de Conta por Unidade' = 3,
-  'Natureza de Conta Por Unidade / Centro ' = 4,
+  'Despesa por Unidade/Centro' = 1,
+  'Receita por Unidade/Centro' = 2,
+  'Resultado por Unidade/Centro' = 3,
 }
 
 export enum ETipoConsultaTabelaSalarioPorCargo {

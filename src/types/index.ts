@@ -18,7 +18,7 @@ export interface IJWTDecoded {
   image_url: string;
 }
 
-export interface ILoggedUser {
+export interface ILoggedUser extends IJWTDecoded {
   token: string;
   refreshToken: string;
   refreshTokenExpiryTime: string;
