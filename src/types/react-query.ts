@@ -1,3 +1,4 @@
+import { QueryClient, UseMutationOptions } from '@tanstack/react-query';
 import { AxiosInstance } from 'axios';
 
 import { IBodyRequest } from '+/types/axios';
@@ -9,4 +10,10 @@ export interface IQueryParams<T> {
   orderBy?: T[];
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
+}
+
+export interface IMutationParams<T> extends UseMutationOptions {
+  axiosInstance: AxiosInstance;
+  queryClient: QueryClient;
+  values: T;
 }
