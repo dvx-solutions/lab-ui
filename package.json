@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "1.5.7",
+  "version": "1.5.8",
   "license": "MIT",
   "scripts": {
     "dev": "vite --port 3013",

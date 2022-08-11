@@ -26,9 +26,10 @@ const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, Props> = (
         {...props}
         className={classNames(
           heightShouldFit
-            ? 'default-form-element h-4 w-4'
-            : 'default-form-element m-0 h-8 w-8',
-          className
+            ? 'form-element-with-fitted-height h-4 w-4'
+            : 'form-element-with-default-height m-0 h-8 w-8',
+          className,
+          'bg-brand-primary'
         )}
         id={name}
         name={name}
