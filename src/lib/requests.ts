@@ -27,7 +27,7 @@ export const getTenantValidity = async ({
       urlApi: string;
     }>(`https://license.orquestraerp.com/Tenants/${apiEnviroment}/${tenant}`)
     .then(({ data: { urlApi } }) => {
-      setCookie(null, '@dvx-security:api-url', urlApi, {
+      setCookie(null, '@dvx-security:api-url', `${urlApi}/api/v1`, {
         path: '/',
         domain: isProductionEnvironment && '.orquestraerp.com',
       });

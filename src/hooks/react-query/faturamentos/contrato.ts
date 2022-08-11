@@ -68,6 +68,7 @@ export const useContratos = ({
   return useQuery(
     [
       'contratos',
+      `empresaId-${empresaId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
