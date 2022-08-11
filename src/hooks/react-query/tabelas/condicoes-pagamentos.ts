@@ -6,10 +6,16 @@ import {
 } from '+/lib';
 import {
   IAPIPaginatedResponse,
+  IAPIResponse,
   ICondicaoPagamento,
   IQueryParams,
   TSelectOption,
 } from '+/types';
+
+interface UseCondicoesPagamentosPorIdProps
+  extends IQueryParams<keyof ICondicaoPagamento> {
+  id: number;
+}
 
 export const useCondicoesPagamentos = ({
   advancedSearch,
@@ -48,4 +54,17 @@ export const useCondicoesPagamentos = ({
       return { ...data, options };
     }
   );
+};
+
+export const useCondicoesPagamentosPorId = ({
+  API_Instance,
+  id,
+}: UseCondicoesPagamentosPorIdProps) => {
+  return useQuery(['condicoes-pagamentos', `id-${id}`], async () => {
+    const { data } = await API_Instance.get<IAPIResponse<ICondicaoPagamento>>(
+      `tabelas/condicoes-pagamentos/${id}`
+    );
+
+    return data;
+  });
 };
