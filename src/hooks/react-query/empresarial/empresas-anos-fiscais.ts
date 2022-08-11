@@ -32,6 +32,8 @@ export const useEmpresasAnosFiscais = ({
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      if (empresaId <= 0) return null;
+
       const payload = {
         advancedSearch,
         keyword,
@@ -39,8 +41,6 @@ export const useEmpresasAnosFiscais = ({
         pageNumber,
         pageSize,
       };
-
-      if (empresaId <= 0) return null;
 
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IEmpresaAnoFiscal[]>
