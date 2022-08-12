@@ -1,6 +1,7 @@
 export * from './colaboradores';
 export * from './empresarial';
 export * from './faturamento';
+export * from './financas';
 export * from './integracao-orcamentaria';
 export * from './orcamentos';
 export * from './pessoa-juridica';

@@ -43,3 +43,14 @@ export interface IContrato {
   valorTotal: number;
   versao: number;
 }
+
+export interface ITipoContrato {
+  ativo: boolean;
+  codigo: string;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  pagamentoContrato: number;
+  terminoValidade: string;
+  tipoOrdemId: number;
+}
