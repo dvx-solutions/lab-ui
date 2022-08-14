@@ -41,3 +41,13 @@ export interface IContaFluxo {
   superiorId: number;
   terminoValidade: string;
 }
+
+export interface IContaMovimento {
+  contaCorrenteId: number;
+  dataAbertura: string;
+  dataEncerramento: string;
+  digitoContaCorrente: string;
+  encerrada: boolean;
+  id: number;
+  numeroContaCorrente: string;
+}

@@ -464,12 +464,9 @@ export enum EOrigemValorEvento {
 
 export enum ENaturezaContaFluxo {
   'Entrada' = 0,
-
   'Saída' = 1,
-
-  'transferência Entrada' = 2,
-
-  'transferência Saída' = 3,
+  'Transferência entrada' = 2,
+  'Transferência saída' = 3,
 }
 
 export enum ENfseAmbienteEmissao {
