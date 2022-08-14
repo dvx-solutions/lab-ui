@@ -14,3 +14,30 @@ export interface ITipoOrdem {
   nome: string;
   terminoValidade: string;
 }
+
+export interface IContaFluxo {
+  analitico: boolean;
+  ativo: boolean;
+  codigo: string;
+  codigoMascara: string;
+  codigoNivel1: string;
+  codigoNivel2: string;
+  codigoNivel3: string;
+  codigoNivel4: string;
+  codigoNivel5: string;
+  codigoReduzido: string;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  natureza: number;
+  nivel: number;
+  nome: string;
+  nomeNivel1: string;
+  nomeNivel2: string;
+  nomeNivel3: string;
+  nomeNivel4: string;
+  nomeNivel5: string;
+  planoId: number;
+  superiorId: number;
+  terminoValidade: string;
+}
