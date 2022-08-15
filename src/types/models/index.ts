@@ -5,6 +5,7 @@ export * from './financas';
 export * from './integracao-orcamentaria';
 export * from './orcamentos';
 export * from './pessoa-juridica';
+export * from './pessoas';
 export * from './projeto';
 export * from './recurso';
 export * from './tabelas';

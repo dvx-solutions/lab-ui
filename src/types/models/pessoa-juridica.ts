@@ -38,33 +38,3 @@ export type TEndereco = {
   estadoId: number;
   paisId: number;
 };
-
-export interface IPessoaJuridica {
-  id: number;
-  tipoPessoa: string;
-  codigo: string;
-  nome: string;
-  razaoSocial: string;
-  nomeFantasia: string;
-  cnpj: string;
-  matrizFilial: string;
-  inscricaoEstadual: string;
-  inscricaoMunicipal: string;
-  regimeTributario: string;
-  naturezaJuridicaId: number;
-  porteEstabelecimento: string;
-  porteReceita: string;
-  quantidadeEmpregados: number;
-  quantidadeTerceirizados: number;
-  industria: false;
-  contribuinte: string;
-  baseNacional: false;
-  sesmt: false;
-  oferecePlanoSaude: false;
-  resumoExecutivo: string;
-  grauRiscoSaude: number;
-  enderecos: TEndereco[];
-  contatos: TContato[];
-  socios: TSocio[];
-  atividadesEconomicas: [];
-}
