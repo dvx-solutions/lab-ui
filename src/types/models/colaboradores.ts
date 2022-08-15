@@ -146,6 +146,8 @@ export interface IEventoValor {
   codigoCargo: string;
   codigoClasseCargo: string;
   nomeCargo: string;
+  tipoCargo: number;
+  tipoVinculo: number;
   valor01: number;
   valor02: number;
   valor03: number;
