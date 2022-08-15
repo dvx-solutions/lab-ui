@@ -103,3 +103,35 @@ export interface IPessoaJuridica {
   socios: IPessoaSocio[];
   tipoPessoa: number;
 }
+
+export interface IPessoaFisica {
+  atividadeEconomicaId: number;
+  codigo: string;
+  contribuinte: number;
+  cpf: string;
+  dataEmissaoCtps: string;
+  dataEmissaoRG: string;
+  dataNascimento: string;
+  deficiencia: number;
+  genero: number;
+  id: number;
+  industria: boolean;
+  naturalidade: string;
+  nome: string;
+  nomeMae: string;
+  nomePai: string;
+  nomeResponsavel: string;
+  numeroCtps: string;
+  numeroGfip: string;
+  numeroNIT: string;
+  numeroPisPasep: string;
+  numeroRG: string;
+  orgemExpeditorRG: string;
+  pessoaFisicaTratadaComoJuridica: boolean;
+  porte: number;
+  quantidadeEmpregados: number;
+  raca: number;
+  serieCtps: string;
+  tipoPessoa: number;
+  ufCtps: string;
+}
