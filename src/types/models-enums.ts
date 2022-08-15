@@ -456,9 +456,12 @@ export enum EOrigemValorEvento {
   'Periculosidade' = 4,
   'Insalubridade' = 5,
   'Bolsa estágio' = 6,
+  'Salário Aprendiz' = 7,
   'Evento da folha mensal' = 20,
   'Maior valor folha últimos 12 meses' = 21,
   'Média valor folha últimos 12 meses' = 22,
+  'Menor valor folha últimos 12 meses' = 23,
+  'Somatório valor folha últimos 12 meses' = 24,
   'Fórmula' = 30,
 }
 
