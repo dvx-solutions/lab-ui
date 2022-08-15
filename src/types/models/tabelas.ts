@@ -1,3 +1,12 @@
+export interface ITabelaBasica {
+  ativo: boolean;
+  codigo: string;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  terminoValidade: string;
+}
+
 export interface IAtividadeEconomica {
   id: number;
   codigo: string;

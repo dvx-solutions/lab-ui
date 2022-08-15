@@ -51,3 +51,27 @@ export interface IContaMovimento {
   id: number;
   numeroContaCorrente: string;
 }
+
+export interface IConvenioCobranca {
+  carteira: string;
+  contaMovimentoId: number;
+  convenioApiId: string;
+  convenioApiKey: string;
+  convenioApiSecret: string;
+  convenioDensidaDeRemessa: number;
+  convenioEstacao: string;
+  convenioNossoNumeroBanco: boolean;
+  convenioNumeroContrato: string;
+  convenioNumeroRemessa: string;
+  convenioRegistroInstantaneo: boolean;
+  convenioReiniciarDiariamente: boolean;
+  convenioTipoWebService: string;
+  convenioVersaoLayoutArquivo: string;
+  descricao: string;
+  especie: string;
+  id: number;
+  numero: string;
+  padraoCNAB: number;
+  plugBoletoId: string;
+  tipoCarteira: number;
+}
