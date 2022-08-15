@@ -141,6 +141,11 @@ export interface IEventoValor {
   origemEvento: number;
   planejamentoColaboradorId: number;
   tipoValorEvento: number;
+  cargoId: number;
+  classeCargoId: number;
+  codigoCargo: string;
+  codigoClasseCargo: string;
+  nomeCargo: string;
   valor01: number;
   valor02: number;
   valor03: number;
