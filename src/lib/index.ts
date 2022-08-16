@@ -1,3 +1,4 @@
+export * from './convertClassnames';
 export * from './cookies';
 export * from './dvxMiddleware';
 export * from './formatters';
