@@ -3,7 +3,7 @@ import { FiLoader } from 'react-icons/fi';
 
 import { convertClassnames } from '+/lib/convertClassnames';
 
-interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
   isLoading?: boolean;
   leftIcon?: ReactNode;
