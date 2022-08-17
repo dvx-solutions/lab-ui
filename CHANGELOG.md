@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.8.3
+
+### Patch Changes
+
+- ce383c9: ajuste no enum ESituacaoContrato
+
 ## 1.8.2
 
 ### Patch Changes
