@@ -1,5 +1,5 @@
 .button {
-  @apply flex h-fit w-fit items-center justify-center gap-2 rounded py-1.5 px-3 text-sm font-semibold transition-all duration-500;
+  @apply flex h-fit w-fit items-center justify-center gap-2 rounded py-1.5 px-3 text-sm font-semibold transition-all duration-500 hover:bg-opacity-0 disabled:cursor-not-allowed disabled:opacity-100 disabled:hover:bg-transparent [&data-loading="true"]:cursor-wait [&data-loading="true"]:opacity-100 [&data-loading="true"]:hover:bg-transparent [&data-loading="true"]:hover:bg-opacity-0;
 }
 
 .primary-button {
@@ -12,9 +12,4 @@
 
 .icon-button {
   @apply rounded-full bg-transparent p-1.5  disabled:opacity-40 hover:disabled:bg-transparent;
-}
-
-button[data-loading],
-button:disabled {
-  @apply cursor-not-allowed opacity-70;
 }
