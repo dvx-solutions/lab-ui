@@ -6,7 +6,7 @@ import { IAPIPaginatedResponse } from '+/types/axios';
 import { ICentro } from '+/types/models/empresarial';
 
 interface IUseCentros extends IQueryParams<keyof ICentro> {
-  planoId: number;
+  empresaAnoFiscalId: number;
 }
 
 export const useCentros = ({
@@ -16,23 +16,22 @@ export const useCentros = ({
   orderBy,
   pageNumber = 1,
   pageSize = 9999,
-  planoId,
+  empresaAnoFiscalId,
 }: IUseCentros) => {
   const payload = {
-    advancedSearch: [
-      advancedSearch ? { ...advancedSearch } : {},
-      { fields: ['planoId'], keyword: planoId.toString() },
-    ],
+    advancedSearch: [advancedSearch ? { ...advancedSearch } : {}],
     keyword,
     orderBy,
     pageNumber,
     pageSize,
+    empresaAnoFiscalId,
   };
 
   return useQuery(
     [
       'centros',
-      `plano-id-${planoId}`,
+      `plano-id-${empresaAnoFiscalId}`,
+      `ano-fiscal-id-${empresaAnoFiscalId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       `pageNumber-${pageNumber}`,
       `pageSize-${pageSize}`,
