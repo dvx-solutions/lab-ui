@@ -10,6 +10,15 @@ import { ICondicaoPagamento, IIndice } from './tabelas';
 export interface IContrato {
   checkListPendente: boolean;
   checkListRealizadoEm: string;
+  codigoCondicaoPagamento: string;
+  codigoContratante: string;
+  codigoEmpresaResponsavel: string;
+  codigoIndiceReajuste: string;
+  codigoModalidadeContrato: string;
+  codigoResponsavel: string;
+  codigoResponsavelCheckList: string;
+  codigoTipoContrato: string;
+  codigoUnidadeNegocioResponsavel: string;
   condicaoPagamentoId: number;
   contratanteId: number;
   dataReajuste: string;
@@ -26,6 +35,15 @@ export interface IContrato {
   inicioExecucao: string;
   modalidadeContratoId: number;
   modeloGestaoContrato: number;
+  nomeCondicaoPagamento: string;
+  nomeContratante: string;
+  nomeEmpresaResponsavel: string;
+  nomeFantasiaUnidadeNegocioResponsavel: string;
+  nomeIndiceReajuste: string;
+  nomeModalidadeContrato: string;
+  nomeResponsavel: string;
+  nomeResponsavelCheckList: string;
+  nomeTipoContrato: string;
   numero: string;
   numeroProcesso: string;
   objetoContrato: string;
@@ -84,7 +102,7 @@ export interface IPropostaItem {
   localExecucao: number;
   percentualDesconto: number;
   produtoComboId: number;
-  produtoCustomizado: true;
+  produtoCustomizado: boolean;
   produtoId: number;
   propostaId: number;
   quantidade: number;
@@ -100,7 +118,7 @@ export interface IPropostaItem {
 export interface IProposta {
   agenteComercial: IColaborador;
   agenteComercialId: number;
-  baseNacional: true;
+  baseNacional: boolean;
   condicaoPagamento: ICondicaoPagamento;
   condicaoPagamentoId: number;
   contratante: IPessoaJuridica;
