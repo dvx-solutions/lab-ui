@@ -20,7 +20,10 @@ interface SelectProps extends InputHTMLAttributes<HTMLSelectElement> {
   shouldSortValues?: boolean;
 }
 
-const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
+const BaseComponent: ForwardRefRenderFunction<
+  HTMLSelectElement,
+  SelectProps
+> = (
   {
     className = '',
     error = null,
@@ -34,6 +37,8 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
   },
   ref
 ) => {
+  if (shouldSortValues) options?.sort((a, b) => a.text.localeCompare(b.text));
+
   return (
     <FormControl>
       {!!label && <Label label={label} name={name} />}
@@ -53,16 +58,13 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
         placeholder={placeholder}
         ref={ref}
       >
-        {options &&
-          options
-            .sort((a, b) =>
-              shouldSortValues ? a.text.localeCompare(b.text) : 0
-            )
-            .map(({ text, value }) => (
-              <option key={value} value={value}>
-                {text}
-              </option>
-            ))}
+        <option>{placeholder}</option>
+
+        {options?.map(({ text, value }) => (
+          <option key={value} value={value}>
+            {text}
+          </option>
+        ))}
       </select>
 
       <FormErrorMessage error={error} />
@@ -70,4 +72,4 @@ const SelectBase: ForwardRefRenderFunction<HTMLSelectElement, SelectProps> = (
   );
 };
 
-export const Select = forwardRef(SelectBase);
+export const Select = forwardRef(BaseComponent);

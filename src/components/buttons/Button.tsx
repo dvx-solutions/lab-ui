@@ -1,4 +1,4 @@
-import { ButtonHTMLAttributes } from 'react';
+import { ButtonHTMLAttributes, ReactNode } from 'react';
 import { FiLoader } from 'react-icons/fi';
 
 import { convertClassnames } from '+/lib/convertClassnames';
@@ -6,6 +6,8 @@ import { convertClassnames } from '+/lib/convertClassnames';
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
   isLoading?: boolean;
+  leftIcon?: ReactNode;
+  rightIcon?: ReactNode;
 }
 
 export function Button({
@@ -13,6 +15,8 @@ export function Button({
   className = '',
   isDisabled,
   isLoading,
+  leftIcon,
+  rightIcon,
   ...props
 }: ButtonProps) {
   return (
@@ -23,7 +27,15 @@ export function Button({
       type="button"
       {...props}
     >
-      {isLoading ? <FiLoader className="animate-spin" /> : children}
+      {isLoading ? (
+        <FiLoader className="animate-spin" />
+      ) : (
+        <>
+          {leftIcon && <span>{leftIcon}</span>}
+          {children}
+          {rightIcon && <span>{rightIcon}</span>}
+        </>
+      )}
     </button>
   );
 }
