@@ -7,6 +7,7 @@ import { ICentro } from '+/types/models/empresarial';
 
 interface IUseCentros extends IQueryParams<keyof ICentro> {
   empresaAnoFiscalId: number;
+  nivel?: number;
 }
 
 export const useCentros = ({
@@ -17,6 +18,7 @@ export const useCentros = ({
   pageNumber = 1,
   pageSize = 9999,
   empresaAnoFiscalId,
+  nivel,
 }: IUseCentros) => {
   const payload = {
     advancedSearch: [advancedSearch ? { ...advancedSearch } : {}],
@@ -25,6 +27,7 @@ export const useCentros = ({
     pageNumber,
     pageSize,
     empresaAnoFiscalId,
+    nivel: nivel || -1,
   };
 
   return useQuery(
