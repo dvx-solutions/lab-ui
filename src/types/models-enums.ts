@@ -397,24 +397,24 @@ export enum ESituacaoParcelaContrato {
 }
 
 export enum ESituacaoContrato {
-  'Em Validação' = 1,
-  'Em Assinatura' = 2,
-  'Em Revisão' = 3,
+  'Em validação' = 1,
+  'Em assinatura' = 2,
+  'Em revisão' = 3,
   'Vigente' = 4,
   'Concluído' = 5,
   'Rescindido' = 6,
+  'Em elaboração' = 7,
 }
 
 export enum EModeloGestaoContrato {
-  'Faturamento Sob Demanda' = 0,
-  'Faturamento Conclusão Atendimento' = 1,
-  'Faturamento Antecipado' = 2,
-  'Faturamento Conclusão Contrato' = 3,
+  'Faturamento sob demanda' = 0,
+  'Faturamento conclusão atendimento' = 1,
+  'Faturamento antecipado' = 2,
+  'Faturamento conclusão contrato' = 3,
 }
 
 export enum ETipoComposicaoProduto {
   'Produto Consumido' = 0,
-
   'Recurso Consumido' = 1,
 }
 

@@ -1,5 +1,17 @@
 # @dvx-solutions/lab-ui
 
+## 1.8.4
+
+### Patch Changes
+
+- fbc09fb: merge from remote
+
+## 1.8.3
+
+### Patch Changes
+
+- ce383c9: ajuste no enum ESituacaoContrato
+
 ## 1.8.2
 
 ### Patch Changes
