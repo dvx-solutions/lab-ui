@@ -10,7 +10,7 @@ export function App() {
       <Button
         onClick={() => alert('haha')}
         className="primary-button"
-        isLoading={false}
+        isDisabled
       >
         Teste
       </Button>

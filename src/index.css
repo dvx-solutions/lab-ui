@@ -7,9 +7,9 @@
 @import './styles/button.css';
 @import './styles/form.css';
 
-/*@layer base {
+@layer base {
   :root {
     --color-primary: 56 111 164;
     --color-secondary: 89 165 216;
   }
-}*/
+}

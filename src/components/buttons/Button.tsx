@@ -21,8 +21,11 @@ export function Button({
 }: ButtonProps) {
   return (
     <button
-      className={convertClassnames(['button', className])}
-      data-loading={isLoading}
+      className={convertClassnames([
+        'button',
+        isLoading ? 'button-loading' : '',
+        className,
+      ])}
       disabled={isDisabled || props.disabled}
       type="button"
       {...props}
