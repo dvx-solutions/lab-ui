@@ -1,5 +1,5 @@
 .button {
-  @apply h-fit w-fit rounded-lg py-1.5 px-3 text-sm font-semibold transition-all duration-500;
+  @apply h-fit w-fit rounded py-1.5 px-3 text-sm font-semibold transition-all duration-500;
 }
 
 .primary-button {

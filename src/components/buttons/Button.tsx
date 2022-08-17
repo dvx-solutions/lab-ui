@@ -1,11 +1,29 @@
-import { ButtonProps, Button as ChakraButton } from '@chakra-ui/react';
+import { ButtonHTMLAttributes } from 'react';
+import { FiLoader } from 'react-icons/fi';
 
-import { classNames } from '+/lib/formatters';
+import { convertClassnames } from '+/lib/convertClassnames';
 
-export function Button({ children, className = '', ...props }: ButtonProps) {
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+  isDisabled?: boolean;
+  isLoading?: boolean;
+}
+
+export function Button({
+  children,
+  className = '',
+  isDisabled,
+  isLoading,
+  ...props
+}: ButtonProps) {
   return (
-    <ChakraButton className={classNames('button', className)} {...props}>
-      {children}
-    </ChakraButton>
+    <button
+      className={convertClassnames(['button', className])}
+      data-loading={isLoading}
+      disabled={isDisabled || isLoading}
+      type="button"
+      {...props}
+    >
+      {isLoading ? <FiLoader className="animate-spin" /> : children}
+    </button>
   );
 }
