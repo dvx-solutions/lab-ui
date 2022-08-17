@@ -35,6 +35,7 @@ export const useCentros = ({
       'centros',
       `plano-id-${empresaAnoFiscalId}`,
       `ano-fiscal-id-${empresaAnoFiscalId}`,
+      `centros-nivel-${nivel}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       `pageNumber-${pageNumber}`,
       `pageSize-${pageSize}`,
