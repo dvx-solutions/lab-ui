@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.8.4
+
+### Patch Changes
+
+- fbc09fb: merge from remote
+
 ## 1.8.3
 
 ### Patch Changes
