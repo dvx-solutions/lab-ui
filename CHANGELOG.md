@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.9.6
+
+### Patch Changes
+
+- 2afba99: ajuste na função para alterar as tab com botões no componente Tabs
+
 ## 1.9.5
 
 ### Patch Changes
