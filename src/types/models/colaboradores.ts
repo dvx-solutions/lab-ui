@@ -71,7 +71,7 @@ export interface IEvento {
   formulaCalculo: string;
   formulaInterna: string;
   id: number;
-  nivelValorizacao: number;
+  nivelValorizacaoEvento: number;
   nome: string;
   origemEvento: EOrigemValorEvento;
   origemRealizacao: number;
