@@ -11,5 +11,6 @@
   :root {
     --color-primary: 56 111 164;
     --color-secondary: 89 165 216;
+    --color-text-primary: 255 255 255;
   }
 }

@@ -9,6 +9,7 @@ module.exports = {
         brand: {
           primary: 'rgb(var(--color-primary) / <alpha-value>)',
           secondary: 'rgb(var(--color-secondary) / <alpha-value>)',
+          'text-primary': 'rgb(var(--color-text-primary) / <alpha-value>)',
         },
       },
     },
