@@ -14,52 +14,58 @@ export interface TabContentProps {
 }
 
 export interface TabsProps {
-  newCurrentTabIndex?: number;
+  initialTabIndex?: number;
+  newTab?: string;
+  onChangeNewTab?: (tab: string) => void;
   tabContentClassname?: string;
-  tabListClassname?: {
-    className?: string;
-    activeClassName?: string;
-  };
+  tabListActiveClassname?: string;
+  tabListClassname?: string;
   tabsContent: Array<TabContentProps>;
   tabsList: Array<TabListProps>;
 }
 
 export function Tabs({
-  newCurrentTabIndex = 0,
-  tabContentClassname,
-  tabListClassname,
+  initialTabIndex = 0,
+  newTab,
+  onChangeNewTab,
+  tabContentClassname = '',
+  tabListActiveClassname = '',
+  tabListClassname = '',
   tabsContent,
   tabsList,
 }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(tabsList[newCurrentTabIndex].id);
+  const [activeTab, setActiveTab] = useState(tabsList[initialTabIndex].id);
+
+  const handleChangeTab = (new_tab: string) => {
+    setActiveTab(new_tab);
+    if (onChangeNewTab) onChangeNewTab(new_tab);
+  };
 
   useEffect(() => {
-    setActiveTab(tabsList[newCurrentTabIndex].id);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [newCurrentTabIndex]);
+    if (newTab) setActiveTab(newTab);
+  }, [newTab]);
 
   return (
     <TabsPrimitive.Root
       className="flex w-full flex-col gap-2 bg-transparent"
-      onValueChange={setActiveTab}
+      onValueChange={handleChangeTab}
       orientation="vertical"
       value={activeTab}
     >
       <TabsPrimitive.List className="flex w-full justify-center gap-2">
         {tabsList.map(({ id, name }) => (
           <TabsPrimitive.Trigger
-            key={id}
-            value={id}
             className={convertClassnames([
               'text-brand-text-primar w-full rounded bg-brand-primary/60 py-2 font-semibold text-brand-text-primary transition-all duration-300 hover:bg-brand-primary/50',
-              tabListClassname?.className ?? '',
               activeTab === id
                 ? [
                     'bg-brand-primary hover:bg-brand-primary/90',
-                    tabListClassname?.activeClassName ?? '',
+                    tabListActiveClassname,
                   ].join(' ')
-                : '',
+                : tabListClassname,
             ])}
+            key={id}
+            value={id}
           >
             {name}
           </TabsPrimitive.Trigger>
@@ -68,12 +74,9 @@ export function Tabs({
 
       {tabsContent.map(({ children, tabFor }) => (
         <TabsPrimitive.Content
-          value={tabFor}
+          className={convertClassnames(['rounded p-4', tabContentClassname])}
           key={tabFor}
-          className={convertClassnames([
-            'rounded p-4',
-            tabContentClassname ?? '',
-          ])}
+          value={tabFor}
         >
           {children}
         </TabsPrimitive.Content>

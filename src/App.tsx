@@ -4,7 +4,7 @@ import { Button } from './components/buttons/Button';
 import { Tabs } from './components/Tabs';
 
 export function App() {
-  const [current, dispatch] = useState(0);
+  const [current, dispatch] = useState('');
   return (
     <div className="w[100vw] flex h-[100vh] items-center justify-center">
       <div className="w-3/4 p-4">
@@ -17,10 +17,11 @@ export function App() {
             { tabFor: 'basic_infos', children: <p>1</p> },
             { tabFor: 'money', children: <p>2</p> },
           ]}
+          onChangeNewTab={dispatch}
+          newTab={current}
         />
-
         <div className="flex gap-2">
-          <Button
+          {/* <Button
             type="button"
             className="primary-button"
             onClick={() =>
@@ -31,12 +32,12 @@ export function App() {
             }
           >
             Decrease tab
-          </Button>
+          </Button> */}
 
           <Button
             type="button"
             className="primary-button"
-            onClick={() => dispatch(curr => curr + 1)}
+            onClick={() => dispatch('money')}
           >
             Increase tab
           </Button>
