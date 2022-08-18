@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.9.2
+
+### Patch Changes
+
+- f59d9ce: criação do componente Tabs
+
 ## 1.8.4
 
 ### Patch Changes
