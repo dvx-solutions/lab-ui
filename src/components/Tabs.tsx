@@ -1,5 +1,5 @@
 import * as TabsPrimitive from '@radix-ui/react-tabs';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 import { convertClassnames } from '../lib/convertClassnames';
 
@@ -15,6 +15,7 @@ export interface TabContentProps {
 
 export interface TabsProps {
   defaultTabIndex?: number;
+  newCurrentTabIndex?: number;
   tabContentClassname?: string;
   tabListClassname?: {
     className?: string;
@@ -26,12 +27,17 @@ export interface TabsProps {
 
 export function Tabs({
   defaultTabIndex = 0,
+  newCurrentTabIndex,
   tabContentClassname,
   tabListClassname,
   tabsContent,
   tabsList,
 }: TabsProps) {
   const [activeTab, setActiveTab] = useState(tabsList[defaultTabIndex].id);
+
+  useEffect(() => {
+    if (newCurrentTabIndex) setActiveTab(tabsList[newCurrentTabIndex].id);
+  }, [newCurrentTabIndex, tabsList]);
 
   return (
     <TabsPrimitive.Root
