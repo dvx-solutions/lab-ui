@@ -14,7 +14,6 @@ export interface TabContentProps {
 }
 
 export interface TabsProps {
-  defaultTabIndex?: number;
   newCurrentTabIndex?: number;
   tabContentClassname?: string;
   tabListClassname?: {
@@ -26,18 +25,18 @@ export interface TabsProps {
 }
 
 export function Tabs({
-  defaultTabIndex = 0,
-  newCurrentTabIndex,
+  newCurrentTabIndex = 0,
   tabContentClassname,
   tabListClassname,
   tabsContent,
   tabsList,
 }: TabsProps) {
-  const [activeTab, setActiveTab] = useState(tabsList[defaultTabIndex].id);
+  const [activeTab, setActiveTab] = useState(tabsList[newCurrentTabIndex].id);
 
   useEffect(() => {
-    if (newCurrentTabIndex) setActiveTab(tabsList[newCurrentTabIndex].id);
-  }, [newCurrentTabIndex, tabsList]);
+    setActiveTab(tabsList[newCurrentTabIndex].id);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [newCurrentTabIndex]);
 
   return (
     <TabsPrimitive.Root
