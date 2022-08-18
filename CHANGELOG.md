@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.9.5
+
+### Patch Changes
+
+- bc50153: prop no componente Tabs para alterar as tabs com botões
+
 ## 1.9.4
 
 ### Patch Changes
