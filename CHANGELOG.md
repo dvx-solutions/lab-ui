@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.9.4
+
+### Patch Changes
+
+- 5e4b69d: criação de prop para alterar tab do componente Tabs sem clicar no trigger
+
 ## 1.9.3
 
 ### Patch Changes
