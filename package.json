@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "1.9.2",
+  "version": "1.9.3",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -8,7 +8,7 @@
     "build": "run-p build:*",
     "build:scripts": "vite build",
     "build:types": "tsc --emitDeclarationOnly && tsc-alias",
-    "dev-publish": "yarn build && yarn publish --access public",
+    "dev-publish": "rm -rf dist && yarn build && yarn changeset && yarn changeset version && yarn changeset publish",
     "prepare": "husky install"
   },
   "lint-staged": {

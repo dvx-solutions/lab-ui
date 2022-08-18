@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.9.3
+
+### Patch Changes
+
+- b992531: ajuste na criação do build
+
 ## 1.9.2
 
 ### Patch Changes
