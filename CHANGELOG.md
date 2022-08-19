@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.0
+
+### Minor Changes
+
+- 7534006: ETipoValorOrcamento
+
 ## 1.9.6
 
 ### Patch Changes
