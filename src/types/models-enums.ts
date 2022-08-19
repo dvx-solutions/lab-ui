@@ -955,6 +955,7 @@ export enum ETipoValorOrcamento {
   '4 - Transposto' = 4,
 
   '5 - Realizado' = 5,
+  '6 - Revisado' = 6,
 }
 
 export enum ETipoAgrupador {
