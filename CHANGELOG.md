@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.1
+
+### Patch Changes
+
+- 87c473b: mudanca no hook de naturezaconta
+
 ## 1.10.0
 
 ### Minor Changes
