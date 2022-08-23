@@ -19,13 +19,39 @@ interface IUseUnidadeCentros {
   unidadeId: number;
 }
 
-interface IUseUnidadeCentrosListarUnidades_Centros {
+interface IUseUnidadeCentrosListarUnidades {
   advancedSearch?: IBodyRequest<keyof IUnidadeCentro>['advancedSearch'];
   API_Instance: AxiosInstance;
   empresaAnoFiscalId: number;
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
+}
+
+interface IUseUnidadeCentrosListarCentros {
+  advancedSearch?: IBodyRequest<keyof IUnidadeCentro>['advancedSearch'];
+  API_Instance: AxiosInstance;
+  compartilhado: boolean | null;
+  empresaAnoFiscalId: number;
+  pageNumber?: IBodyRequest['pageNumber'];
+  pageSize?: IBodyRequest['pageSize'];
   unidadeId: number;
+}
+
+interface IUnidadeCentrosListarCentrosProps {
+  agrupadorId: number;
+  ativo: boolean;
+  classificacaoCentro: number;
+  codigo: string;
+  codigoMascara: string;
+  codigoReduzido: string;
+  compartilhada: boolean;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  naturezaCentro: number;
+  nome: string;
+  planoId: number;
+  terminoValidade: string;
 }
 
 export const useUnidadeCentros = ({
@@ -75,7 +101,7 @@ export const useUnidadeCentrosListarUnidades = ({
   empresaAnoFiscalId,
   pageNumber = 1,
   pageSize = 25,
-}: IUseUnidadeCentrosListarUnidades_Centros) => {
+}: IUseUnidadeCentrosListarUnidades) => {
   return useQuery(
     [
       'unidade-centros-listar-unidades',
@@ -106,24 +132,29 @@ export const useUnidadeCentrosListarUnidades = ({
 export const useUnidadeCentrosListarCentros = ({
   advancedSearch,
   API_Instance,
+  compartilhado,
   empresaAnoFiscalId,
   pageNumber = 1,
   pageSize = 25,
   unidadeId,
-}: IUseUnidadeCentrosListarUnidades_Centros) => {
+}: IUseUnidadeCentrosListarCentros) => {
   return useQuery(
     [
       'unidade-centros-listar-centros',
+      `compartilhado-${compartilhado}`,
       `empresaAnoFiscalId-${empresaAnoFiscalId}`,
       `unidadeId-${unidadeId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      if (unidadeId === 0 || empresaAnoFiscalId === 0) return null;
+
       const { data } = await API_Instance.post<
-        IAPIPaginatedResponse<ICentro[]>
+        IAPIPaginatedResponse<IUnidadeCentrosListarCentrosProps[]>
       >('empresarial/unidades-centros/listar-centros', {
         advancedSearch,
+        compartilhado,
         empresaAnoFiscalId,
         pageNumber,
         pageSize,
