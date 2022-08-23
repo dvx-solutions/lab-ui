@@ -7,6 +7,7 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   isDisabled?: boolean;
   isLoading?: boolean;
   leftIcon?: ReactNode;
+  loadingText?: string;
   rightIcon?: ReactNode;
 }
 
@@ -16,6 +17,7 @@ export function Button({
   isDisabled,
   isLoading,
   leftIcon,
+  loadingText,
   rightIcon,
   ...props
 }: ButtonProps) {
@@ -31,13 +33,17 @@ export function Button({
       {...props}
     >
       {isLoading ? (
-        <FiLoader className="animate-spin" />
+        <span className="flex items-center gap-2">
+          <FiLoader className="animate-spin" />
+
+          {loadingText && <span>{loadingText}</span>}
+        </span>
       ) : (
-        <>
+        <div className="flex items-center gap-2">
           {leftIcon && <span>{leftIcon}</span>}
           {children}
           {rightIcon && <span>{rightIcon}</span>}
-        </>
+        </div>
       )}
     </button>
   );
