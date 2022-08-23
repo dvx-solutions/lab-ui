@@ -25,6 +25,7 @@ interface IUseUnidadeCentrosListarUnidades_Centros {
   empresaAnoFiscalId: number;
   pageNumber?: IBodyRequest['pageNumber'];
   pageSize?: IBodyRequest['pageSize'];
+  unidadeId: number;
 }
 
 export const useUnidadeCentros = ({
@@ -108,11 +109,13 @@ export const useUnidadeCentrosListarCentros = ({
   empresaAnoFiscalId,
   pageNumber = 1,
   pageSize = 25,
+  unidadeId,
 }: IUseUnidadeCentrosListarUnidades_Centros) => {
   return useQuery(
     [
       'unidade-centros-listar-centros',
       `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      `unidadeId-${unidadeId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
@@ -124,6 +127,7 @@ export const useUnidadeCentrosListarCentros = ({
         empresaAnoFiscalId,
         pageNumber,
         pageSize,
+        unidadeId,
       } as IBodyRequest<keyof ICentro>);
 
       const options: TSelectOption[] = data.data.map(x => ({
