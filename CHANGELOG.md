@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.3
+
+### Patch Changes
+
+- 6c0b88c: react-query unidade-centro / ajuste na query de listar centro
+
 ## 1.10.2
 
 ### Patch Changes
