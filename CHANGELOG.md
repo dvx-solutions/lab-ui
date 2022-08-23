@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.2
+
+### Patch Changes
+
+- 47edcd4: Button - adição da prop loadingText e ajuste no display de icons
+
 ## 1.10.1
 
 ### Patch Changes
