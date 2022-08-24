@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.5
+
+### Patch Changes
+
+- 36eab4b: adição do enum EStatusConferenciaPlanejamentoColaborador
+
 ## 1.10.4
 
 ### Patch Changes
