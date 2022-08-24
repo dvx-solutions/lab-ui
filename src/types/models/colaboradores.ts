@@ -98,6 +98,7 @@ export interface IPlanejamentoColaborador {
   cargo: ICargo;
   cargoId: number;
   centroId: number;
+  centro: TDTOSimples;
   classeCargo: IClasseCargo;
   classeCargoId: number;
   codigo: string;
@@ -120,6 +121,7 @@ export interface IPlanejamentoColaborador {
   tipoVinculo: number;
   unidadeCentroId: number;
   unidadeId: number;
+  unidade: TDTOSimples;
   unidadeNegocio: IUnidadeNegocio;
   unidadeNegocioId: number;
   valorHora: number;
