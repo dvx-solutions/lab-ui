@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.7
+
+### Patch Changes
+
+- 9dea43a: novos tipos adicionados
+
 ## 1.10.6
 
 ### Patch Changes
