@@ -124,6 +124,7 @@ export interface IPlanejamentoColaborador {
   unidadeNegocioId: number;
   valorHora: number;
   valorMensal: number;
+  statusConferencia: number;
 }
 
 export interface IEventoValor {
