@@ -1059,3 +1059,9 @@ export enum EStatusProcessamento {
   Sucesso = 3,
   Erro = 4,
 }
+
+export enum EStatusConferenciaPlanejamentoColaborador {
+  Pendente = 1,
+  Conferido = 2,
+  'Não Processa' = 3,
+}
