@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.6
+
+### Patch Changes
+
+- fc65c79: novo tipo adicionado
+
 ## 1.10.5
 
 ### Patch Changes
