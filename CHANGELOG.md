@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.8
+
+### Patch Changes
+
+- cdbe195: Tipos adicionados a IEmpresa
+
 ## 1.10.7
 
 ### Patch Changes
