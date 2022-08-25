@@ -115,7 +115,8 @@ export interface IEmpresa {
   nome: string;
   situacao: number;
   subordinadas: TEmpresaSubordinada[];
-  superiorId: number;
+  superiorRateioCompartilhadoId: number;
+  superiorConsolidacaoId: number;
 }
 
 type TEmpresaSubordinada = Omit<IEmpresa, 'subordinadas'>;
