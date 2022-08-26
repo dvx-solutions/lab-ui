@@ -1,14 +1,20 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as Dialog from '@radix-ui/react-dialog';
+import { useQuery } from '@tanstack/react-query';
 import { AxiosError, AxiosInstance } from 'axios';
-import { useEffect, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiPlus, FiX } from 'react-icons/fi';
 import { z } from 'zod';
 
 import { Button, Input, Select, Checkbox } from '+/components';
 import { customErrorMap, convertEnumToSelectOptions } from '+/lib';
-import { EPorteEstabelecimento, EPessoaContribuinte } from '+/types';
+import {
+  EPorteEstabelecimento,
+  EPessoaContribuinte,
+  IAPIResponse,
+  IPessoaJuridica,
+} from '+/types';
 
 const schema = z.object({
   cnpj: z
@@ -25,24 +31,55 @@ export type TCriarPJFormValues = z.infer<typeof schema>;
 
 export interface CUPessoaJuridicaProps {
   axiosInstance: AxiosInstance;
+  buttonName?: string;
+  dialogTitle?: string;
+  isOpen: boolean;
   onSubmitError: (error: AxiosError) => Promise<void> | void;
   onSubmitSuccess: () => Promise<void>;
+  registryIdToEdit?: number;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export function CUPessoaJuridica({
   axiosInstance,
+  buttonName = 'Adicionar',
+  dialogTitle = 'Cadastrar pessoa jurídica',
+  isOpen,
   onSubmitError,
   onSubmitSuccess,
+  registryIdToEdit = -1,
+  setIsOpen,
 }: CUPessoaJuridicaProps) {
-  const [open, setOpen] = useState(false);
+  const { data: registerToEdit } = useQuery(
+    ['pessoas-juridicas', `id-${registryIdToEdit}`],
+    async () => {
+      if (registryIdToEdit <= 0) return null;
+
+      const { data: res } = await axiosInstance.get<
+        IAPIResponse<IPessoaJuridica>
+      >(`pessoas/pessoas-juridicas/${registryIdToEdit}`);
+
+      return res.data;
+    }
+  );
 
   const {
-    register,
-    formState: { errors },
+    formState: { errors, isSubmitting },
     handleSubmit,
+    register,
+    reset,
+    setValue,
   } = useForm<TCriarPJFormValues>({
     resolver: zodResolver(schema),
   });
+
+  const handleCloseDialogRequest = (state: boolean) => {
+    setIsOpen(state);
+
+    if (!isOpen) {
+      reset();
+    }
+  };
 
   const onFormSubmit = async (values: TCriarPJFormValues) => {
     await axiosInstance
@@ -56,22 +93,32 @@ export function CUPessoaJuridica({
   }, []);
 
   useEffect(() => {
-    console.table(errors);
+    // eslint-disable-next-line no-console
+    console.log('⌨️ ~ file: CUPessoaJuridica.tsx ~ errors', errors);
   }, [errors]);
 
+  useEffect(() => {
+    if (registerToEdit) {
+      Object.entries(registerToEdit).forEach(([key, value]) => {
+        setValue(key as keyof TCriarPJFormValues, value);
+      });
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [registerToEdit, isOpen]);
+
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
+    <Dialog.Root open={isOpen} onOpenChange={handleCloseDialogRequest}>
       <Dialog.Trigger asChild>
         <Button rightIcon={<FiPlus />} className="primary-button">
-          Adicionar PJ
+          {buttonName}
         </Button>
       </Dialog.Trigger>
 
       <Dialog.Overlay className="fixed inset-0 bg-black/25" />
 
-      <Dialog.Content className="fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow">
+      <Dialog.Content className="fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
         <Dialog.Title className="mb-4 flex items-center justify-between gap-16 text-xl font-medium">
-          Criar pessoa jurídica
+          {dialogTitle}
           <Dialog.Close>
             <Button className="rounded-full p-1 transition-all duration-300 hover:bg-brand-primary hover:text-brand-text-primary">
               <FiX />
@@ -80,43 +127,49 @@ export function CUPessoaJuridica({
         </Dialog.Title>
 
         <form
-          className="grid min-w-[40vw] grid-cols-2 items-end rounded bg-white p-4"
+          className="grid min-w-[40vw] grid-cols-2 items-end rounded bg-white"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <div className="col-span-full">
             <Input
               {...register('cnpj', { valueAsNumber: false })}
+              disabled={registryIdToEdit > 0}
+              error={errors.cnpj}
               label="CNPJ"
               type="number"
-              error={errors.cnpj}
             />
           </div>
 
           <Input
             {...register('quantidadeEmpregados', { valueAsNumber: true })}
+            error={errors.quantidadeEmpregados}
             label="Qtde. de empregados"
             type="number"
-            error={errors.quantidadeEmpregados}
           />
 
           <Select
             {...register('porteEstabelecimento', { valueAsNumber: true })}
+            error={errors.porteEstabelecimento}
             label="Porte do estabelecimento"
             options={convertEnumToSelectOptions(EPorteEstabelecimento)}
-            error={errors.porteEstabelecimento}
           />
 
           <Checkbox {...register('industria')} label="Industria" />
 
           <Select
             {...register('pessoaContribuinte', { valueAsNumber: true })}
+            error={errors.pessoaContribuinte}
             label="Contribuinte"
             options={convertEnumToSelectOptions(EPessoaContribuinte)}
-            error={errors.pessoaContribuinte}
           />
 
           <div className="col-span-full flex justify-end">
-            <Button type="submit" className="primary-button">
+            <Button
+              className="primary-button"
+              isDisabled={isSubmitting}
+              isLoading={isSubmitting}
+              type="submit"
+            >
               Salvar
             </Button>
           </div>

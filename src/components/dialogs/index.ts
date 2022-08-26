@@ -1,1 +1,1 @@
-export * from './CUPessoaJuridica';
+export * from './pessoas';
