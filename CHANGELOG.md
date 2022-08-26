@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.11
+
+### Patch Changes
+
+- 92a2713: ajuste nas dependencias
+
 ## 1.10.10
 
 ### Patch Changes
