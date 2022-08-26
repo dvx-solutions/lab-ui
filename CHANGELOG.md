@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.10
+
+### Patch Changes
+
+- d9245a9: componente para criação de PJ - v2
+
 ## 1.10.9
 
 ### Patch Changes
