@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.12
+
+### Patch Changes
+
+- 962f5f7: componente para criação de PJ - v3
+
 ## 1.10.11
 
 ### Patch Changes
