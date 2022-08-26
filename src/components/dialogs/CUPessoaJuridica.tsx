@@ -55,6 +55,10 @@ export function CUPessoaJuridica({
     z.setErrorMap(customErrorMap);
   }, []);
 
+  useEffect(() => {
+    console.table(errors);
+  }, [errors]);
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger asChild>
@@ -76,7 +80,7 @@ export function CUPessoaJuridica({
         </Dialog.Title>
 
         <form
-          className="grid grid-cols-2 rounded bg-white p-4 shadow"
+          className="grid min-w-[40vw] grid-cols-2 items-end rounded bg-white p-4"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <div className="col-span-full">
@@ -89,7 +93,7 @@ export function CUPessoaJuridica({
           </div>
 
           <Input
-            {...register('quantidadeEmpregados')}
+            {...register('quantidadeEmpregados', { valueAsNumber: true })}
             label="Qtde. de empregados"
             type="number"
             error={errors.quantidadeEmpregados}
