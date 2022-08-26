@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.9
+
+### Patch Changes
+
+- 07412e1: componente para criação de PJ - v1
+
 ## 1.10.8
 
 ### Patch Changes
