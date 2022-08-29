@@ -4,7 +4,7 @@ import { useQuery } from '@tanstack/react-query';
 import { AxiosError, AxiosInstance } from 'axios';
 import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import { FiPlus, FiX } from 'react-icons/fi';
+import { FiX } from 'react-icons/fi';
 import { z } from 'zod';
 
 import { Button, Input, Select, Checkbox } from '+/components';
@@ -31,7 +31,6 @@ export type TCriarPJFormValues = z.infer<typeof schema>;
 
 export interface CUPessoaJuridicaProps {
   axiosInstance: AxiosInstance;
-  buttonName?: string;
   dialogTitle?: string;
   isOpen: boolean;
   onSubmitError: (error: AxiosError) => Promise<void> | void;
@@ -42,7 +41,6 @@ export interface CUPessoaJuridicaProps {
 
 export function CUPessoaJuridica({
   axiosInstance,
-  buttonName = 'Adicionar',
   dialogTitle = 'Cadastrar pessoa jurídica',
   isOpen,
   onSubmitError,
@@ -108,12 +106,6 @@ export function CUPessoaJuridica({
 
   return (
     <Dialog.Root open={isOpen} onOpenChange={handleCloseDialogRequest}>
-      <Dialog.Trigger asChild>
-        <Button rightIcon={<FiPlus />} className="primary-button">
-          {buttonName}
-        </Button>
-      </Dialog.Trigger>
-
       <Dialog.Overlay className="fixed inset-0 bg-black/25" />
 
       <Dialog.Content className="fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
