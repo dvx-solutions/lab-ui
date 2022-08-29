@@ -2,7 +2,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError, AxiosInstance } from 'axios';
-import { Dispatch, SetStateAction, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiX } from 'react-icons/fi';
 import { z } from 'zod';
@@ -10,8 +10,8 @@ import { z } from 'zod';
 import { Button, Input, Select, Checkbox } from '+/components';
 import { customErrorMap, convertEnumToSelectOptions } from '+/lib';
 import {
-  EPorteEstabelecimento,
   EPessoaContribuinte,
+  EPorteEstabelecimento,
   IAPIResponse,
   IPessoaJuridica,
 } from '+/types';
@@ -33,20 +33,22 @@ export interface CUPessoaJuridicaProps {
   axiosInstance: AxiosInstance;
   dialogTitle?: string;
   isOpen: boolean;
+  onClose: () => void;
+  onOpen: () => void;
   onSubmitError: (error: AxiosError) => Promise<void> | void;
   onSubmitSuccess: () => Promise<void>;
   registryIdToEdit?: number;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
 export function CUPessoaJuridica({
   axiosInstance,
   dialogTitle = 'Cadastrar pessoa jurídica',
   isOpen,
+  onClose,
+  onOpen,
   onSubmitError,
   onSubmitSuccess,
   registryIdToEdit = -1,
-  setIsOpen,
 }: CUPessoaJuridicaProps) {
   const { data: registerToEdit } = useQuery(
     ['pessoas-juridicas', `id-${registryIdToEdit}`],
@@ -71,10 +73,11 @@ export function CUPessoaJuridica({
     resolver: zodResolver(schema),
   });
 
-  const handleCloseDialogRequest = (state: boolean) => {
-    setIsOpen(state);
-
-    if (!isOpen) {
+  const handleStateChange = (state: boolean) => {
+    if (state) {
+      onOpen();
+    } else {
+      onClose();
       reset();
     }
   };
@@ -105,7 +108,7 @@ export function CUPessoaJuridica({
   }, [registerToEdit, isOpen]);
 
   return (
-    <Dialog.Root open={isOpen} onOpenChange={handleCloseDialogRequest}>
+    <Dialog.Root open={isOpen} onOpenChange={handleStateChange}>
       <Dialog.Overlay className="fixed inset-0 bg-black/25" />
 
       <Dialog.Content className="fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
