@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.15
+
+### Patch Changes
+
+- 3cea521: abstração do Dialog
+
 ## 1.10.14
 
 ### Patch Changes
