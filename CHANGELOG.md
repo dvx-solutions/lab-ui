@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.14
+
+### Patch Changes
+
+- df90eef: componente para criação de PJ - v5
+
 ## 1.10.13
 
 ### Patch Changes
