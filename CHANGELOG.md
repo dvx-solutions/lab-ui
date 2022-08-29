@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.13
+
+### Patch Changes
+
+- c7d94ca: componente para criação de PJ - v4
+
 ## 1.10.12
 
 ### Patch Changes
