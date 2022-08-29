@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.16
+
+### Patch Changes
+
+- ad471f7: ajuste nas props do Dialog de cadastro de PJ
+
 ## 1.10.15
 
 ### Patch Changes
