@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.17
+
+### Patch Changes
+
+- 1182d51: ajuste nas props do Dialog
+
 ## 1.10.16
 
 ### Patch Changes
