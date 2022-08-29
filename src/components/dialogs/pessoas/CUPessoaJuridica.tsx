@@ -9,7 +9,7 @@ import {
   Button,
   Checkbox,
   Dialog,
-  DialogProps,
+  DialogDisclosureProps,
   Input,
   Select,
   Spinner,
@@ -35,7 +35,7 @@ const schema = z.object({
 
 export type TCriarPJFormValues = z.infer<typeof schema>;
 
-export interface CUPessoaJuridicaProps extends DialogProps {
+export interface CUPessoaJuridicaProps extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
   dialogTitle?: string;
   onSubmitError: (error: AxiosError) => Promise<void> | void;

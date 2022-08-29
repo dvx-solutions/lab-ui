@@ -4,12 +4,15 @@ import { FiX } from 'react-icons/fi';
 
 import { Button } from '+/components/buttons/Button';
 
-export interface DialogProps {
-  children: ReactNode;
-  title: string;
+export interface DialogDisclosureProps {
   isOpen: boolean;
   onClose: () => void;
   onOpen: () => void;
+  title: string;
+}
+
+export interface DialogProps extends DialogDisclosureProps {
+  children: ReactNode;
 }
 
 export function Dialog({

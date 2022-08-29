@@ -1,0 +1,5 @@
+---
+'@dvx-solutions/lab-ui': patch
+---
+
+ajuste nas props do Dialog de cadastro de PJ
