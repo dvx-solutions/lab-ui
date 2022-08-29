@@ -8,11 +8,11 @@ export interface DialogDisclosureProps {
   isOpen: boolean;
   onClose: () => void;
   onOpen: () => void;
-  title: string;
 }
 
 export interface DialogProps extends DialogDisclosureProps {
   children: ReactNode;
+  title: string;
 }
 
 export function Dialog({
