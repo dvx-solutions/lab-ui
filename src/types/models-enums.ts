@@ -584,9 +584,8 @@ export enum EPeriodicidade {
 }
 
 export enum ETipoPagamento {
-  'Compra' = 0,
-
-  'Venda' = 1,
+  Compra = 1,
+  Venda = 2,
 }
 
 export enum ETipoUtilizacaoCondicaoPagamento {

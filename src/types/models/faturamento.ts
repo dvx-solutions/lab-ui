@@ -157,3 +157,20 @@ export interface IProposta {
   valorTotalItens: number;
   versao: number;
 }
+
+export interface IContratoChecklist {
+  ativo: boolean;
+  codigo: string;
+  descricao: string;
+  id: number;
+  nome: string;
+}
+
+export interface IContratoDescritivo {
+  contratoId: number;
+  contratoItemId: number;
+  id: number;
+  nivelDescritivoContrato: number;
+  texto: string;
+  tipoContratoTipoDescritivoId: number;
+}
