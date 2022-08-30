@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.19
+
+### Patch Changes
+
+- 75be36a: adição da interface ITiposContratosTiposDescritivos
+
 ## 1.10.18
 
 ### Patch Changes
