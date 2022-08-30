@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.24
+
+### Patch Changes
+
+- 70bbb75: ajuste no overlay do Dialog
+
 ## 1.10.23
 
 ### Patch Changes
