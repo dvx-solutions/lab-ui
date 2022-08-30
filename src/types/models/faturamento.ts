@@ -186,3 +186,26 @@ export interface ITiposContratosTiposDescritivos {
   terminoValidade: string;
   tipoContratoId: number;
 }
+
+export interface IContratoItem {
+  contratoId: number;
+  id: number;
+  localExecucao: number;
+  produtoId: number;
+  propostaItemId: number;
+  quantidadeAutorizada: number;
+  quantidadeContratada: number;
+  quantidadeExecutado: number;
+  quantidadeFaturada: number;
+  quantidadeLiberada: number;
+  quantidadeSaldoFaturar: number;
+  seq: number;
+  unidadeNegocioExecutoraId: number;
+  valorAutorizado: number;
+  valorExecutado: number;
+  valorFaturado: number;
+  valorLiberado: number;
+  valorSaldoFaturar: number;
+  valorTotalContratado: number;
+  valorUnitario: number;
+}

@@ -58,10 +58,6 @@ const BaseComponent: ForwardRefRenderFunction<
         placeholder={placeholder}
         ref={ref}
       >
-        <option selected value={undefined}>
-          {placeholder}
-        </option>
-
         {options?.map(({ text, value }) => (
           <option key={value} value={value}>
             {text}
