@@ -32,9 +32,9 @@ export function Dialog({
 
   return (
     <Root open={isOpen} onOpenChange={handleStateChange}>
-      <Overlay className="fixed inset-0 bg-black/25" />
+      <Overlay className="fixed inset-0 z-[9999999999999999999999999999999999999999999999999999999999999999999999999999] bg-black/25" />
 
-      <Content className="fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
+      <Content className="fixed top-2/4 left-2/4 z-[99999999999999999999999999999999999999999999999999999999999999999999999999999] w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
         <Title className="mb-4 flex items-center justify-between gap-16 text-xl font-medium">
           {title}
           <Close>
