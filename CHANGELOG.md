@@ -1,5 +1,12 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.18
+
+### Patch Changes
+
+- 98100c3: - ajuste no enum ETipoPagamento
+  - adição dos types IContratoChecklist e IContratoDescritivo
+
 ## 1.10.17
 
 ### Patch Changes
