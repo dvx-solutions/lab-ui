@@ -174,3 +174,15 @@ export interface IContratoDescritivo {
   texto: string;
   tipoContratoTipoDescritivoId: number;
 }
+
+export interface ITiposContratosTiposDescritivos {
+  ativo: boolean;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  obrigatorio: boolean;
+  sequencia: number;
+  terminoValidade: string;
+  tipoContratoId: number;
+}
