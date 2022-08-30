@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.23
+
+### Patch Changes
+
+- dd53a4a: Dialog -> ajuste no z-index do overlay e content
+
 ## 1.10.22
 
 ### Patch Changes
