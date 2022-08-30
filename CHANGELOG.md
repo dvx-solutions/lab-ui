@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.22
+
+### Patch Changes
+
+- 099aeed: criação da query de produtos
+
 ## 1.10.21
 
 ### Patch Changes
