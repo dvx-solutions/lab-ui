@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.20
+
+### Patch Changes
+
+- 1fe6ec6: ajuste no componente Select e adição do type IContratoItem
+
 ## 1.10.19
 
 ### Patch Changes
