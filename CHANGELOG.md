@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.21
+
+### Patch Changes
+
+- 0f2e1ed: componente Select com placeholder de volta
+
 ## 1.10.20
 
 ### Patch Changes
