@@ -167,12 +167,13 @@ export interface IContratoChecklist {
 }
 
 export interface IContratoDescritivo {
-  contratoId: number;
-  contratoItemId: number;
   id: number;
+  contratoId: number;
   nivelDescritivoContrato: number;
-  texto: string;
   tipoContratoTipoDescritivoId: number;
+  nomeTipoContratoTipoDescritivo: string;
+  sequenciaTipoContratoTipoDescritivo: number;
+  texto: string;
 }
 
 export interface ITiposContratosTiposDescritivos {
