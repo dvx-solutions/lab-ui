@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.30
+
+### Patch Changes
+
+- 516ff4c: queries ajustadas
+
 ## 1.10.29
 
 ### Patch Changes
