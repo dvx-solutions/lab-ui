@@ -27,14 +27,7 @@ export const useQuadros = ({
   };
 
   return useQuery(
-    [
-      'centros',
-      `plano-id-${empresaAnoFiscalId}`,
-      `ano-fiscal-id-${empresaAnoFiscalId}`,
-      convertAdvancedSearchToReactQueryKeys(advancedSearch),
-      `pageNumber-${pageNumber}`,
-      `pageSize-${pageSize}`,
-    ],
+    ['quadros', `quadros-anoFiscalId-${empresaAnoFiscalId}`],
     async () => {
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IQuadro[]>

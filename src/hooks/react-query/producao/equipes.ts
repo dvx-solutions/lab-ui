@@ -27,14 +27,7 @@ export const useEquipes = ({
   };
 
   return useQuery(
-    [
-      'centros',
-      `plano-id-${empresaAnoFiscalId}`,
-      `ano-fiscal-id-${empresaAnoFiscalId}`,
-      convertAdvancedSearchToReactQueryKeys(advancedSearch),
-      `pageNumber-${pageNumber}`,
-      `pageSize-${pageSize}`,
-    ],
+    ['equipes', `equipes-quadroId-1`, `ano-fiscal-id-${empresaAnoFiscalId}`],
     async () => {
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IEquipe[]>
