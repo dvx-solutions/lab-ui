@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.27
+
+### Patch Changes
+
+- 7408d96: types e hooks de faturamentos e producao
+
 ## 1.10.26
 
 ### Patch Changes
