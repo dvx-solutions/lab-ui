@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.26
+
+### Patch Changes
+
+- 653dc03: types e hooks de producao
+
 ## 1.10.25
 
 ### Patch Changes
