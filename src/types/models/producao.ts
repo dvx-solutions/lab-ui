@@ -15,3 +15,12 @@ export interface IStatus {
   quadroId: number;
   tipo: number;
 }
+
+export interface IEquipe {
+  id: number;
+  modulo: number;
+  nome: string;
+  comentario: string;
+  ativo: boolean;
+  responsavelId: number;
+}
