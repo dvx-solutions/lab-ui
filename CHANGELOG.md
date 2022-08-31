@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.25
+
+### Patch Changes
+
+- dd7655b: ajuste no type IContratoDescritivo
+
 ## 1.10.24
 
 ### Patch Changes
