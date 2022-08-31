@@ -6,3 +6,4 @@ export * from './orcamentos';
 export * from './pessoas';
 export * from './produto';
 export * from './tabelas';
+export * from './producao';
