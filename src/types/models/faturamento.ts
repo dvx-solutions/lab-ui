@@ -210,3 +210,14 @@ export interface IContratoItem {
   valorTotalContratado: number;
   valorUnitario: number;
 }
+
+export interface IContratoParcela {
+  adiantamento: boolean;
+  contratoId: number;
+  dataVencimento: string;
+  id: number;
+  ordemId: number;
+  parcela: number;
+  situacao: number;
+  valorParcela: number;
+}
