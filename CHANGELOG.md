@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.28
+
+### Patch Changes
+
+- 20a5aae: types e hooks adicionados
+
 ## 1.10.27
 
 ### Patch Changes
