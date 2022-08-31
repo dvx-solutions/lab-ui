@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.29
+
+### Patch Changes
+
+- 2529598: export de hooks de prod
+
 ## 1.10.28
 
 ### Patch Changes
