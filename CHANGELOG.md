@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.33
+
+### Patch Changes
+
+- 2b3c5eb: ajute no queryClient do lab
+
 ## 1.10.32
 
 ### Patch Changes
