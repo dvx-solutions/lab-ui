@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.31
+
+### Patch Changes
+
+- a3d40cf: ajuste no type IEmpresa
+
 ## 1.10.30
 
 ### Patch Changes
