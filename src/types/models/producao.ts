@@ -1,3 +1,12 @@
+export interface IEquipe {
+  id: number;
+  modulo: number;
+  nome: string;
+  comentario: string;
+  ativo: boolean;
+  responsavelId: number;
+}
+
 export interface IQuadro {
   ativo: boolean;
   comentario: string;
@@ -5,6 +14,7 @@ export interface IQuadro {
   modulo: number;
   nome: string;
   usaTransicao: boolean;
+  equipes: IEquipe[];
 }
 
 export interface IStatus {
@@ -16,11 +26,13 @@ export interface IStatus {
   tipo: number;
 }
 
-export interface IEquipe {
+export interface ITema {
   id: number;
-  modulo: number;
+  quadroID: number;
+  codigo: string;
   nome: string;
   comentario: string;
+  inicioValidade: string;
+  terminoValidade: string;
   ativo: boolean;
-  responsavelId: number;
 }
