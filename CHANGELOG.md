@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.32
+
+### Patch Changes
+
+- eb3516f: rebuild
+
 ## 1.10.31
 
 ### Patch Changes
