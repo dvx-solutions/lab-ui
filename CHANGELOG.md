@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.34
+
+### Patch Changes
+
+- 145b456: novo tipo em producao
+
 ## 1.10.33
 
 ### Patch Changes
