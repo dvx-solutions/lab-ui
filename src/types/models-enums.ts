@@ -366,10 +366,11 @@ export enum ESituacaoProposta {
 }
 
 export enum ETipoAditivo {
-  Prazo,
-  Valor,
-  Quantidade,
-  Qualidade,
+  Nenhum = 0,
+  Prazo = 1,
+  Valor = 2,
+  Quantidade = 3,
+  Qualidade = 4,
 }
 
 export enum ECriticidadeContrato {
