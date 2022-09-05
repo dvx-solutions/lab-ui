@@ -3,7 +3,11 @@ import { AxiosInstance } from 'axios';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
 import { TSelectOption } from '+/types';
-import { IAPIPaginatedResponse, IBodyRequest } from '+/types/axios';
+import {
+  IAPIPaginatedResponse,
+  IAPIResponse,
+  IBodyRequest,
+} from '+/types/axios';
 import { ICargo } from '+/types/models/colaboradores';
 
 interface IUseCargos {
@@ -12,6 +16,11 @@ interface IUseCargos {
   empresaId: number;
   pageNumber?: number;
   pageSize?: number;
+}
+
+interface IUseCargoPorId {
+  axiosInstance: AxiosInstance;
+  id: number;
 }
 
 export const useCargos = ({
@@ -49,4 +58,14 @@ export const useCargos = ({
       return { ...data, options };
     }
   );
+};
+
+export const useCargoPorId = ({ axiosInstance, id }: IUseCargoPorId) => {
+  return useQuery(['cargos', `id-${id}`], async () => {
+    if (id <= 0) return null;
+
+    return axiosInstance
+      .get<IAPIResponse<ICargo>>(`colaboradores/cargos/${id}`)
+      .then(({ data }) => data);
+  });
 };
