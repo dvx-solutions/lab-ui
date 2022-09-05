@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.37
+
+### Patch Changes
+
+- f729fd3: criação do componente para CRUD de cargo
+
 ## 1.10.36
 
 ### Patch Changes
