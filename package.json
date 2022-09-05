@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "1.10.34",
+  "version": "1.10.35",
   "license": "MIT",
   "scripts": {
     "dev": "vite",

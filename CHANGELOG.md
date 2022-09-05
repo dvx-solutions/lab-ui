@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.35
+
+### Patch Changes
+
+- 8991112: ajuste no enum ETipoAditivo
+
 ## 1.10.34
 
 ### Patch Changes
