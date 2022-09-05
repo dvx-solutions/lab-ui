@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosInstance } from 'axios';
+import { format } from 'date-fns';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { FiPercent } from 'react-icons/fi';
@@ -144,9 +145,14 @@ export function CUCargo({
   }, [errors]);
 
   useEffect(() => {
-    if (cargoParaEditar) {
-      Object.entries(cargoParaEditar).forEach(([key, value]) => {
-        setValue(key as keyof TCriarCargoFormValues, value);
+    if (cargoParaEditar?.data) {
+      Object.entries(cargoParaEditar.data).forEach(([key, value]) => {
+        const typedKey = key as keyof TCriarCargoFormValues;
+        if (typedKey.includes('Validade')) {
+          setValue(typedKey, format(new Date(value), 'yyyy-MM-dd'));
+        } else {
+          setValue(typedKey, value);
+        }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -165,7 +171,7 @@ export function CUCargo({
         <Spinner />
       ) : (
         <form
-          className="grid w-[60vw] grid-cols-3"
+          className="grid w-[60vw] grid-cols-3 items-end"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <Input {...register('codigo')} label="Código" disabled={isEdition} />
@@ -199,7 +205,7 @@ export function CUCargo({
             disabled={formFieldsDisabled.grupoCargoId}
           />
 
-          <div className="flex items-center justify-center">
+          <div className="flex items-end justify-center">
             <Checkbox
               {...register('ativo')}
               label="Ativo"
