@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.39
+
+### Patch Changes
+
+- 919abeb: ajuste nas props do CUCargo modal
+
 ## 1.10.38
 
 ### Patch Changes
