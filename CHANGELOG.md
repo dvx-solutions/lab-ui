@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.38
+
+### Patch Changes
+
+- d68cef2: exportação do componente de CUCargo
+
 ## 1.10.37
 
 ### Patch Changes
