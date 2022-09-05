@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.36
+
+### Patch Changes
+
+- 6036f1d: nova tipagem em ptypes/producao
+
 ## 1.10.35
 
 ### Patch Changes
