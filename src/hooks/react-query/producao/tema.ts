@@ -26,6 +26,7 @@ export const useTemas = ({
     pageNumber,
     pageSize,
     empresaAnoFiscalId,
+    quadroId,
   };
 
   return useQuery(

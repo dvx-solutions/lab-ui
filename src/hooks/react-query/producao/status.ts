@@ -26,6 +26,7 @@ export const useStatus = ({
     pageNumber,
     pageSize,
     empresaAnoFiscalId,
+    quadroId,
   };
 
   return useQuery(
