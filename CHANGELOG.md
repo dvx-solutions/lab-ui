@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.40
+
+### Patch Changes
+
+- 040d89a: novos hooks de producao
+
 ## 1.10.39
 
 ### Patch Changes
