@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.43
+
+### Patch Changes
+
+- a7d63fc: ajuste nas props do Input e Select
+
 ## 1.10.42
 
 ### Patch Changes
