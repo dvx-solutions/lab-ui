@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.44
+
+### Patch Changes
+
+- add5a5d: adição do isReadonly para Select
+
 ## 1.10.43
 
 ### Patch Changes
