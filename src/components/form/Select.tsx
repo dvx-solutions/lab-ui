@@ -19,6 +19,7 @@ interface SelectProps extends InputHTMLAttributes<HTMLSelectElement> {
   placeholder?: string;
   shouldSortValues?: boolean;
   isDisabled?: boolean;
+  isReadOnly?: boolean;
 }
 
 const BaseComponent: ForwardRefRenderFunction<
@@ -35,6 +36,7 @@ const BaseComponent: ForwardRefRenderFunction<
     placeholder = 'Selecione uma opção',
     shouldSortValues = true,
     isDisabled,
+    isReadOnly,
     ...props
   },
   ref
@@ -59,7 +61,7 @@ const BaseComponent: ForwardRefRenderFunction<
         name={name}
         placeholder={placeholder}
         ref={ref}
-        disabled={isDisabled || props.disabled}
+        disabled={isDisabled || props.disabled || isReadOnly}
       >
         <option selected value={NaN}>
           {placeholder}
