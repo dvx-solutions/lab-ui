@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.42
+
+### Patch Changes
+
+- 414bca3: fixes
+
 ## 1.10.41
 
 ### Patch Changes
