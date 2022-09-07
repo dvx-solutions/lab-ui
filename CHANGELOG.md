@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.10.45
+
+### Patch Changes
+
+- 27937a7: Ajuste na query useContratos com as props recebidas e prop enabled adicionada
+
 ## 1.10.44
 
 ### Patch Changes
