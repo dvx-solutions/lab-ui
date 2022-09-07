@@ -8,7 +8,7 @@ import { IAPIPaginatedResponse, IMutationParams, IQueryParams } from '+/types';
 import { IContrato } from '+/types/models/faturamento';
 
 interface UseContratosProps extends IQueryParams<keyof IContrato> {
-  empresaId: number;
+  empresaResponsavelId: number;
 }
 
 export type CreateContratoValues = {
@@ -59,7 +59,7 @@ export type CreateContratoValues = {
 export const useContratos = ({
   advancedSearch,
   API_Instance,
-  empresaId,
+  empresaResponsavelId,
   keyword,
   orderBy,
   pageNumber = 1,
@@ -68,16 +68,14 @@ export const useContratos = ({
   return useQuery(
     [
       'contratos',
-      `empresaId-${empresaId}`,
+      `empresaResponsavelId-${empresaResponsavelId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
-      if (empresaId <= 0) return null;
-
       const payload = {
         advancedSearch,
-        empresaId,
+        empresaResponsavelId,
         keyword,
         orderBy,
         pageNumber,
@@ -89,7 +87,8 @@ export const useContratos = ({
       >('faturamentos/contratos/listar', payload);
 
       return data;
-    }
+    },
+    { enabled: empresaResponsavelId > 0 }
   );
 };
 
