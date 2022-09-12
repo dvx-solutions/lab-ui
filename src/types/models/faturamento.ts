@@ -1,4 +1,4 @@
-import { ITabelaPreco } from '..';
+import { ITabelaPreco, TDTOSimples } from '..';
 
 import { IColaborador } from './colaboradores';
 import { IEmpresa, IUnidadeNegocio } from './empresarial';
@@ -159,11 +159,12 @@ export interface IProposta {
 }
 
 export interface IContratoChecklist {
-  ativo: boolean;
-  codigo: string;
+  checkList: TDTOSimples;
+  checkListId: number;
+  contratoId: number;
   descricao: string;
+  existente: boolean;
   id: number;
-  nome: string;
 }
 
 export interface IContratoDescritivo {
