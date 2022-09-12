@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.0
+
+### Minor Changes
+
+- 4149618: ajuste no interface IContratoChecklist
+
 ## 1.10.45
 
 ### Patch Changes
