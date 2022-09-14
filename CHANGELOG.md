@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.1
+
+### Patch Changes
+
+- 69cc624: novos tipos em producao
+
 ## 1.11.0
 
 ### Minor Changes
