@@ -24,6 +24,8 @@ export interface IStatus {
   quadro: IQuadro;
   quadroId: number;
   tipo: number;
+  posicaoX: number;
+  posicaoY: number;
 }
 
 export interface ITema {
