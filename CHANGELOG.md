@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.6
+
+### Patch Changes
+
+- 880c1f0: query client exportado
+
 ## 1.11.5
 
 ### Patch Changes
