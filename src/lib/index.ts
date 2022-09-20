@@ -6,3 +6,4 @@ export * from './getAPIEnvironment';
 export * from './getRequestErrorToast';
 export * from './requests';
 export * from './zod';
+export * from './queryClient';
