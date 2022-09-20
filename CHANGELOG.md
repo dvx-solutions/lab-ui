@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.2
+
+### Patch Changes
+
+- 2bb25f2: nova feat em CUPessoaJuridica
+
 ## 1.11.1
 
 ### Patch Changes
