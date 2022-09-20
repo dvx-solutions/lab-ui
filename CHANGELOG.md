@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.4
+
+### Patch Changes
+
+- d8fd6e7: teste
+
 ## 1.11.3
 
 ### Patch Changes

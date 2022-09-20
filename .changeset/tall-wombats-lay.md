@@ -2,4 +2,4 @@
 '@dvx-solutions/lab-ui': patch
 ---
 
-teste
+validacao componente pessoa juridica
