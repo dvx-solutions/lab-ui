@@ -67,7 +67,10 @@ export function CUPessoaJuridica({
     });
 
   const { data: dataReceita, isFetching: isFetchingDataReceita } = useQuery(
-    ['pessoas-juridicas', `id-${registryIdToEdit}`],
+    [
+      'pessoas-juridicas-por-cnpj',
+      `pessoas-juridicas-por-cnpj-${cnpjSelecionado}`,
+    ],
     async () => {
       if (registryIdToEdit <= 0) return null;
       if (cnpjSelecionado.length < 14) return null;
