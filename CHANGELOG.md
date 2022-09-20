@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.3
+
+### Patch Changes
+
+- 5c638da: disclosure adicionado
+
 ## 1.11.2
 
 ### Patch Changes
