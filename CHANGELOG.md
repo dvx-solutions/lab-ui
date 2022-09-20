@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.5
+
+### Patch Changes
+
+- 8d447c5: validacao componente pessoa juridica
+
 ## 1.11.4
 
 ### Patch Changes
