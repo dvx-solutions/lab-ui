@@ -1,7 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useQuery } from '@tanstack/react-query';
 import { AxiosError, AxiosInstance } from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
@@ -20,6 +20,7 @@ import {
   EPorteEstabelecimento,
   IAPIResponse,
   IPessoaJuridica,
+  IPessoaJuridicaReceita,
 } from '+/types';
 
 const schema = z.object({
@@ -53,6 +54,7 @@ export function CUPessoaJuridica({
   onSubmitSuccess,
   registryIdToEdit = -1,
 }: CUPessoaJuridicaProps) {
+  const [cnpjSelecionado, setCnpjSelecionado] = useState('');
   const { data: registerToEdit, isFetching: isFetchingRegisterToEdit } =
     useQuery(['pessoas-juridicas', `id-${registryIdToEdit}`], async () => {
       if (registryIdToEdit <= 0) return null;
@@ -63,6 +65,20 @@ export function CUPessoaJuridica({
 
       return res.data;
     });
+
+  const { data: dataReceita, isFetching: isFetchingDataReceita } = useQuery(
+    ['pessoas-juridicas', `id-${registryIdToEdit}`],
+    async () => {
+      if (registryIdToEdit <= 0) return null;
+      if (cnpjSelecionado.length < 14) return null;
+
+      const { data: res } = await axiosInstance.get<
+        IAPIResponse<IPessoaJuridicaReceita>
+      >(`pessoas/pessoas-juridicas/consultar-por-cnpj/${cnpjSelecionado}`);
+
+      return res.data;
+    }
+  );
 
   const {
     formState: { errors, isSubmitting },
@@ -122,6 +138,9 @@ export function CUPessoaJuridica({
               disabled={registryIdToEdit > 0}
               error={errors.cnpj}
               label="CNPJ"
+              onChange={({ target: { value } }) => {
+                setCnpjSelecionado(value);
+              }}
               type="number"
             />
           </div>
@@ -147,6 +166,126 @@ export function CUPessoaJuridica({
             error={errors.pessoaContribuinte}
             label="Contribuinte"
             options={convertEnumToSelectOptions(EPessoaContribuinte)}
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.razao_social ?? ''}
+            label="Razão social"
+            name="razao_social"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.capital_social ?? ''}
+            label="Capital social"
+            name="capital_social"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.porte.descricao ?? ''}
+            label="Porte"
+            name="porte"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.natureza_Juridica.descricao ?? ''}
+            label="Natureza jurídica"
+            name="natureza_Juridica"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.nome_fantasia ?? ''}
+            label="Nome fantasia"
+            name="nome_fantasia"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={
+              dataReceita?.estabelecimento.atividade_principal.descricao ?? ''
+            }
+            label="Atividade econômica principal"
+            name="atividade_principal"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.estado.nome ?? ''}
+            label="Estado"
+            name="estado"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.cidade.nome ?? ''}
+            label="Cidade"
+            name="cidade"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={
+              `${dataReceita?.estabelecimento.tipo_logradouro} ${dataReceita?.estabelecimento.logradouro} ${dataReceita?.estabelecimento.numero}, ${dataReceita?.estabelecimento.bairro}` ??
+              ''
+            }
+            label=""
+            name=""
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.cep ?? ''}
+            label="CEP"
+            name="cep"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.situacao_cadastral ?? ''}
+            label="Situação cadastral"
+            name="situacao_cadastral"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={dataReceita?.estabelecimento.motivo_situacao_cadastral ?? ''}
+            label="Motivo situação cadastral"
+            name="motivo_situacao_cadastral"
+          />
+          <Input
+            disabled
+            readOnly
+            value={
+              dataReceita?.estabelecimento.inscricoes_estaduais.join(',') ?? ''
+            }
+            label="Incricoes estaduais"
+            name="inscricoes_estaduais"
+          />
+
+          <Input
+            disabled
+            readOnly
+            value={
+              dataReceita?.estabelecimento.inscricoes_suframa.join(',') ?? ''
+            }
+            label="Incricoes suframa"
+            name="inscricoes_suframa"
           />
 
           <div className="col-span-full flex justify-end">
