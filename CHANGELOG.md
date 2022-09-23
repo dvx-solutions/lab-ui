@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.11.7
+
+### Patch Changes
+
+- e558c05: tanstack version updated
+
 ## 1.11.6
 
 ### Patch Changes
