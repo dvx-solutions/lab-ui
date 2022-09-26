@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.5
+
+### Patch Changes
+
+- 6241ed1: layout ajustado em CUPessoaJuridica
+
 ## 1.12.4
 
 ### Patch Changes
