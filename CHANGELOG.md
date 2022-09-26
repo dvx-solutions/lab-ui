@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.9
+
+### Patch Changes
+
+- 4078cd7: cupessoafisica ajustes
+
 ## 1.12.8
 
 ### Patch Changes
