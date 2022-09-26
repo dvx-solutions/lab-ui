@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.1
+
+### Patch Changes
+
+- 35c62c7: ajustes nos hooks de quadros e temas e adição do hook de tipos de ordens de serviço
+
 ## 1.12.0
 
 ### Minor Changes
