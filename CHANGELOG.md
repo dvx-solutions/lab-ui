@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.8
+
+### Patch Changes
+
+- d28f2ab: CUPessoaFisica ajustes pra teste
+
 ## 1.12.7
 
 ### Patch Changes
