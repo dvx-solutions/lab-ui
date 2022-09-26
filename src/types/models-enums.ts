@@ -6,7 +6,10 @@ export enum EGenero {
 export enum ERaca {
   'Nenhuma' = 0,
 
-  'Branca' = 1,
+  'Branco' = 1,
+  'Negro' = 2,
+  'Pardo' = 3,
+  'Índio' = 4,
 }
 
 export enum EDeficiencia {

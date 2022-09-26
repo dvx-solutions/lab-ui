@@ -38,10 +38,13 @@ const schema = z.object({
   dataNascimento: z.string(),
   naturalidade: z.string(),
   pessoaFisicaTratadaComoJuridica: z.boolean(),
+  pessoaContribuinte: z.number(),
+  quantidadeEmpregados: z.number(),
+  porteEstabelecimento: z.number(),
   genero: z.number().optional(),
   raca: z.number().optional(),
   industria: z.boolean(),
-  deficiencia: z.number().nullable(),
+  deficiencia: z.number().optional(),
   nomePai: z.string().optional(),
   nomeMae: z.string().optional(),
   nomeResponsavel: z.string().optional(),
@@ -173,10 +176,10 @@ export function CUPessoaFisica({
             error={errors.raca}
             options={convertEnumToSelectOptions(ERaca)}
           />
-          <div className="col-span-full flex items-end justify-between">
+          <div className="col-span-full flex items-end justify-between gap-4">
             <Select
               label="PCD"
-              {...register('deficiencia')}
+              {...register('deficiencia', { valueAsNumber: true })}
               error={errors.deficiencia}
               options={convertEnumToSelectOptions(EDeficiencia)}
             />
@@ -186,6 +189,27 @@ export function CUPessoaFisica({
             />
             <Checkbox {...register('industria')} label="Indústria" />
           </div>
+
+          <Input
+            {...register('quantidadeEmpregados', { valueAsNumber: true })}
+            error={errors.quantidadeEmpregados}
+            label="Qtde. de empregados"
+            type="number"
+          />
+
+          <Select
+            {...register('porteEstabelecimento', { valueAsNumber: true })}
+            error={errors.porteEstabelecimento}
+            label="Porte do estabelecimento"
+            options={convertEnumToSelectOptions(EPorteEstabelecimento)}
+          />
+
+          <Select
+            {...register('pessoaContribuinte', { valueAsNumber: true })}
+            error={errors.pessoaContribuinte}
+            label="Contribuinte"
+            options={convertEnumToSelectOptions(EPessoaContribuinte)}
+          />
 
           <Input
             label="Nome do pai"
