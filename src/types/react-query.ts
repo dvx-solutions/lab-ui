@@ -1,4 +1,4 @@
-import { QueryClient, UseMutationOptions } from '@tanstack/react-query';
+import { QueryClient, UseMutationOptions } from 'react-query';
 import { AxiosInstance } from 'axios';
 
 import { IBodyRequest } from '+/types/axios';

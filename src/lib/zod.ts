@@ -1,4 +1,4 @@
-import { jsonStringifyReplacer, z } from 'zod';
+import { z } from 'zod';
 
 export const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
   let message = '';
@@ -20,10 +20,7 @@ export const customErrorMap: z.ZodErrorMap = (issue, ctx) => {
       break;
 
     case z.ZodIssueCode.invalid_literal:
-      message = `Valor inválido, esperado ${JSON.stringify(
-        issue.expected,
-        jsonStringifyReplacer
-      )}`;
+      message = `Valor inválido, esperado ${JSON.stringify(issue.expected)}`;
       break;
 
     case z.ZodIssueCode.invalid_date:

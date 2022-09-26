@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { useQuery } from 'react-query';
 
 import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
 import { IEquipe, IQueryParams, TSelectOption } from '+/types';
