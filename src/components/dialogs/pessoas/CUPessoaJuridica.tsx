@@ -1,8 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useQuery } from 'react-query';
 import { AxiosError, AxiosInstance } from 'axios';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useQuery } from 'react-query';
 import { z } from 'zod';
 
 import {
@@ -72,7 +72,7 @@ export function CUPessoaJuridica({
       `pessoas-juridicas-por-cnpj-${cnpjSelecionado}`,
     ],
     async () => {
-      if (registryIdToEdit <= 0) return null;
+      console.log('entrou na chamada');
       if (cnpjSelecionado.length < 14) return null;
 
       const { data: res } = await axiosInstance.get<
@@ -82,6 +82,10 @@ export function CUPessoaJuridica({
       return res.data;
     }
   );
+
+  useEffect(() => {
+    console.log({ cnpjSelecionado });
+  }, [cnpjSelecionado]);
 
   const {
     formState: { errors, isSubmitting },
