@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.4
+
+### Patch Changes
+
+- 982bb48: pessoajuridica
+
 ## 1.12.3
 
 ### Patch Changes
