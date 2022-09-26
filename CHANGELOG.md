@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.0
+
+### Minor Changes
+
+- 8ee8ae1: rollback react-query version
+
 ## 1.11.7
 
 ### Patch Changes
