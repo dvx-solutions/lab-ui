@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.6
+
+### Patch Changes
+
+- 778daa9: CUPessoa fisica, primeiro teste
+
 ## 1.12.5
 
 ### Patch Changes
