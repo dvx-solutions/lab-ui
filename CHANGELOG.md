@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.3
+
+### Patch Changes
+
+- 68dea71: publish
+
 ## 1.12.2
 
 ### Patch Changes
