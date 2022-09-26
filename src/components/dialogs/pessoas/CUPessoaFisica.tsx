@@ -41,20 +41,20 @@ const schema = z.object({
   genero: z.number().optional(),
   raca: z.number().optional(),
   industria: z.boolean(),
-  deficiencia: z.boolean(),
-  nomePai: z.number().optional(),
-  nomeMae: z.number().optional(),
-  nomeResponsavel: z.number().optional(),
-  numeroGfip: z.number().optional(),
-  numeroRG: z.number(),
-  orgemExpeditorRG: z.number(),
-  dataEmissaoRG: z.number(),
-  numeroCtps: z.number().optional(),
-  serieCtps: z.number().optional(),
-  dataEmissaoCtps: z.number().optional(),
-  ufCtps: z.number().optional(),
-  numeroNIT: z.number().optional(),
-  numeroPisPasep: z.number().optional(),
+  deficiencia: z.number().nullable(),
+  nomePai: z.string().optional(),
+  nomeMae: z.string().optional(),
+  nomeResponsavel: z.string().optional(),
+  numeroGfip: z.string().optional(),
+  numeroRG: z.string(),
+  orgemExpeditorRG: z.string(),
+  dataEmissaoRG: z.string(),
+  numeroCtps: z.string().optional(),
+  serieCtps: z.string().optional(),
+  dataEmissaoCtps: z.string().optional(),
+  ufCtps: z.string().optional(),
+  numeroNIT: z.string().optional(),
+  numeroPisPasep: z.string().optional(),
 });
 // quantidadeEmpregados: z.number(),
 // porteEstabelecimento: z.number(),
@@ -173,7 +173,7 @@ export function CUPessoaFisica({
             error={errors.raca}
             options={convertEnumToSelectOptions(ERaca)}
           />
-          <div className="col-span-full">
+          <div className="col-span-full flex items-end justify-between">
             <Select
               label="PCD"
               {...register('deficiencia')}
@@ -184,10 +184,7 @@ export function CUPessoaFisica({
               {...register('pessoaFisicaTratadaComoJuridica')}
               label="Tratado como Pessoa Jurídica"
             />
-            <Checkbox
-              {...register('industria')}
-              label="Tratado como Pessoa Jurídica"
-            />
+            <Checkbox {...register('industria')} label="Indústria" />
           </div>
 
           <Input
