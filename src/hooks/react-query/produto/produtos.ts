@@ -11,17 +11,23 @@ import {
   TSelectOption,
 } from '+/types';
 
+interface IUseProdutos extends IQueryParams<keyof IProduto> {
+  planoId: number;
+}
+
 export const useProdutos = ({
   advancedSearch,
   API_Instance,
   keyword,
   orderBy,
   pageNumber = 1,
-  pageSize = 25,
-}: IQueryParams<keyof IProduto>) => {
+  pageSize = 100000,
+  planoId,
+}: IUseProdutos) => {
   return useQuery(
     [
       'produtos',
+      `planoId-${planoId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
@@ -38,6 +44,8 @@ export const useProdutos = ({
         IAPIPaginatedResponse<IProduto[]>
       >('produtos/produtos/listar', payload);
 
+      data.data = data.data.filter(x => x.planoId === planoId);
+
       const options: TSelectOption[] = data.data.map(
         ({ codigo, id, nome }) => ({
           text: `${codigo} - ${nome}`,
@@ -46,6 +54,7 @@ export const useProdutos = ({
       );
 
       return { ...data, options };
-    }
+    },
+    { enabled: planoId > 0 }
   );
 };
