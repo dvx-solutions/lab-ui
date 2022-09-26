@@ -1,58 +1,10 @@
 # @dvx-solutions/lab-ui
 
-## 1.12.10
-
-### Patch Changes
-
-- dfd26b0: ajustes
-
-## 1.12.9
-
-### Patch Changes
-
-- 4078cd7: cupessoafisica ajustes
-
-## 1.12.8
-
-### Patch Changes
-
-- d28f2ab: CUPessoaFisica ajustes pra teste
-
-## 1.12.7
-
-### Patch Changes
-
-- 63b8a6c: CUPessoaFisica ajustes
-
-## 1.12.6
-
-### Patch Changes
-
-- 778daa9: CUPessoa fisica, primeiro teste
-
-## 1.12.5
-
-### Patch Changes
-
-- 6241ed1: layout ajustado em CUPessoaJuridica
-
-## 1.12.4
-
-### Patch Changes
-
-- 982bb48: pessoajuridica
-
-## 1.12.3
-
-### Patch Changes
-
-- 68dea71: publish
-
 ## 1.12.2
 
 ### Patch Changes
 
-- bdf5e8d: cupessoajuridica
+- af96718: ajuste no hook useProdutos
 
 ## 1.12.1
 
