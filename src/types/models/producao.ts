@@ -1,3 +1,5 @@
+import { TabelaBasicaType } from '+/index';
+
 export interface IEquipe {
   id: number;
   modulo: number;
@@ -76,3 +78,5 @@ export interface IOrdemServico {
   percentualPrazo: number;
   situacao: number;
 }
+
+export type ITipoOrdemServico = TabelaBasicaType;

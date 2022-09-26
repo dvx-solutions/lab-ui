@@ -40,3 +40,12 @@ export type TDTOSimples = {
   id: number;
   nome: string;
 };
+
+export type TabelaBasicaType = {
+  ativo: boolean;
+  codigo: string;
+  id: number;
+  inicioValidade: string;
+  nome: string;
+  terminoValidade: string;
+};

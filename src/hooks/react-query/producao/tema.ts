@@ -1,8 +1,15 @@
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
-import { IQueryParams, ITema, TSelectOption } from '+/types';
-import { IAPIPaginatedResponse } from '+/types/axios';
+import {
+  convertAdvancedSearchToReactQueryKeys,
+  getReactQueryPaginationKeys,
+} from '+/lib';
+import {
+  IAPIPaginatedResponse,
+  IQueryParams,
+  ITema,
+  TSelectOption,
+} from '+/types';
 
 interface IUseTemas extends IQueryParams<keyof ITema> {
   empresaAnoFiscalId: number;
@@ -12,41 +19,46 @@ interface IUseTemas extends IQueryParams<keyof ITema> {
 export const useTemas = ({
   advancedSearch,
   API_Instance,
+  empresaAnoFiscalId,
   keyword,
   orderBy,
   pageNumber = 1,
-  pageSize = 9999,
-  empresaAnoFiscalId,
+  pageSize = 100000,
   quadroId,
 }: IUseTemas) => {
-  const payload = {
-    advancedSearch: [advancedSearch ? { ...advancedSearch } : {}],
-    keyword,
-    orderBy,
-    pageNumber,
-    pageSize,
-    empresaAnoFiscalId,
-    quadroId,
-  };
-
   return useQuery(
     [
       'temas',
-      `temas-quadroId-${quadroId}`,
-      `ano-fiscal-id-${empresaAnoFiscalId}`,
+      `quadroId-${quadroId}`,
+      `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      convertAdvancedSearchToReactQueryKeys(advancedSearch),
+      getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      const payload = {
+        advancedSearch,
+        empresaAnoFiscalId,
+        keyword,
+        orderBy,
+        pageNumber,
+        pageSize,
+        quadroId,
+      };
+
       const { data } = await API_Instance.post<IAPIPaginatedResponse<ITema[]>>(
         'producoes/temas/listar',
         payload
       );
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: `${x.nome}`,
+        text: `${x.codigo} - ${x.nome}`,
         value: x.id,
       }));
 
       return { ...data, options };
+    },
+    {
+      enabled: quadroId > 0 && empresaAnoFiscalId > 0,
     }
   );
 };

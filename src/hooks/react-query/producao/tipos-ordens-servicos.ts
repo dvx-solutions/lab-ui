@@ -4,33 +4,30 @@ import {
   convertAdvancedSearchToReactQueryKeys,
   getReactQueryPaginationKeys,
 } from '+/lib/formatters';
-import { IQuadro, IQueryParams, TSelectOption } from '+/types';
-import { IAPIPaginatedResponse } from '+/types/axios';
+import {
+  IAPIPaginatedResponse,
+  IQueryParams,
+  ITipoOrdemServico,
+  TSelectOption,
+} from '+/types';
 
-interface IUseQuadros extends IQueryParams<keyof IQuadro> {
-  empresaAnoFiscalId: number;
-}
-
-export const useQuadros = ({
+export const useTiposOrdensServicos = ({
   advancedSearch,
   API_Instance,
-  empresaAnoFiscalId,
   keyword,
   orderBy,
   pageNumber = 1,
   pageSize = 100000,
-}: IUseQuadros) => {
-  return useQuery(
+}: IQueryParams<keyof ITipoOrdemServico>) =>
+  useQuery(
     [
-      'quadros',
-      `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      'tipos-ordens-servicos',
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
       const payload = {
         advancedSearch,
-        empresaAnoFiscalId,
         keyword,
         orderBy,
         pageNumber,
@@ -38,16 +35,14 @@ export const useQuadros = ({
       };
 
       const { data } = await API_Instance.post<
-        IAPIPaginatedResponse<IQuadro[]>
-      >('producoes/quadros/listar', payload);
+        IAPIPaginatedResponse<ITipoOrdemServico[]>
+      >('producoes/tipos-ordens-servicos/listar', payload);
 
       const options: TSelectOption[] = data.data.map(x => ({
-        text: `${x.nome}`,
+        text: `${x.codigo} - ${x.nome}`,
         value: x.id,
       }));
 
       return { ...data, options };
-    },
-    { enabled: empresaAnoFiscalId > 0 }
+    }
   );
-};
