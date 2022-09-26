@@ -136,7 +136,7 @@ export function CUPessoaJuridica({
         <Spinner />
       ) : (
         <form
-          className="grid min-w-[40vw] grid-cols-2 items-end rounded bg-white"
+          className="grid min-w-[40vw] grid-cols-2 items-end gap-4 rounded bg-white"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <div className="col-span-full">
