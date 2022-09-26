@@ -49,9 +49,9 @@ const schema = z.object({
   nomeMae: z.string().optional(),
   nomeResponsavel: z.string().optional(),
   numeroGfip: z.string().optional(),
-  numeroRG: z.string(),
-  orgemExpeditorRG: z.string(),
-  dataEmissaoRG: z.string(),
+  numeroRG: z.string().min(7, { message: 'RG inválido' }),
+  orgemExpeditorRG: z.string().min(1, { message: 'Campo obrigatório' }),
+  dataEmissaoRG: z.string().min(1, { message: 'Campo obrigatório' }),
   numeroCtps: z.string().optional(),
   serieCtps: z.string().optional(),
   dataEmissaoCtps: z.string().optional(),
@@ -59,8 +59,6 @@ const schema = z.object({
   numeroNIT: z.string().optional(),
   numeroPisPasep: z.string().optional(),
 });
-// quantidadeEmpregados: z.number(),
-// porteEstabelecimento: z.number(),
 
 export type TCriarPFFormValues = z.infer<typeof schema>;
 
