@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.10
+
+### Patch Changes
+
+- dfd26b0: ajustes
+
 ## 1.12.9
 
 ### Patch Changes
