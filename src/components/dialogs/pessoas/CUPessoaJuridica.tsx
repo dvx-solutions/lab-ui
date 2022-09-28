@@ -60,17 +60,15 @@ const schema = z.object({
   quantidadeTerceirizados: z.number(),
   grauRiscoSaude: z.number(),
   porteEstabelecimento: z.number(),
-  poloIndustrialId: z
-    .undefined(z.number().optional().nullable())
-    .optional()
-    .nullable(),
   oferecePlanoSaude: z.boolean(),
   sesmt: z.boolean(),
   inscricaoEstadual: z.string().optional(),
   inscricaoMunicipal: z.string().optional(),
 });
 
-export type TCriarPJFormValues = z.infer<typeof schema>;
+export type TCriarPJFormValues = z.infer<typeof schema> & {
+  poloIndustrialId: number | undefined;
+};
 
 export interface CUPessoaJuridicaProps extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
@@ -138,9 +136,6 @@ export function CUPessoaJuridica({
     setValue,
   } = useForm<TCriarPJFormValues>({
     resolver: zodResolver(schema),
-    defaultValues: {
-      poloIndustrialId: undefined,
-    },
   });
 
   const onFormSubmit = async (values: TCriarPJFormValues) => {
