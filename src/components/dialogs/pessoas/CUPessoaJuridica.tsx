@@ -60,7 +60,7 @@ const schema = z.object({
   quantidadeTerceirizados: z.number(),
   grauRiscoSaude: z.number(),
   porteEstabelecimento: z.number(),
-  poloIndustrialId: z.union([z.number(), z.undefined()]),
+  poloIndustrialId: z.union([z.number(), z.undefined()]).optional(),
   oferecePlanoSaude: z.boolean(),
   sesmt: z.boolean(),
   inscricaoEstadual: z.string().optional(),
@@ -135,6 +135,9 @@ export function CUPessoaJuridica({
     setValue,
   } = useForm<TCriarPJFormValues>({
     resolver: zodResolver(schema),
+    defaultValues: {
+      poloIndustrialId: undefined,
+    },
   });
 
   const onFormSubmit = async (values: TCriarPJFormValues) => {
