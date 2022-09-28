@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.14
+
+### Patch Changes
+
+- 7dad9fb: fix cupessoajuridica
+
 ## 1.12.13
 
 ### Patch Changes
