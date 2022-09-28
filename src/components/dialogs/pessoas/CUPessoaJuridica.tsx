@@ -37,6 +37,7 @@ import {
   Spinner,
   Tabs,
 } from '+/components';
+import { useTabelasBasicas } from '+/hooks';
 import { customErrorMap, convertEnumToSelectOptions } from '+/lib';
 import {
   EPessoaContribuinte,
@@ -59,7 +60,7 @@ const schema = z.object({
   quantidadeTerceirizados: z.number(),
   grauRiscoSaude: z.number(),
   porteEstabelecimento: z.number(),
-  // poloIndustrialId: z.boolean(),
+  poloIndustrialId: z.number(),
   oferecePlanoSaude: z.boolean(),
   sesmt: z.boolean(),
   inscricaoEstadual: z.string().optional(),
@@ -97,6 +98,13 @@ export function CUPessoaJuridica({
 
       return res.data;
     });
+
+  const { data: polosIndustriais } = useTabelasBasicas({
+    API_Instance: axiosInstance,
+    rota: 'polos-industriais',
+    pageNumber: 1,
+    pageSize: 100000,
+  });
 
   const { data: dataReceita, isFetching: isFetchingDataReceita } = useQuery(
     [
@@ -168,7 +176,7 @@ export function CUPessoaJuridica({
         <Spinner />
       ) : (
         <form className="" onSubmit={handleSubmit(onFormSubmit)}>
-          <div className="grid max-h-[48rem] w-full min-w-[40vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
+          <div className="grid max-h-[48rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
             <div className="grid h-fit w-full grid-cols-2 gap-2 p-2">
               <div className="col-span-full">
                 <span className="text-lg font-semibold">
@@ -204,16 +212,30 @@ export function CUPessoaJuridica({
                 type="number"
               />
 
-              <Checkbox {...register('industria')} label="Industria" />
-              <Checkbox {...register('sesmt')} label="SESMT" />
-              <Checkbox
-                {...register('oferecePlanoSaude')}
-                label="Oferece plano de saúde"
-              />
+              <div className="col-span-full">
+                <Checkbox {...register('industria')} label="Industria" />
+                <Checkbox {...register('sesmt')} label="SESMT" />
+                <Checkbox
+                  {...register('oferecePlanoSaude')}
+                  label="Oferece plano de saúde"
+                />
+              </div>
               {/* <Checkbox
                 {...register('poloIndustrialId')}
                 label="Polo industrial"
               /> */}
+
+              <Select
+                {...register('poloIndustrialId', { valueAsNumber: true })}
+                error={errors.poloIndustrialId}
+                label="Polo industrial"
+                options={
+                  polosIndustriais?.data.map(polo => ({
+                    text: polo.nome,
+                    value: polo.id,
+                  })) ?? []
+                }
+              />
 
               <Select
                 {...register('pessoaContribuinte', { valueAsNumber: true })}
