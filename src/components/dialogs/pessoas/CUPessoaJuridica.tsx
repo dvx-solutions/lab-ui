@@ -59,7 +59,7 @@ const schema = z.object({
   quantidadeTerceirizados: z.number(),
   grauRiscoSaude: z.number(),
   porteEstabelecimento: z.number(),
-  poloIndustrialId: z.boolean(),
+  // poloIndustrialId: z.boolean(),
   oferecePlanoSaude: z.boolean(),
   sesmt: z.boolean(),
   inscricaoEstadual: z.string().optional(),
@@ -210,10 +210,10 @@ export function CUPessoaJuridica({
                 {...register('oferecePlanoSaude')}
                 label="Oferece plano de saúde"
               />
-              <Checkbox
+              {/* <Checkbox
                 {...register('poloIndustrialId')}
                 label="Polo industrial"
-              />
+              /> */}
 
               <Select
                 {...register('pessoaContribuinte', { valueAsNumber: true })}
