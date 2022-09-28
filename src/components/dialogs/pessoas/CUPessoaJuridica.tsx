@@ -60,7 +60,10 @@ const schema = z.object({
   quantidadeTerceirizados: z.number(),
   grauRiscoSaude: z.number(),
   porteEstabelecimento: z.number(),
-  poloIndustrialId: z.union([z.number(), z.undefined()]).optional(),
+  poloIndustrialId: z
+    .undefined(z.number().optional().nullable())
+    .optional()
+    .nullable(),
   oferecePlanoSaude: z.boolean(),
   sesmt: z.boolean(),
   inscricaoEstadual: z.string().optional(),
