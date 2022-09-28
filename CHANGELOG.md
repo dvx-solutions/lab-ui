@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.12
+
+### Patch Changes
+
+- e36854d: comentado campo poloindustrialId em CUPessoaJuridica
+
 ## 1.12.2
 
 ### Patch Changes
