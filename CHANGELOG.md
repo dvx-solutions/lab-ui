@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.13
+
+### Patch Changes
+
+- c9b3677: CUPessoaJuridica - Ajuste do campo polo industrial
+
 ## 1.12.12
 
 ### Patch Changes
