@@ -124,10 +124,6 @@ export function CUPessoaJuridica({
     }
   );
 
-  useEffect(() => {
-    console.log({ cnpjSelecionado });
-  }, [cnpjSelecionado]);
-
   const {
     formState: { errors, isSubmitting },
     handleSubmit,
@@ -192,6 +188,13 @@ export function CUPessoaJuridica({
                   label="CNPJ"
                   onChange={({ target: { value } }) => {
                     setCnpjSelecionado(value);
+                    setValue(
+                      'cnpj',
+                      value.replace(
+                        /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+                        '$1.$2.$3/$4-$5'
+                      )
+                    );
                   }}
                   placeholder="Digite o CNPJ para buscar os dados da receita federal"
                   type="number"
@@ -226,6 +229,17 @@ export function CUPessoaJuridica({
                 label="Polo industrial"
               /> */}
 
+              <Input
+                {...register('inscricaoEstadual')}
+                error={errors.inscricaoEstadual}
+                label="Inscrição Estadual"
+              />
+              <Input
+                {...register('inscricaoMunicipal')}
+                error={errors.inscricaoMunicipal}
+                label="Inscrição Municipal"
+              />
+
               <Select
                 {...register('poloIndustrialId', { valueAsNumber: true })}
                 error={errors.poloIndustrialId}
@@ -252,16 +266,6 @@ export function CUPessoaJuridica({
                 options={convertEnumToSelectOptions(EPorteEstabelecimento)}
               />
 
-              <Input
-                {...register('inscricaoEstadual')}
-                error={errors.inscricaoEstadual}
-                label="Inscrição Estadual"
-              />
-              <Input
-                {...register('inscricaoMunicipal')}
-                error={errors.inscricaoMunicipal}
-                label="Inscrição Municipal"
-              />
               <Input
                 {...register('grauRiscoSaude', { valueAsNumber: true })}
                 error={errors.grauRiscoSaude}
