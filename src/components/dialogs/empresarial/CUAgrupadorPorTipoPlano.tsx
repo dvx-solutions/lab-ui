@@ -32,6 +32,7 @@ const schema = z.object({
   ativo: z.boolean(),
   codigo: z.string().min(1).max(16),
   descricao: z.string().min(1),
+  id: z.union([z.number(), z.undefined()]),
   inicioValidade: z.string().min(1),
   nome: z.string().min(1),
   planoId: z.number().nonnegative(),
