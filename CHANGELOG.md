@@ -1,5 +1,13 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.29
+
+### Patch Changes
+
+- fc990a7: cupessoajuridica
+- Updated dependencies [fc990a7]
+  - @dvx-solutions/lab-ui@1.12.29
+
 ## 1.12.24
 
 ### Patch Changes
