@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.20
+
+### Patch Changes
+
+- 3138fce: CUAgrupadorPorTipoPlano v2
+
 ## 1.12.19
 
 ### Patch Changes
