@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.20
+
+### Patch Changes
+
+- 69b5876: merge
+
 ## 1.12.19
 
 ### Patch Changes
