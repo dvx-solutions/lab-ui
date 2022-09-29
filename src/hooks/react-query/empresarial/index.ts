@@ -1,3 +1,4 @@
+export * from './agrupadores';
 export * from './centro';
 export * from './contas-orcamentarias';
 export * from './empresa';
