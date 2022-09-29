@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.19
+
+### Patch Changes
+
+- cbaf051: criação do componente para criar agrupador por tipo
+
 ## 1.12.18
 
 ### Patch Changes
