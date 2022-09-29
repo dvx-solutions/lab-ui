@@ -202,6 +202,17 @@ export function CUPessoaJuridica({
               </div>
 
               <Input
+                {...register('inscricaoEstadual')}
+                error={errors.inscricaoEstadual}
+                label="Inscrição Estadual"
+              />
+              <Input
+                {...register('inscricaoMunicipal')}
+                error={errors.inscricaoMunicipal}
+                label="Inscrição Municipal"
+              />
+
+              <Input
                 {...register('quantidadeEmpregados', { valueAsNumber: true })}
                 error={errors.quantidadeEmpregados}
                 label="Qtde. de empregados"
@@ -228,17 +239,6 @@ export function CUPessoaJuridica({
                 {...register('poloIndustrialId')}
                 label="Polo industrial"
               /> */}
-
-              <Input
-                {...register('inscricaoEstadual')}
-                error={errors.inscricaoEstadual}
-                label="Inscrição Estadual"
-              />
-              <Input
-                {...register('inscricaoMunicipal')}
-                error={errors.inscricaoMunicipal}
-                label="Inscrição Municipal"
-              />
 
               <Select
                 {...register('poloIndustrialId', { valueAsNumber: true })}
