@@ -14,6 +14,7 @@ import {
   Input,
   SaveFormButton,
   Select,
+  Spinner,
   Textarea,
 } from '+/components';
 import { useAgrupadores, useAgrupadorPorId, usePlanos } from '+/hooks';
@@ -54,7 +55,11 @@ export function CUAgrupadorPorTipoPlano({
       ].toLowerCase()} - ID ${recordIdToEdit}`
     : `Criar agrupador de ${ETipoPlano[tipoPlano].toLowerCase()}`;
 
-  const { data: registroParaEditar } = useAgrupadorPorId({
+  const {
+    data: registroParaEditar,
+    isLoading: isLoadingRegistroParaEditar,
+    refetch: refetchRegistroParaEditar,
+  } = useAgrupadorPorId({
     id: recordIdToEdit,
     axiosInstance,
   });
@@ -130,74 +135,82 @@ export function CUAgrupadorPorTipoPlano({
     }
   }, [registroParaEditar, setValue]);
 
+  useEffect(() => {
+    refetchRegistroParaEditar();
+  }, [refetchRegistroParaEditar]);
+
   return (
     <Dialog {...disclousure} onClose={closeModalAndReset} title={modalTitle}>
-      <form
-        className="grid w-[60vw] grid-cols-3 items-end"
-        onSubmit={handleSubmit(onSubmitRequest)}
-      >
-        <Input
-          {...register('codigo')}
-          disabled={isEdition}
-          error={errors.codigo}
-          label="Código"
-        />
-        <div className="col-span-2">
-          <Input {...register('nome')} label="Nome" error={errors.nome} />
-        </div>
-        <div className="col-span-full">
-          <Textarea
-            {...register('descricao')}
-            error={errors.descricao}
-            label="Descrição"
+      {isLoadingRegistroParaEditar ? (
+        <Spinner />
+      ) : (
+        <form
+          className="grid w-[60vw] grid-cols-3 items-end"
+          onSubmit={handleSubmit(onSubmitRequest)}
+        >
+          <Input
+            {...register('codigo')}
+            disabled={isEdition}
+            error={errors.codigo}
+            label="Código"
           />
-        </div>
-        <Checkbox
-          {...register('ativo', {
-            onChange(event) {
-              setIsActive(event.target.checked);
-            },
-          })}
-          label="Ativo"
-          error={errors.ativo}
-        />
-        <Input
-          {...register('inicioValidade')}
-          error={errors.inicioValidade}
-          label="Início da validade"
-          type="date"
-        />
-        <Input
-          {...register('terminoValidade')}
-          error={errors.terminoValidade}
-          label="Término da validade"
-          type="date"
-          disabled={isActive}
-        />
-        <Select
-          {...register('planoId', {
-            valueAsNumber: true,
-            onChange(event) {
-              setPlanoId(Number(event.target.value));
-            },
-          })}
-          error={errors.planoId}
-          label="Plano"
-          options={planos?.options}
-        />
-        <Select
-          {...register('superiorId', {
-            setValueAs(value) {
-              return Number.isNaN(Number(value)) ? undefined : Number(value);
-            },
-          })}
-          error={errors.superiorId}
-          label="Superior"
-          options={superiores?.options}
-        />
+          <div className="col-span-2">
+            <Input {...register('nome')} label="Nome" error={errors.nome} />
+          </div>
+          <div className="col-span-full">
+            <Textarea
+              {...register('descricao')}
+              error={errors.descricao}
+              label="Descrição"
+            />
+          </div>
+          <Checkbox
+            {...register('ativo', {
+              onChange(event) {
+                setIsActive(event.target.checked);
+              },
+            })}
+            label="Ativo"
+            error={errors.ativo}
+          />
+          <Input
+            {...register('inicioValidade')}
+            error={errors.inicioValidade}
+            label="Início da validade"
+            type="date"
+          />
+          <Input
+            {...register('terminoValidade')}
+            error={errors.terminoValidade}
+            label="Término da validade"
+            type="date"
+            disabled={isActive}
+          />
+          <Select
+            {...register('planoId', {
+              valueAsNumber: true,
+              onChange(event) {
+                setPlanoId(Number(event.target.value));
+              },
+            })}
+            error={errors.planoId}
+            label="Plano"
+            options={planos?.options}
+          />
+          <Select
+            {...register('superiorId', {
+              setValueAs(value) {
+                return Number.isNaN(Number(value)) ? undefined : Number(value);
+              },
+            })}
+            error={errors.superiorId}
+            label="Superior"
+            options={superiores?.options}
+          />
 
-        <SaveFormButton isSubmitting={isSubmitting} />
-      </form>
+          <SaveFormButton isSubmitting={isSubmitting} />
+        </form>
+      )}
     </Dialog>
   );
 }
