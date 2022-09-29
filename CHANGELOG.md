@@ -1,5 +1,13 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.30
+
+### Patch Changes
+
+- 3f65d18: cupssoajuridica
+- Updated dependencies [3f65d18]
+  - @dvx-solutions/lab-ui@1.12.30
+
 ## 1.12.29
 
 ### Patch Changes
