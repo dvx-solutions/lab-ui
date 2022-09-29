@@ -228,7 +228,7 @@ export function CUPessoaJuridica({
               />
 
               <div className="col-span-full">
-                <Checkbox {...register('industria')} label="Industria" />
+                <Checkbox {...register('industria')} label="Indústria" />
                 <Checkbox {...register('sesmt')} label="SESMT" />
                 <Checkbox
                   {...register('oferecePlanoSaude')}
