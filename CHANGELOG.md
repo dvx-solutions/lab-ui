@@ -1,54 +1,10 @@
 # @dvx-solutions/lab-ui
 
-## 1.12.26
-
-### Patch Changes
-
-- e7d90f9: CUAgrupadorPorTipoPlano v8
-- Updated dependencies [e7d90f9]
-  - @dvx-solutions/lab-ui@1.12.26
-
-## 1.12.25
-
-### Patch Changes
-
-- bed0156: CUAgrupadorPorTipoPlano v7
-
-## 1.12.24
-
-### Patch Changes
-
-- e45b49d: CUAgrupadorPorTipoPlano v6
-
-## 1.12.23
-
-### Patch Changes
-
-- b4c2a51: CUAgrupadorPorTipoPlano v5
-
-## 1.12.22
-
-### Patch Changes
-
-- dc478c8: CUAgrupadorPorTipoPlano v4
-
-## 1.12.21
-
-### Patch Changes
-
-- 77e76cc: CUAgrupadorPorTipoPlano v3
-
-## 1.12.20
-
-### Patch Changes
-
-- 3138fce: CUAgrupadorPorTipoPlano v2
-
 ## 1.12.19
 
 ### Patch Changes
 
-- cbaf051: criação do componente para criar agrupador por tipo
+- 27821f3: CUPessoaJuridica
 
 ## 1.12.18
 
