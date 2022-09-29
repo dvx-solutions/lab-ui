@@ -17,12 +17,13 @@ import {
   Spinner,
   Textarea,
 } from '+/components';
-import { useAgrupadores, useAgrupadorPorId, usePlanos } from '+/hooks';
+import { useAgrupadores, useAgrupadorPorId } from '+/hooks';
 import { getRequestErrorToast } from '+/lib';
 import { ETipoPlano } from '+/types';
 
 interface CUAgrupadorPorTipoPlanoProps extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
+  planoId: number;
   queryClientInstance: QueryClient;
   recordIdToEdit: number;
   tipoPlano: ETipoPlano;
@@ -46,6 +47,7 @@ export function CUAgrupadorPorTipoPlano({
   axiosInstance,
   recordIdToEdit,
   tipoPlano,
+  planoId,
   queryClientInstance,
   ...disclousure
 }: CUAgrupadorPorTipoPlanoProps) {
@@ -63,14 +65,6 @@ export function CUAgrupadorPorTipoPlano({
   } = useAgrupadorPorId({
     id: recordIdToEdit,
     axiosInstance,
-  });
-
-  const [planoId, setPlanoId] = useState(0);
-
-  const { data: planos } = usePlanos({
-    API_Instance: axiosInstance,
-    pageSize: 100000,
-    tipoPlano,
   });
 
   const { data: superiores } = useAgrupadores({
@@ -93,6 +87,7 @@ export function CUAgrupadorPorTipoPlano({
       ativo: true,
       superiorId: undefined,
       terminoValidade: undefined,
+      planoId,
     },
   });
 
@@ -100,7 +95,6 @@ export function CUAgrupadorPorTipoPlano({
     disclousure.onClose();
     reset();
     setIsActive(true);
-    setPlanoId(0);
   };
 
   const onSubmitRequest = async (values: AgrupadorFormValuesType) => {
@@ -187,17 +181,7 @@ export function CUAgrupadorPorTipoPlano({
             type="date"
             disabled={isActive}
           />
-          <Select
-            {...register('planoId', {
-              valueAsNumber: true,
-              onChange(event) {
-                setPlanoId(Number(event.target.value));
-              },
-            })}
-            error={errors.planoId}
-            label="Plano"
-            options={planos?.options}
-          />
+
           <Select
             {...register('superiorId', {
               setValueAs(value) {
