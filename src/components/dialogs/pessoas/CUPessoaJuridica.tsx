@@ -188,13 +188,13 @@ export function CUPessoaJuridica({
                   label="CNPJ"
                   onChange={({ target: { value } }) => {
                     setCnpjSelecionado(value);
-                    setValue(
-                      'cnpj',
-                      value.replace(
-                        /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
-                        '$1.$2.$3/$4-$5'
-                      )
-                    );
+                    // setValue(
+                    //   'cnpj',
+                    //   value.replace(
+                    //     /^(\d{2})(\d{3})(\d{3})(\d{4})(\d{2})/,
+                    //     '$1.$2.$3/$4-$5'
+                    //   )
+                    // );
                   }}
                   placeholder="Digite o CNPJ para buscar os dados da receita federal"
                   type="number"
