@@ -1,6 +1,6 @@
 {
   "name": "@dvx-solutions/lab-ui",
-  "version": "1.12.30",
+  "version": "1.12.31",
   "license": "MIT",
   "scripts": {
     "dev": "vite",
@@ -34,7 +34,7 @@
   "dependencies": {
     "@chakra-ui/react": "^2.2.4",
     "@changesets/cli": "^2.24.3",
-    "@dvx-solutions/lab-ui": "^1.12.30",
+    "@dvx-solutions/lab-ui": "^1.12.31",
     "@hookform/resolvers": "^2.9.7",
     "@radix-ui/react-avatar": "^1.0.0",
     "@radix-ui/react-dialog": "^1.0.0",
