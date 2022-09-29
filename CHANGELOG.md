@@ -1,5 +1,13 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.26
+
+### Patch Changes
+
+- e7d90f9: CUAgrupadorPorTipoPlano v8
+- Updated dependencies [e7d90f9]
+  - @dvx-solutions/lab-ui@1.12.26
+
 ## 1.12.25
 
 ### Patch Changes
