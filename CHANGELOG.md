@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.25
+
+### Patch Changes
+
+- bed0156: CUAgrupadorPorTipoPlano v7
+
 ## 1.12.24
 
 ### Patch Changes
