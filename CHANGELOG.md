@@ -1,5 +1,13 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.21
+
+### Patch Changes
+
+- 0fc2e20: merge
+- Updated dependencies [0fc2e20]
+  - @dvx-solutions/lab-ui@1.12.21
+
 ## 1.12.20
 
 ### Patch Changes
