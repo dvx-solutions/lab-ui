@@ -169,7 +169,11 @@ export function CUAgrupadorPorTipoPlano({
           options={planos?.options}
         />
         <Select
-          {...register('superiorId', { valueAsNumber: true })}
+          {...register('superiorId', {
+            setValueAs(value) {
+              return Number.isNaN(Number(value)) ? undefined : Number(value);
+            },
+          })}
           error={errors.superiorId}
           label="Superior"
           options={superiores?.options}
