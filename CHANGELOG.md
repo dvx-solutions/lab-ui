@@ -1,5 +1,13 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.24
+
+### Patch Changes
+
+- 4e4edf8: cupessoajuridica
+- Updated dependencies [4e4edf8]
+  - @dvx-solutions/lab-ui@1.12.24
+
 ## 1.12.22
 
 ### Patch Changes
