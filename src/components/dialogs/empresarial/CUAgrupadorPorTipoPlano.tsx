@@ -35,7 +35,7 @@ const schema = z.object({
   nome: z.string().min(1),
   planoId: z.number().nonnegative(),
   superiorId: z.union([z.number(), z.undefined()]),
-  terminoValidade: z.string(),
+  terminoValidade: z.union([z.string(), z.undefined()]),
 });
 
 export type AgrupadorFormValuesType = z.infer<typeof schema>;
@@ -82,7 +82,9 @@ export function CUAgrupadorPorTipoPlano({
   } = useForm<AgrupadorFormValuesType>({
     resolver: zodResolver(schema),
     defaultValues: {
+      ativo: true,
       superiorId: undefined,
+      terminoValidade: undefined,
     },
   });
 
@@ -93,6 +95,11 @@ export function CUAgrupadorPorTipoPlano({
   };
 
   const onSubmitRequest = async (values: AgrupadorFormValuesType) => {
+    values.terminoValidade =
+      values?.terminoValidade?.trim() === ''
+        ? undefined
+        : values.terminoValidade;
+
     await axiosInstance({
       data: values,
       method: isEdition ? 'PUT' : 'POST',

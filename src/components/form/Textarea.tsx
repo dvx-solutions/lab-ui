@@ -41,7 +41,7 @@ const BaseComponent: ForwardRefRenderFunction<
         <textarea
           {...props}
           className={classNames(
-            'form-element-style border focus:border-brand-primary',
+            'form-element-style border p-3 focus:border-brand-primary',
             className,
             error ? 'border-red-500' : 'border-gray-500'
           )}
