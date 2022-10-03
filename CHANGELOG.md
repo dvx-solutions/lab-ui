@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.32
+
+### Patch Changes
+
+- c18e2d6: criação de Dialogs para cadastros de produtos
+
 ## 1.12.31
 
 ### Patch Changes
