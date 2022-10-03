@@ -33,3 +33,20 @@ export interface IProduto {
   tipoProdutoId: number;
   unidadeMedidaId: number;
 }
+
+export interface INaturezaProduto {
+  ativo: boolean;
+  codigo: string;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  naturezaConsumo: number;
+  nome: string;
+  origemProduto: number;
+  padraoConsumo: boolean;
+  planoId: number;
+  planoSmd: boolean;
+  possuiMeta: boolean;
+  sigla: string;
+  terminoValidade: string;
+}

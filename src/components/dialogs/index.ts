@@ -1,4 +1,5 @@
+export * from './_general';
 export * from './colaboradores';
-export * from './Dialog';
 export * from './empresarial';
 export * from './pessoas';
+export * from './produtos';

@@ -1,6 +1,7 @@
 import { IEmpresaAnoFiscal } from './models/empresarial';
 
 export * from './axios';
+export * from './devextreme';
 export * from './enums';
 export * from './models-enums';
 export * from './models';

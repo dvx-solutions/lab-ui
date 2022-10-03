@@ -1,25 +1,3 @@
-/* eslint-disable react/jsx-no-useless-fragment */
-// import {
-//   Button,
-//   Checkbox,
-//   convertEnumToSelectOptions,
-//   customErrorMap,
-//   Dialog,
-//   EDeficiencia,
-//   EGenero,
-//   EPessoaContribuinte,
-//   EPorteEstabelecimento,
-//   ERaca,
-//   ESimNao,
-//   IAPIResponse,
-//   Input,
-//   IPessoaFisica,
-//   IPessoaJuridica,
-//   IPessoaJuridicaReceita,
-//   Select,
-//   Spinner,
-//   Tabs,
-// } from '@dvx-solutions/lab-ui';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosInstance } from 'axios';
 import { useEffect, useState } from 'react';
@@ -46,8 +24,6 @@ import {
   IPessoaJuridica,
   IPessoaJuridicaReceita,
 } from '+/types';
-
-// import { DialogDisclosureProps } from './types';
 
 const schema = z.object({
   cnpj: z
@@ -81,14 +57,13 @@ export interface CUPessoaJuridicaProps extends DialogDisclosureProps {
 export function CUPessoaJuridica({
   axiosInstance,
   dialogTitle = 'Cadastrar pessoa jurídica',
-  isOpen,
-  onClose,
-  onOpen,
   onSubmitError,
   onSubmitSuccess,
   registryIdToEdit = -1,
+  ...disclousure
 }: CUPessoaJuridicaProps) {
   const [cnpjSelecionado, setCnpjSelecionado] = useState('');
+
   const { data: registerToEdit, isFetching: isFetchingRegisterToEdit } =
     useQuery(['pessoas-juridicas', `id-${registryIdToEdit}`], async () => {
       if (registryIdToEdit <= 0) return null;
@@ -102,9 +77,9 @@ export function CUPessoaJuridica({
 
   const { data: polosIndustriais } = useTabelasBasicas({
     API_Instance: axiosInstance,
-    rota: 'polos-industriais',
     pageNumber: 1,
     pageSize: 100000,
+    rota: 'polos-industriais',
   });
 
   const { data: dataReceita, isFetching: isFetchingDataReceita } = useQuery(
@@ -113,7 +88,6 @@ export function CUPessoaJuridica({
       `pessoas-juridicas-por-cnpj-${cnpjSelecionado}`,
     ],
     async () => {
-      console.log('entrou na chamada');
       if (cnpjSelecionado.length < 14) return null;
 
       const { data: res } = await axiosInstance.get<
@@ -133,6 +107,12 @@ export function CUPessoaJuridica({
   } = useForm<TCriarPJFormValues>({
     resolver: zodResolver(schema),
   });
+
+  const closeAndResetForm = () => {
+    disclousure.onClose();
+    setCnpjSelecionado('');
+    reset();
+  };
 
   const onFormSubmit = async (values: TCriarPJFormValues) => {
     await axiosInstance
@@ -157,22 +137,14 @@ export function CUPessoaJuridica({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [registerToEdit, isOpen]);
+  }, [registerToEdit, disclousure.isOpen]);
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        reset();
-      }}
-      onOpen={onOpen}
-      title={dialogTitle}
-    >
+    <Dialog {...disclousure} onClose={closeAndResetForm} title={dialogTitle}>
       {isFetchingRegisterToEdit && registryIdToEdit > 0 ? (
         <Spinner />
       ) : (
-        <form className="" onSubmit={handleSubmit(onFormSubmit)}>
+        <form onSubmit={handleSubmit(onFormSubmit)}>
           <div className="grid max-h-[48rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
             <div className="grid h-fit w-full grid-cols-2 gap-2 p-2">
               <div className="col-span-full">
@@ -280,310 +252,306 @@ export function CUPessoaJuridica({
                 </span>
               </div>
               {cnpjSelecionado.length === 14 ? (
-                <>
-                  {isFetchingDataReceita ? (
-                    <Spinner />
-                  ) : (
-                    <Tabs
-                      tabsList={[
-                        {
-                          id: 'dados-gerais',
-                          name: 'Dados gerais',
-                        },
-                        {
-                          id: 'socios',
-                          name: 'Socios',
-                        },
-                        {
-                          id: 'cnaes',
-                          name: 'Atividades econômicas',
-                        },
-                      ]}
-                      tabsContent={[
-                        {
-                          tabFor: 'dados-gerais',
-                          children: (
-                            <div className="grid grid-cols-2 gap-2">
-                              <Input
-                                disabled
-                                readOnly
-                                value={dataReceita?.razao_social ?? ''}
-                                label="Razão social"
-                                name="razao_social"
-                              />
+                isFetchingDataReceita ? (
+                  <Spinner />
+                ) : (
+                  <Tabs
+                    tabsList={[
+                      {
+                        id: 'dados-gerais',
+                        name: 'Dados gerais',
+                      },
+                      {
+                        id: 'socios',
+                        name: 'Socios',
+                      },
+                      {
+                        id: 'cnaes',
+                        name: 'Atividades econômicas',
+                      },
+                    ]}
+                    tabsContent={[
+                      {
+                        tabFor: 'dados-gerais',
+                        children: (
+                          <div className="grid grid-cols-2 gap-2">
+                            <Input
+                              disabled
+                              readOnly
+                              value={dataReceita?.razao_social ?? ''}
+                              label="Razão social"
+                              name="razao_social"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={dataReceita?.capital_social ?? ''}
-                                label="Capital social"
-                                name="capital_social"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={dataReceita?.capital_social ?? ''}
+                              label="Capital social"
+                              name="capital_social"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={dataReceita?.porte.descricao ?? ''}
-                                label="Porte"
-                                name="porte"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={dataReceita?.porte.descricao ?? ''}
+                              label="Porte"
+                              name="porte"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.natureza_Juridica.descricao ?? ''
-                                }
-                                label="Natureza jurídica"
-                                name="natureza_Juridica"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.natureza_Juridica.descricao ?? ''
+                              }
+                              label="Natureza jurídica"
+                              name="natureza_Juridica"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento.nome_fantasia ??
-                                  ''
-                                }
-                                label="Nome fantasia"
-                                name="nome_fantasia"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.nome_fantasia ?? ''
+                              }
+                              label="Nome fantasia"
+                              name="nome_fantasia"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.atividade_principal
+                                  .descricao ?? ''
+                              }
+                              label="Atividade econômica principal"
+                              name="atividade_principal"
+                            />
+
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.estado.nome ?? ''
+                              }
+                              label="Estado"
+                              name="estado"
+                            />
+
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.cidade.nome ?? ''
+                              }
+                              label="Cidade"
+                              name="cidade"
+                            />
+
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                `${
                                   dataReceita?.estabelecimento
-                                    .atividade_principal.descricao ?? ''
-                                }
-                                label="Atividade econômica principal"
-                                name="atividade_principal"
-                              />
+                                    .tipo_logradouro ?? ''
+                                } ${
+                                  dataReceita?.estabelecimento.logradouro ?? ''
+                                } ${
+                                  dataReceita?.estabelecimento.numero ?? ''
+                                }, ${
+                                  dataReceita?.estabelecimento.bairro ?? ''
+                                }` ?? ''
+                              }
+                              label="Endereço"
+                              name="endereco"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento.estado.nome ?? ''
-                                }
-                                label="Estado"
-                                name="estado"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={dataReceita?.estabelecimento.cep ?? ''}
+                              label="CEP"
+                              name="cep"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento.cidade.nome ?? ''
-                                }
-                                label="Cidade"
-                                name="cidade"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento
+                                  .situacao_cadastral ?? ''
+                              }
+                              label="Situação cadastral"
+                              name="situacao_cadastral"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  `${
-                                    dataReceita?.estabelecimento
-                                      .tipo_logradouro ?? ''
-                                  } ${
-                                    dataReceita?.estabelecimento.logradouro ??
-                                    ''
-                                  } ${
-                                    dataReceita?.estabelecimento.numero ?? ''
-                                  }, ${
-                                    dataReceita?.estabelecimento.bairro ?? ''
-                                  }` ?? ''
-                                }
-                                label="Endereço"
-                                name="endereco"
-                              />
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento
+                                  .motivo_situacao_cadastral ?? ''
+                              }
+                              label="Motivo situação cadastral"
+                              name="motivo_situacao_cadastral"
+                            />
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.inscricoes_estaduais.join(
+                                  ','
+                                ) ?? ''
+                              }
+                              label="Incricoes estaduais"
+                              name="inscricoes_estaduais"
+                            />
 
-                              <Input
-                                disabled
-                                readOnly
-                                value={dataReceita?.estabelecimento.cep ?? ''}
-                                label="CEP"
-                                name="cep"
-                              />
-
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento
-                                    .situacao_cadastral ?? ''
-                                }
-                                label="Situação cadastral"
-                                name="situacao_cadastral"
-                              />
-
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento
-                                    .motivo_situacao_cadastral ?? ''
-                                }
-                                label="Motivo situação cadastral"
-                                name="motivo_situacao_cadastral"
-                              />
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento.inscricoes_estaduais.join(
-                                    ','
-                                  ) ?? ''
-                                }
-                                label="Incricoes estaduais"
-                                name="inscricoes_estaduais"
-                              />
-
-                              <Input
-                                disabled
-                                readOnly
-                                value={
-                                  dataReceita?.estabelecimento.inscricoes_suframa.join(
-                                    ','
-                                  ) ?? ''
-                                }
-                                label="Incricoes suframa"
-                                name="inscricoes_suframa"
-                              />
-                            </div>
-                          ),
-                        },
-                        {
-                          tabFor: 'socios',
-                          children: (
-                            <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
-                              {dataReceita?.socios
-                                ? dataReceita?.socios.map(socio => (
-                                    <div
-                                      key={socio.nome}
-                                      className="grid grid-cols-2 gap-2 py-4"
-                                    >
-                                      <Input
-                                        disabled
-                                        readOnly
-                                        value={socio.cpf_cnpj_socio}
-                                        label="CPF do sócio"
-                                        name="cpf_socio"
-                                      />
-                                      <Input
-                                        disabled
-                                        readOnly
-                                        value={socio.faixa_etaria}
-                                        label="Faixa etária"
-                                        name="faixa_etaria"
-                                      />
-                                      <div className="col-span-full">
-                                        <Input
-                                          disabled
-                                          readOnly
-                                          value={socio.nome}
-                                          label="Nome do sócio"
-                                          name="nome_socio"
-                                        />
-                                      </div>
-                                    </div>
-                                  ))
-                                : null}
-                            </div>
-                          ),
-                        },
-                        {
-                          tabFor: 'cnaes',
-                          children: (
-                            <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
-                              <div>
-                                <span className="font-semibold text-gray-700">
-                                  CNAE Primário
-                                </span>
-                                <div className="grid grid-cols-2 gap-2 py-4">
-                                  <Input
-                                    disabled
-                                    readOnly
-                                    value={
-                                      dataReceita?.estabelecimento
-                                        ?.atividade_principal.secao
-                                    }
-                                    label="Seção"
-                                    name="secao"
-                                  />
-                                  <Input
-                                    disabled
-                                    readOnly
-                                    value={
-                                      dataReceita?.estabelecimento
-                                        ?.atividade_principal.subclasse
-                                    }
-                                    label="Subclasse"
-                                    name="subclasse"
-                                  />
-                                  <div className="col-span-full">
+                            <Input
+                              disabled
+                              readOnly
+                              value={
+                                dataReceita?.estabelecimento.inscricoes_suframa.join(
+                                  ','
+                                ) ?? ''
+                              }
+                              label="Incricoes suframa"
+                              name="inscricoes_suframa"
+                            />
+                          </div>
+                        ),
+                      },
+                      {
+                        tabFor: 'socios',
+                        children: (
+                          <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
+                            {dataReceita?.socios
+                              ? dataReceita?.socios.map(socio => (
+                                  <div
+                                    key={socio.nome}
+                                    className="grid grid-cols-2 gap-2 py-4"
+                                  >
                                     <Input
                                       disabled
                                       readOnly
-                                      value={
-                                        dataReceita?.estabelecimento
-                                          ?.atividade_principal.descricao
-                                      }
-                                      label="Descrição"
-                                      name="descricao"
+                                      value={socio.cpf_cnpj_socio}
+                                      label="CPF do sócio"
+                                      name="cpf_socio"
                                     />
+                                    <Input
+                                      disabled
+                                      readOnly
+                                      value={socio.faixa_etaria}
+                                      label="Faixa etária"
+                                      name="faixa_etaria"
+                                    />
+                                    <div className="col-span-full">
+                                      <Input
+                                        disabled
+                                        readOnly
+                                        value={socio.nome}
+                                        label="Nome do sócio"
+                                        name="nome_socio"
+                                      />
+                                    </div>
                                   </div>
+                                ))
+                              : null}
+                          </div>
+                        ),
+                      },
+                      {
+                        tabFor: 'cnaes',
+                        children: (
+                          <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
+                            <div>
+                              <span className="font-semibold text-gray-700">
+                                CNAE Primário
+                              </span>
+                              <div className="grid grid-cols-2 gap-2 py-4">
+                                <Input
+                                  disabled
+                                  readOnly
+                                  value={
+                                    dataReceita?.estabelecimento
+                                      ?.atividade_principal.secao
+                                  }
+                                  label="Seção"
+                                  name="secao"
+                                />
+                                <Input
+                                  disabled
+                                  readOnly
+                                  value={
+                                    dataReceita?.estabelecimento
+                                      ?.atividade_principal.subclasse
+                                  }
+                                  label="Subclasse"
+                                  name="subclasse"
+                                />
+                                <div className="col-span-full">
+                                  <Input
+                                    disabled
+                                    readOnly
+                                    value={
+                                      dataReceita?.estabelecimento
+                                        ?.atividade_principal.descricao
+                                    }
+                                    label="Descrição"
+                                    name="descricao"
+                                  />
                                 </div>
                               </div>
-                              <div>
-                                <span className="font-semibold text-gray-700">
-                                  CNAEs Secundários
-                                </span>
-                                {dataReceita?.estabelecimento
-                                  ?.atividades_secundarias
-                                  ? dataReceita?.estabelecimento?.atividades_secundarias.map(
-                                      cnae => (
-                                        <div
-                                          key={cnae.id}
-                                          className="grid grid-cols-2 gap-2 py-4"
-                                        >
-                                          <Input
-                                            disabled
-                                            readOnly
-                                            value={cnae.secao}
-                                            label="Seção"
-                                            name="secao"
-                                          />
-                                          <Input
-                                            disabled
-                                            readOnly
-                                            value={cnae.subclasse}
-                                            label="Subclasse"
-                                            name="subclasse"
-                                          />
-                                          <div className="col-span-full">
-                                            <Input
-                                              disabled
-                                              readOnly
-                                              value={cnae.descricao}
-                                              label="Descrição"
-                                              name="descricao"
-                                            />
-                                          </div>
-                                        </div>
-                                      )
-                                    )
-                                  : null}
-                              </div>
                             </div>
-                          ),
-                        },
-                      ]}
-                    />
-                  )}
-                </>
+                            <div>
+                              <span className="font-semibold text-gray-700">
+                                CNAEs Secundários
+                              </span>
+                              {dataReceita?.estabelecimento
+                                ?.atividades_secundarias
+                                ? dataReceita?.estabelecimento?.atividades_secundarias.map(
+                                    cnae => (
+                                      <div
+                                        key={cnae.id}
+                                        className="grid grid-cols-2 gap-2 py-4"
+                                      >
+                                        <Input
+                                          disabled
+                                          readOnly
+                                          value={cnae.secao}
+                                          label="Seção"
+                                          name="secao"
+                                        />
+                                        <Input
+                                          disabled
+                                          readOnly
+                                          value={cnae.subclasse}
+                                          label="Subclasse"
+                                          name="subclasse"
+                                        />
+                                        <div className="col-span-full">
+                                          <Input
+                                            disabled
+                                            readOnly
+                                            value={cnae.descricao}
+                                            label="Descrição"
+                                            name="descricao"
+                                          />
+                                        </div>
+                                      </div>
+                                    )
+                                  )
+                                : null}
+                            </div>
+                          </div>
+                        ),
+                      },
+                    ]}
+                  />
+                )
               ) : null}
             </div>
           </div>

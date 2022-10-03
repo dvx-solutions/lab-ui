@@ -6,8 +6,8 @@ import { useForm } from 'react-hook-form';
 import { FiPercent } from 'react-icons/fi';
 import { z } from 'zod';
 
+import { Dialog, DialogDisclosureProps } from '+/components';
 import { Button } from '+/components/buttons';
-import { Dialog, DialogDisclosureProps } from '+/components/dialogs/Dialog';
 import { Checkbox } from '+/components/form';
 import { Input } from '+/components/form/Input';
 import { Select } from '+/components/form/Select';

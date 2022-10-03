@@ -5,7 +5,8 @@ import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
 import { z } from 'zod';
 
-import { Button } from '+/components/buttons';
+import { Dialog, DialogDisclosureProps } from '+/components';
+import { SaveFormButton } from '+/components/buttons';
 import { Checkbox, Input, Select } from '+/components/form';
 import { Spinner } from '+/components/Spinner';
 import { customErrorMap, convertEnumToSelectOptions } from '+/lib';
@@ -18,8 +19,6 @@ import {
   IAPIResponse,
   IPessoaFisica,
 } from '+/types';
-
-import { Dialog, DialogDisclosureProps } from '../Dialog';
 
 export interface CUPessoaFisicaProps extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
@@ -65,9 +64,6 @@ export type TCriarPFFormValues = z.infer<typeof schema>;
 export function CUPessoaFisica({
   axiosInstance,
   dialogTitle = 'Cadastrar pessoa jurídica',
-  isOpen,
-  onClose,
-  onOpen,
   onSubmitError,
   onSubmitSuccess,
   registryIdToEdit = -1,
@@ -97,6 +93,11 @@ export function CUPessoaFisica({
     resolver: zodResolver(schema),
   });
 
+  const closeAndResetForm = () => {
+    disclousure.onClose();
+    reset();
+  };
+
   const onFormSubmit = async (values: TCriarPFFormValues) => {
     await axiosInstance
       .post('pessoas/pessoas-fisicas', values)
@@ -120,18 +121,10 @@ export function CUPessoaFisica({
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [registerToEdit, isOpen]);
+  }, [registerToEdit, disclousure.isOpen]);
 
   return (
-    <Dialog
-      isOpen={isOpen}
-      onClose={() => {
-        onClose();
-        reset();
-      }}
-      onOpen={onOpen}
-      title={dialogTitle}
-    >
+    <Dialog {...disclousure} onClose={closeAndResetForm} title={dialogTitle}>
       {isFetchingRegisterToEdit && registryIdToEdit > 0 ? (
         <Spinner />
       ) : (
@@ -288,39 +281,7 @@ export function CUPessoaFisica({
             error={errors.numeroNIT}
           />
 
-          {/* <Input
-            label="Atividade econômica principal"
-            {...register("atividade_principal")} error={errors.atividade_principal}
-          />
-
-          <Input label="Estado" {...register("estado")} error={errors.estado} />
-
-          <Input label="Cidade" {...register("cidade")} error={errors.cidade} />
-
-          <Input label="" {...register("" )}/> error = { errors.(""}
-
-    < Input label = "CEP" {...register("cep") } error = { errors.cep } />
-
-          <Input label="Situação cadastral" {...register("situacao_cadastral")} error={errors.situacao_cadastral} />
-
-          <Input
-            label="Motivo situação cadastral"
-            {...register("motivo_situacao_cadastral")} error={errors.motivo_situacao_cadastral}
-          />
-          <Input label="Incricoes estaduais" {...register("inscricoes_estaduais")} error={errors.inscricoes_estaduais} />
-
-          <Input label="Incricoes suframa" {...register("inscricoes_suframa")} error={errors.inscricoes_suframa} /> */}
-
-          <div className="col-span-full flex justify-end">
-            <Button
-              className="primary-button"
-              isDisabled={isSubmitting}
-              isLoading={isSubmitting}
-              type="submit"
-            >
-              Salvar
-            </Button>
-          </div>
+          <SaveFormButton isSubmitting={isSubmitting} />
         </form>
       )}
     </Dialog>
