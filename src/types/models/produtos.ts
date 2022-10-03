@@ -50,3 +50,15 @@ export interface INaturezaProduto {
   sigla: string;
   terminoValidade: string;
 }
+
+export interface INaturezasProdutosTiposDescritivos {
+  ativo: boolean;
+  descricao: string;
+  id: number;
+  inicioValidade: string;
+  naturezaProdutoId: number;
+  nome: string;
+  obrigatorio: boolean;
+  sequencia: number;
+  terminoValidade: string;
+}
