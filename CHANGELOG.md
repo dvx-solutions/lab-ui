@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.35
+
+### Patch Changes
+
+- 0f5376c: ajuste nas props da query de quadros
+
 ## 1.12.34
 
 ### Patch Changes
