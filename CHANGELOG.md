@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.34
+
+### Patch Changes
+
+- 4c27be8: recebimento do modulo na query de quadros
+
 ## 1.12.33
 
 ### Patch Changes
