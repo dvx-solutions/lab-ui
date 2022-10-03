@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.36
+
+### Patch Changes
+
+- d28c7e5: ajuste no enum OrigemProduto
+
 ## 1.12.35
 
 ### Patch Changes
