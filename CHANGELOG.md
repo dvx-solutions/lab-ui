@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.33
+
+### Patch Changes
+
+- 8215693: exportação dos componentes do devextreme
+
 ## 1.12.32
 
 ### Patch Changes
