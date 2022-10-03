@@ -4,11 +4,12 @@ import {
   convertAdvancedSearchToReactQueryKeys,
   getReactQueryPaginationKeys,
 } from '+/lib/formatters';
-import { IQuadro, IQueryParams, TSelectOption } from '+/types';
+import { EModulo, IQuadro, IQueryParams, TSelectOption } from '+/types';
 import { IAPIPaginatedResponse } from '+/types/axios';
 
 interface IUseQuadros extends IQueryParams<keyof IQuadro> {
   empresaAnoFiscalId: number;
+  modulo?: EModulo;
 }
 
 export const useQuadros = ({
@@ -16,6 +17,7 @@ export const useQuadros = ({
   API_Instance,
   empresaAnoFiscalId,
   keyword,
+  modulo,
   orderBy,
   pageNumber = 1,
   pageSize = 100000,
@@ -24,6 +26,7 @@ export const useQuadros = ({
     [
       'quadros',
       `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      `modulo-${modulo}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
@@ -40,6 +43,11 @@ export const useQuadros = ({
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IQuadro[]>
       >('producoes/quadros/listar', payload);
+
+      if (modulo)
+        data.data = data.data.filter(
+          quadro => Number(quadro.modulo) === Number(modulo)
+        );
 
       const options: TSelectOption[] = data.data.map(x => ({
         text: `${x.nome}`,
