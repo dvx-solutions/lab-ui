@@ -4,12 +4,12 @@ import {
   convertAdvancedSearchToReactQueryKeys,
   getReactQueryPaginationKeys,
 } from '+/lib/formatters';
-import { EModulo, IQuadro, IQueryParams, TSelectOption } from '+/types';
+import { IQuadro, IQueryParams, TSelectOption } from '+/types';
 import { IAPIPaginatedResponse } from '+/types/axios';
 
 interface IUseQuadros extends IQueryParams<keyof IQuadro> {
   empresaAnoFiscalId: number;
-  modulo?: EModulo;
+  modulo?: number;
 }
 
 export const useQuadros = ({
@@ -17,7 +17,7 @@ export const useQuadros = ({
   API_Instance,
   empresaAnoFiscalId,
   keyword,
-  modulo,
+  modulo = -1,
   orderBy,
   pageNumber = 1,
   pageSize = 100000,
@@ -44,7 +44,7 @@ export const useQuadros = ({
         IAPIPaginatedResponse<IQuadro[]>
       >('producoes/quadros/listar', payload);
 
-      if (modulo)
+      if (modulo >= 0)
         data.data = data.data.filter(
           quadro => Number(quadro.modulo) === Number(modulo)
         );
