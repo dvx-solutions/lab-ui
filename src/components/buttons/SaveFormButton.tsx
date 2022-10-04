@@ -28,7 +28,7 @@ export function SaveFormButton({
         className={classNames(
           'primary-button h-8 w-fit rounded font-semibold shadow-none'
         )}
-        isDisabled={isSubmitting}
+        isDisabled={isSubmitting || props.isDisabled || props.disabled}
         isLoading={isSubmitting}
         loadingText="Salvando"
         type="submit"
