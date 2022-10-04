@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.39
+
+### Patch Changes
+
+- 899a6e1: saveFormButton com possibilidade de desabilitação
+
 ## 1.12.38
 
 ### Patch Changes
