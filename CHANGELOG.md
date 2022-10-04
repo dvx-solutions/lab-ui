@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.37
+
+### Patch Changes
+
+- 85f6b88: novas props na query de produtos
+
 ## 1.12.36
 
 ### Patch Changes
