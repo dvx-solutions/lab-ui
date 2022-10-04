@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.38
+
+### Patch Changes
+
+- a22a666: adicao das novas props da query de produtos na chave
+
 ## 1.12.37
 
 ### Patch Changes
