@@ -34,10 +34,15 @@ export const useProdutos = ({
     [
       'produtos',
       `planoId-${planoId}`,
+      `naturezaProdutoId-${naturezaProdutoId}`,
+      `agrupadorId-${agrupadorId}`,
+      `tipoProdutoId-${tipoProdutoId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      if (planoId <= 0 || naturezaProdutoId <= 0) return null;
+
       const payload = {
         advancedSearch,
         agrupadorId,
@@ -64,6 +69,6 @@ export const useProdutos = ({
 
       return { ...data, options };
     },
-    { enabled: planoId > 0 }
+    { enabled: planoId > 0 && naturezaProdutoId > 0 }
   );
 };
