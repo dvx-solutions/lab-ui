@@ -12,17 +12,23 @@ import {
 } from '+/types';
 
 interface IUseProdutos extends IQueryParams<keyof IProduto> {
+  agrupadorId?: number;
+  naturezaProdutoId: number;
   planoId: number;
+  tipoProdutoId?: number;
 }
 
 export const useProdutos = ({
   advancedSearch,
+  agrupadorId,
   API_Instance,
   keyword,
+  naturezaProdutoId,
   orderBy,
   pageNumber = 1,
   pageSize = 100000,
   planoId,
+  tipoProdutoId,
 }: IUseProdutos) => {
   return useQuery(
     [
@@ -34,10 +40,13 @@ export const useProdutos = ({
     async () => {
       const payload = {
         advancedSearch,
+        agrupadorId,
         keyword,
+        naturezaProdutoId,
         orderBy,
         pageNumber,
         pageSize,
+        tipoProdutoId,
       };
 
       const { data } = await API_Instance.post<
