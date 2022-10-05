@@ -25,6 +25,8 @@ interface Props extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
   empresaAnoFiscalId: number;
   planoProdutoId: number;
+  planoId: number;
+  naturezaProdutoId: number;
 }
 
 const schema = z.object({
@@ -40,6 +42,8 @@ type FormValuesType = z.infer<typeof schema>;
 export function CUProdutoUnidade({
   recordIdToEdit,
   axiosInstance,
+  naturezaProdutoId,
+  planoId,
   empresaAnoFiscalId,
   planoProdutoId,
   ...disclousure
@@ -62,8 +66,9 @@ export function CUProdutoUnidade({
   };
 
   const { data: produtos } = useProdutos({
-    ...queriesConfig,
-    planoId: planoProdutoId,
+    API_Instance: axiosInstance,
+    naturezaProdutoId,
+    planoId,
   });
   const { data: unidadesNegocio } = useUnidadeNegocio(queriesConfig);
   const { data: atividadesEconomicas } = useAtividadesEconomicas({

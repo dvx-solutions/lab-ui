@@ -1,3 +1,4 @@
+import { AxiosInstance } from 'axios';
 import { useQuery } from 'react-query';
 
 import {
@@ -18,6 +19,7 @@ interface IUseProdutos extends IQueryParams<keyof IProduto> {
   naturezaProdutoId: number;
   planoId: number;
   tipoProdutoId?: number;
+  API_Instance: AxiosInstance;
 }
 
 export const useProdutos = ({
