@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.41
+
+### Patch Changes
+
+- de87416: ajuste nos enum de ETipoTelefone e ETipoEmail
+
 ## 1.12.40
 
 ### Patch Changes
