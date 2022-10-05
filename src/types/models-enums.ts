@@ -492,20 +492,15 @@ export enum ETipoVinculoColaborador {
 
 export enum ETipoEmail {
   'Não Informado' = 0,
-
-  'Pessoal' = 1,
-
-  'Corporativo' = 2,
-
+  Pessoal = 1,
+  Corporativo = 2,
   'Email Receita' = 3,
 }
 
 export enum ETipoTelefone {
-  'Comercial' = 0,
-
-  'Residencial' = 1,
-
-  'Celular' = 2,
+  Comercial = 1,
+  Residencial = 2,
+  Celular = 3,
 }
 
 export enum ETipoPlano {
