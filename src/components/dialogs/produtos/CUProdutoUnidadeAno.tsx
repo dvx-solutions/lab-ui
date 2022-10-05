@@ -24,9 +24,10 @@ import { useContasReceitas } from '+/hooks/react-query/financas/contas-receitas'
 import { getRequestErrorToast } from '+/lib';
 
 interface Props extends DialogDisclosureProps {
-  produtoUnidadeId: number;
   axiosInstance: AxiosInstance;
   empresaAnoFiscalId: number;
+  planoContaContabilId: number;
+  produtoUnidadeId: number;
 }
 
 const schema = z.object({
@@ -41,9 +42,10 @@ const schema = z.object({
 type FormValuesType = z.infer<typeof schema>;
 
 export function CUProdutoUnidadeAno({
-  produtoUnidadeId,
   axiosInstance,
   empresaAnoFiscalId,
+  planoContaContabilId,
+  produtoUnidadeId,
   ...disclousure
 }: Props) {
   // const appConfig = useAppConfigStore(s => s.appConfig); - NÃO VAI USAR MAIS?
@@ -71,7 +73,10 @@ export function CUProdutoUnidadeAno({
 
   const [unidadeIdSelecionada, setUnidadeIdSelecionada] = useState(0);
 
-  const { data: contasContabeis } = useContasContabeis(queriesConfig);
+  const { data: contasContabeis } = useContasContabeis({
+    ...queriesConfig,
+    planoContaContabilId,
+  });
   const { data: contasReceitas } = useContasReceitas(queriesConfig);
   const { data: unidades } = useUnidadeCentrosListarUnidades(queriesConfig);
   const { data: centros } = useUnidadeCentrosListarCentros({

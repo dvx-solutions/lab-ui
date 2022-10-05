@@ -15,9 +15,12 @@ import {
   Autocomplete,
   TAutocompleteOption,
 } from '+/components/form/Autocomplete';
-import { useProdutos, useUnidadeNegocio } from '+/hooks';
-import { useAtividadesEconomicas } from '+/hooks/react-query/atividades-economicas';
-import { useCodigoTributacaoMunicipios } from '+/hooks/react-query/codigo-tributacao-municipios';
+import {
+  useAtividadesEconomicas,
+  useCodigoTributacaoMunicipios,
+  useProdutos,
+  useUnidadeNegocio,
+} from '+/hooks';
 import { getRequestErrorToast } from '+/lib';
 
 interface Props extends DialogDisclosureProps {
@@ -45,7 +48,6 @@ export function CUProdutoUnidade({
   naturezaProdutoId,
   planoId,
   empresaAnoFiscalId,
-  planoProdutoId,
   ...disclousure
 }: Props) {
   const isEdition = recordIdToEdit > 0;
@@ -72,12 +74,10 @@ export function CUProdutoUnidade({
   });
   const { data: unidadesNegocio } = useUnidadeNegocio(queriesConfig);
   const { data: atividadesEconomicas } = useAtividadesEconomicas({
-    axiosInstance,
-    id: planoProdutoId,
+    API_Instance: axiosInstance,
   });
   const { data: codigoTributacao } = useCodigoTributacaoMunicipios({
-    axiosInstance,
-    id: planoProdutoId,
+    API_Instance: axiosInstance,
   });
 
   const [produtosQuery, setProdutosQuery] = useState('');

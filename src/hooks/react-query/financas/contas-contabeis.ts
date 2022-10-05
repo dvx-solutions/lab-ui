@@ -13,11 +13,6 @@ import {
   IQueryParams,
 } from '+/types';
 
-interface UseContasContabeisPorIdProps
-  extends IQueryParams<keyof IContaContabil> {
-  id: number;
-}
-
 interface UseContasContabeisProps extends IQueryParams<keyof IContaContabil> {
   planoContaContabilId: number;
 }
