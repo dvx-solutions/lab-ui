@@ -9,6 +9,7 @@ import {
   IAPIPaginatedResponse,
   IAPIResponse,
   IContaContabil,
+  IQueryByIdParams,
   IQueryParams,
 } from '+/types';
 
@@ -17,18 +18,23 @@ interface UseContasContabeisPorIdProps
   id: number;
 }
 
+interface UseContasContabeisProps extends IQueryParams<keyof IContaContabil> {
+  planoContaContabilId: number;
+}
+
 export const useContasContabeis = ({
   API_Instance,
   advancedSearch,
   keyword,
   orderBy,
   pageNumber = 1,
-  pageSize = 25,
-}: IQueryParams<keyof IContaContabil>) => {
+  pageSize = 100000,
+  planoContaContabilId,
+}: UseContasContabeisProps) => {
   return useQuery(
     [
-      // `planoContaContabilId-${appConfig?.empresaAnoFiscal.planoContaContabilId}`,
       'contas-contabeis',
+      `planoContaContabilId-${planoContaContabilId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
@@ -45,6 +51,8 @@ export const useContasContabeis = ({
         IAPIPaginatedResponse<IContaContabil[]>
       >('financas/contas-contabeis/listar', payload);
 
+      data.data = data.data.filter(x => x.planoId === planoContaContabilId);
+
       const options = getDataAsSelectOptions(data);
 
       return { ...data, options };
@@ -53,34 +61,14 @@ export const useContasContabeis = ({
 };
 
 export const useContasContabeisPorId = ({
-  API_Instance,
+  axiosInstance,
   id,
-}: UseContasContabeisPorIdProps) => {
+}: IQueryByIdParams) => {
   return useQuery(['contas-contabeis', `id-${id}`], async () => {
-    const { data } = await API_Instance.get<IAPIResponse<IContaContabil>>(
+    const { data } = await axiosInstance.get<IAPIResponse<IContaContabil>>(
       `financas/contas-fluxos/${id}`
     );
 
     return data;
   });
 };
-
-//   api
-//     .post<IAPIPaginatedResponse<IContaContabil[]>>(
-//       'empresarial/contas-contabeis/listar',
-//       { pageSize: 100000 }
-//     )
-//     .then(({ data }) => {
-//       data.data = data.data.filter(
-//         x =>
-//           x.planoId ===
-//           Number(appConfig?.empresaAnoFiscal.planoContaContabilId)
-//       );
-
-//       return {
-//         data: data.data,
-//         options: getApiDataAsSelectOptions(data.data),
-//       };
-//     }),
-// {
-//   enabled: !!appConfig?.empresaAnoFiscal.planoContaContabilId,

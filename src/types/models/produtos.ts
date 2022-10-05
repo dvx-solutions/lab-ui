@@ -68,3 +68,12 @@ export interface INaturezasProdutosTiposDescritivos {
   produtoId: number;
   texto: string;
 }
+
+export interface IProdutoDescritivo {
+  id: number;
+  naturezaProdutoTipoDescritivo: INaturezasProdutosTiposDescritivos;
+  naturezaProdutoTipoDescritivoId: number;
+  produto: IProduto;
+  produtoId: number;
+  texto: string;
+}

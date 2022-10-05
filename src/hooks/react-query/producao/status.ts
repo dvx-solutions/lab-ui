@@ -1,7 +1,11 @@
 import { useQuery } from 'react-query';
 
-import { convertAdvancedSearchToReactQueryKeys } from '+/lib/formatters';
-import { IQueryParams, IStatus, TSelectOption } from '+/types';
+import { getApiDataAsSelectOptions } from '+/lib';
+import {
+  convertAdvancedSearchToReactQueryKeys,
+  getReactQueryPaginationKeys,
+} from '+/lib/formatters';
+import { IQueryParams, IStatus } from '+/types';
 import { IAPIPaginatedResponse } from '+/types/axios';
 
 interface IUseStatus extends IQueryParams<keyof IStatus> {
@@ -12,40 +16,38 @@ interface IUseStatus extends IQueryParams<keyof IStatus> {
 export const useStatus = ({
   advancedSearch,
   API_Instance,
+  empresaAnoFiscalId,
   keyword,
   orderBy,
   pageNumber = 1,
-  pageSize = 9999,
-  empresaAnoFiscalId,
+  pageSize = 100000,
   quadroId,
-}: IUseStatus) => {
-  const payload = {
-    advancedSearch: [advancedSearch ? { ...advancedSearch } : {}],
-    keyword,
-    orderBy,
-    pageNumber,
-    pageSize,
-    empresaAnoFiscalId,
-    quadroId,
-  };
-
-  return useQuery(
+}: IUseStatus) =>
+  useQuery(
     [
       'status',
-      `status-quadroId-${quadroId}`,
-      `status-ano-fiscal-id-${empresaAnoFiscalId}`,
+      `quadroId-${quadroId}`,
+      `empresaAnoFiscalId-${empresaAnoFiscalId}`,
+      convertAdvancedSearchToReactQueryKeys(advancedSearch),
+      getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      if (quadroId <= 0) return null;
+
+      const payload = {
+        advancedSearch,
+        empresaAnoFiscalId,
+        keyword,
+        orderBy,
+        pageNumber,
+        pageSize,
+        quadroId,
+      };
+
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<IStatus[]>
       >('producoes/status/listar', payload);
 
-      const options: TSelectOption[] = data.data.map(x => ({
-        text: `${x.nome}`,
-        value: x.id,
-      }));
-
-      return { ...data, options };
+      return { ...data, options: getApiDataAsSelectOptions(data.data) };
     }
   );
-};

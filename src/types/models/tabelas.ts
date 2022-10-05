@@ -59,3 +59,13 @@ export interface IIndice {
   terminoValidade: string;
   tipoIndice: number;
 }
+
+export interface ICodigoTributacaoMunicipio {
+  aliquota: number;
+  ativo: boolean;
+  codigo: string;
+  codigoServicoMunicipioId: number;
+  descricao: string;
+  id: number;
+  nome: string;
+}

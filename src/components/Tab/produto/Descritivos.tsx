@@ -2,49 +2,50 @@ import { AxiosError, AxiosInstance } from 'axios';
 import { useEffect } from 'react';
 import { useForm, useFieldArray } from 'react-hook-form';
 import { RiErrorWarningLine } from 'react-icons/ri';
+import { useQueryClient } from 'react-query';
 import { toast } from 'react-toastify';
 
 import { SaveFormButton } from '+/components/buttons';
 import { Textarea } from '+/components/form';
 import { useNaturezasProdutosTiposDescritivos, useProdutoPorId } from '+/hooks';
 import { useProdutosDescritivos } from '+/hooks/react-query/produto/produtos-descritivos';
-import { queryClient } from '+/lib';
 import { IRequestError } from '+/types';
 
 interface Props {
-  produtoId: number;
   axiosInstance: AxiosInstance;
+  produtoId: number;
 }
 
 type FormValuesType = {
   descritivos: {
-    registroId?: number;
     id?: number;
     naturezaProdutoTipoDescritivoId: number;
     nome: string;
     obrigatorio: boolean;
     produtoId: number;
+    registroId?: number;
     sequencia: number;
     texto: string;
   }[];
 };
 
 export function DescritivosTab({ produtoId, axiosInstance }: Props) {
+  const queryClient = useQueryClient();
   const { data: produto } = useProdutoPorId({ axiosInstance, id: produtoId });
   const { data: descritivos } = useNaturezasProdutosTiposDescritivos({
     naturezaProdutoId: produto?.naturezaProdutoId,
     API_Instance: axiosInstance,
   });
   const { data: produtosDescritivos } = useProdutosDescritivos({
-    axiosInstance,
-    id: produtoId,
+    API_Instance: axiosInstance,
+    produtoId,
   });
 
   const {
-    register,
     control,
-    handleSubmit,
     formState: { isSubmitting, errors: formErrors },
+    handleSubmit,
+    register,
   } = useForm<FormValuesType>();
 
   const { fields, append, remove } = useFieldArray({
@@ -66,9 +67,9 @@ export function DescritivosTab({ produtoId, axiosInstance }: Props) {
         };
 
         await axiosInstance({
+          data: x.registroId ? { ...payload, id: x.registroId } : payload,
           method: x.registroId ? 'put' : 'post',
           url: 'produtos/produtos-descritivos',
-          data: x.registroId ? { ...payload, id: x.registroId } : payload,
         })
           .then(() => {
             successfulRequests.push(x.nome);
