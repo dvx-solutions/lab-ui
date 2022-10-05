@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.40
+
+### Patch Changes
+
+- ae05a9c: deploy
+
 ## 1.12.39
 
 ### Patch Changes
