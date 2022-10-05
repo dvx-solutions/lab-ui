@@ -1070,16 +1070,12 @@ export enum EStatusConferenciaPlanejamentoColaborador {
 }
 
 export enum EOrigemProduto {
-  'Consolidação SMD' = 0,
+  // ConsolidacaoSMD = 0,
   'Educação Básica' = 1,
   'Educação Profissional' = 2,
-  'Saúde' = 3,
-  'Consultoria' = 4,
-  'Inovação' = 5,
-  'Metrologia' = 6,
-  'Educação Corporativa' = 7,
-  'Saúde e Seguranca no Trabalho' = 8,
-  'Esportes' = 9,
-  'Promoção da Saúde' = 10,
-  'Outros' = 11,
+  'SST' = 3,
+  'STI' = 4,
+  'Esportes' = 5,
+  'Promoção da Saúde' = 6,
+  'Outros' = 99,
 }

@@ -14,32 +14,46 @@ import {
 } from '+/types';
 
 interface IUseProdutos extends IQueryParams<keyof IProduto> {
+  agrupadorId?: number;
+  naturezaProdutoId: number;
   planoId: number;
+  tipoProdutoId?: number;
 }
 
 export const useProdutos = ({
   advancedSearch,
+  agrupadorId,
   API_Instance,
   keyword,
+  naturezaProdutoId,
   orderBy,
   pageNumber = 1,
   pageSize = 100000,
   planoId,
+  tipoProdutoId,
 }: IUseProdutos) => {
   return useQuery(
     [
       'produtos',
       `planoId-${planoId}`,
+      `naturezaProdutoId-${naturezaProdutoId}`,
+      `agrupadorId-${agrupadorId}`,
+      `tipoProdutoId-${tipoProdutoId}`,
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      if (planoId <= 0 || naturezaProdutoId <= 0) return null;
+
       const payload = {
         advancedSearch,
+        agrupadorId,
         keyword,
+        naturezaProdutoId,
         orderBy,
         pageNumber,
         pageSize,
+        tipoProdutoId,
       };
 
       const { data } = await API_Instance.post<
@@ -57,7 +71,7 @@ export const useProdutos = ({
 
       return { ...data, options };
     },
-    { enabled: planoId > 0 }
+    { enabled: planoId > 0 && naturezaProdutoId > 0 }
   );
 };
 

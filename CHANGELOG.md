@@ -1,5 +1,47 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.39
+
+### Patch Changes
+
+- 899a6e1: saveFormButton com possibilidade de desabilitação
+
+## 1.12.38
+
+### Patch Changes
+
+- a22a666: adicao das novas props da query de produtos na chave
+
+## 1.12.37
+
+### Patch Changes
+
+- 85f6b88: novas props na query de produtos
+
+## 1.12.36
+
+### Patch Changes
+
+- d28c7e5: ajuste no enum OrigemProduto
+
+## 1.12.35
+
+### Patch Changes
+
+- 0f5376c: ajuste nas props da query de quadros
+
+## 1.12.34
+
+### Patch Changes
+
+- 4c27be8: recebimento do modulo na query de quadros
+
+## 1.12.33
+
+### Patch Changes
+
+- 8215693: exportação dos componentes do devextreme
+
 ## 1.12.32
 
 ### Patch Changes
