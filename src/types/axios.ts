@@ -33,3 +33,9 @@ export interface IAPIResponse<T> {
   ];
   data: T;
 }
+
+export interface IRequestError {
+  errors: Record<string, Array<string>>;
+  notifications: IAPIResponse<string>['notifications'];
+  messages: Array<string>;
+}

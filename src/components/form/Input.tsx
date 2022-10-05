@@ -19,6 +19,8 @@ export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   rightIcon?: ReactNode;
   isDisabled?: boolean;
   isReadonly?: boolean;
+  //
+  displayValue?: () => void;
 }
 
 const BaseComponent: ForwardRefRenderFunction<HTMLInputElement, InputProps> = (

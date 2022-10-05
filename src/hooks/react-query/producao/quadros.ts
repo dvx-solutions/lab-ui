@@ -9,12 +9,14 @@ import { IAPIPaginatedResponse } from '+/types/axios';
 
 interface IUseQuadros extends IQueryParams<keyof IQuadro> {
   empresaAnoFiscalId: number;
+  modulo: number | undefined;
 }
 
 export const useQuadros = ({
   advancedSearch,
   API_Instance,
   empresaAnoFiscalId,
+  modulo = undefined,
   keyword,
   orderBy,
   pageNumber = 1,
@@ -31,6 +33,7 @@ export const useQuadros = ({
       const payload = {
         advancedSearch,
         empresaAnoFiscalId,
+        modulo,
         keyword,
         orderBy,
         pageNumber,

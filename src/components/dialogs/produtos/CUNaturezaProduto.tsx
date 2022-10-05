@@ -53,12 +53,14 @@ interface Props extends DialogDisclosureProps {
   axiosInstance: AxiosInstance;
   empresaAnoFiscalId: number;
   recordIdToEdit: number;
+  modulo: number | undefined;
 }
 
 export function CUNaturezaProduto({
   axiosInstance,
   empresaAnoFiscalId,
   recordIdToEdit,
+  modulo = undefined,
   ...disclousure
 }: Props) {
   const { data: naturezaParaEditar, isLoading: isLoadingNaturezaParaEditar } =
@@ -99,6 +101,7 @@ export function CUNaturezaProduto({
   const { data: quadros } = useQuadros({
     API_Instance: axiosInstance,
     empresaAnoFiscalId,
+    modulo,
   });
 
   const { data: temas } = useTemas({

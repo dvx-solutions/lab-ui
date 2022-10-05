@@ -8,7 +8,9 @@ import {
   IAPIPaginatedResponse,
   IProduto,
   IQueryParams,
+  IQueryByIdParams,
   TSelectOption,
+  IAPIResponse,
 } from '+/types';
 
 interface IUseProdutos extends IQueryParams<keyof IProduto> {
@@ -58,3 +60,13 @@ export const useProdutos = ({
     { enabled: planoId > 0 }
   );
 };
+
+export const useProdutoPorId = ({ axiosInstance, id }: IQueryByIdParams) =>
+  useQuery(
+    ['produtos', `id-${id}`],
+    () =>
+      axiosInstance
+        .get<IAPIResponse<IProduto>>(`produtos/produtos/${id}`)
+        .then(({ data }) => data.data),
+    { enabled: id > 0 }
+  );
