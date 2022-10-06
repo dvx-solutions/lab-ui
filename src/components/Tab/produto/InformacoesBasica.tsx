@@ -138,6 +138,7 @@ export function InformacoesBasicasTab({
           '⌨️ ~ file: InformacoesBasica.tsx ~ line 138 ~ useEffect ~ naturezaParaEditar',
           naturezaParaEditar
         );
+
         Object.entries(naturezaParaEditar).forEach(([key, value]) => {
           const typedKey = key as keyof FormValuesType;
           if (typedKey.includes('Validade')) {
@@ -146,7 +147,7 @@ export function InformacoesBasicasTab({
               format(new Date(value.toString()), 'yyyy-MM-dd')
             );
           } else {
-            setValue(typedKey, value.toString());
+            setValue(typedKey, value);
           }
         });
 
