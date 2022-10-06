@@ -41,7 +41,13 @@ const BaseComponent: ForwardRefRenderFunction<
   },
   ref
 ) => {
-  if (shouldSortValues) options?.sort((a, b) => a.text.localeCompare(b.text));
+  if (shouldSortValues)
+    options?.sort((a, b) => {
+      const splitedA = a.text.split('-')[1];
+      const splitedB = b.text.split('-')[1];
+      if (!!splitedA && !!splitedB) return splitedA.localeCompare(splitedB);
+      return a.text.localeCompare(b.text);
+    });
 
   return (
     <FormControl>
@@ -63,7 +69,7 @@ const BaseComponent: ForwardRefRenderFunction<
         ref={ref}
         disabled={isDisabled || props.disabled || isReadOnly}
       >
-        <option selected value={NaN}>
+        <option selected value={-100}>
           {placeholder}
         </option>
 
