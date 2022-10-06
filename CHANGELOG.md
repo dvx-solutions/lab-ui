@@ -1,5 +1,29 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.45
+
+### Patch Changes
+
+- 6d5f908: CUProduto: adição do ID para editar
+
+## 1.12.44
+
+### Patch Changes
+
+- 7aa29e3: CUProduto: set dos valores para edição
+
+## 1.12.43
+
+### Patch Changes
+
+- 272d65c: CUProduto: inserção do plano do produto para buscar agrupadores
+
+## 1.12.42
+
+### Patch Changes
+
+- 725226f: ajuste na query para buscar produto para editar
+
 ## 1.12.41
 
 ### Patch Changes

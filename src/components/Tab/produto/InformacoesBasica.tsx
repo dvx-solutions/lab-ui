@@ -13,15 +13,13 @@ import { Spinner } from '+/components/Spinner';
 import {
   useAgrupadores,
   usePlanos,
+  useProdutoPorId,
   useTabelasBasicas,
   useTiposProdutos,
 } from '+/hooks';
-import {
-  useNaturezaProdutoPorId,
-  useNaturezaProdutos,
-} from '+/hooks/react-query/produto/natureza-produtos';
+import { useNaturezaProdutos } from '+/hooks/react-query/produto/natureza-produtos';
 import { getRequestErrorToast } from '+/lib';
-import { ETipoPlano, IQueryByIdParams } from '+/types';
+import { ETipoPlano } from '+/types';
 
 const schema = z.object({
   agrupadorId: z.number(),
@@ -31,6 +29,7 @@ const schema = z.object({
   combo: z.boolean(),
   descricao: z.string().min(1),
   homologado: z.boolean(),
+  id: z.union([z.number(), z.undefined()]),
   inicioValidade: z.string(),
   naturezaProdutoId: z.number(),
   nome: z.string().min(1),
@@ -44,17 +43,19 @@ const schema = z.object({
 
 type FormValuesType = z.infer<typeof schema>;
 
-interface Props extends IQueryByIdParams {
-  recordIdToEdit: number;
+interface Props {
   axiosInstance: AxiosInstance;
+  isModalOpen: boolean;
+  recordIdToEdit: number;
 }
 
 export function InformacoesBasicasTab({
-  recordIdToEdit,
   axiosInstance,
+  isModalOpen,
+  recordIdToEdit,
 }: Props) {
   const { data: naturezaParaEditar, isLoading: isLoadingNaturezaParaEditar } =
-    useNaturezaProdutoPorId({ axiosInstance, id: recordIdToEdit });
+    useProdutoPorId({ axiosInstance, id: recordIdToEdit });
   const queryClient = useQueryClient();
   const isEdition = recordIdToEdit > 0;
   const [isActive, setIsActive] = useState(true);
@@ -132,20 +133,31 @@ export function InformacoesBasicasTab({
   }, [isEdition, planos?.options, setValue]);
 
   useEffect(() => {
-    if (naturezaParaEditar) {
-      Object.entries(naturezaParaEditar).forEach(([key, value]) => {
-        const typedKey = key as keyof FormValuesType;
-        if (typedKey.includes('Validade')) {
-          setValue(typedKey, format(new Date(value.toString()), 'yyyy-MM-dd'));
-        } else {
-          setValue(typedKey, value.toString());
-        }
-      });
+    if (isModalOpen)
+      if (naturezaParaEditar) {
+        console.log(
+          '⌨️ ~ file: InformacoesBasica.tsx ~ line 138 ~ useEffect ~ naturezaParaEditar',
+          naturezaParaEditar
+        );
 
-      setIsActive(naturezaParaEditar.ativo);
-    }
+        Object.entries(naturezaParaEditar).forEach(([key, value]) => {
+          const typedKey = key as keyof FormValuesType;
+          if (typedKey.includes('Validade')) {
+            setValue(
+              typedKey,
+              format(new Date(value.toString()), 'yyyy-MM-dd')
+            );
+          } else {
+            setValue(typedKey, value);
+          }
+        });
+
+        setIsActive(naturezaParaEditar.ativo);
+        setSelectedPlan(naturezaParaEditar.planoId);
+      }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
+    isModalOpen,
     naturezaParaEditar,
     naturezasProduto?.options,
     planos?.options,

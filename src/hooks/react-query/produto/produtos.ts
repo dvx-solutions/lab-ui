@@ -81,8 +81,10 @@ export const useProdutoPorId = ({ axiosInstance, id }: IQueryByIdParams) =>
   useQuery(
     ['produtos', `id-${id}`],
     () =>
-      axiosInstance
-        .get<IAPIResponse<IProduto>>(`produtos/produtos/${id}`)
-        .then(({ data }) => data.data),
+      id > 0
+        ? axiosInstance
+            .get<IAPIResponse<IProduto>>(`produtos/produtos/${id}`)
+            .then(({ data }) => data.data)
+        : null,
     { enabled: id > 0 }
   );
