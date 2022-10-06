@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.44
+
+### Patch Changes
+
+- 7aa29e3: CUProduto: set dos valores para edição
+
 ## 1.12.43
 
 ### Patch Changes
