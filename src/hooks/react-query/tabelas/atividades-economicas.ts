@@ -23,16 +23,18 @@ export const useAtividadesEconomicas = ({
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
-    () =>
+    async () => {
+      const payload = {
+        advancedSearch,
+        pageNumber,
+        pageSize,
+      };
       API_Instance.post<IAPIPaginatedResponse<IAtividadeEconomica[]>>(
         'tabelas/atividades-economicas/listar',
-        {
-          pageNumber,
-          pageSize,
-          advancedSearch,
-        }
+        payload
       ).then(({ data }) => ({
         data: data.data,
         options: getApiDataAsSelectOptions(data.data),
-      }))
+      }));
+    }
   );
