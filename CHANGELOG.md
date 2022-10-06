@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.43
+
+### Patch Changes
+
+- 272d65c: CUProduto: inserção do plano do produto para buscar agrupadores
+
 ## 1.12.42
 
 ### Patch Changes
