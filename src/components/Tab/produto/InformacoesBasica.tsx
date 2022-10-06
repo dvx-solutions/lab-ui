@@ -132,22 +132,27 @@ export function InformacoesBasicasTab({
   }, [isEdition, planos?.options, setValue]);
 
   useEffect(() => {
-    if (naturezaParaEditar) {
-      console.log(
-        '⌨️ ~ file: InformacoesBasica.tsx ~ line 138 ~ useEffect ~ naturezaParaEditar',
-        naturezaParaEditar
-      );
-      Object.entries(naturezaParaEditar).forEach(([key, value]) => {
-        const typedKey = key as keyof FormValuesType;
-        if (typedKey.includes('Validade')) {
-          setValue(typedKey, format(new Date(value.toString()), 'yyyy-MM-dd'));
-        } else {
-          setValue(typedKey, value.toString());
-        }
-      });
+    if (isModalOpen)
+      if (naturezaParaEditar) {
+        console.log(
+          '⌨️ ~ file: InformacoesBasica.tsx ~ line 138 ~ useEffect ~ naturezaParaEditar',
+          naturezaParaEditar
+        );
+        Object.entries(naturezaParaEditar).forEach(([key, value]) => {
+          const typedKey = key as keyof FormValuesType;
+          if (typedKey.includes('Validade')) {
+            setValue(
+              typedKey,
+              format(new Date(value.toString()), 'yyyy-MM-dd')
+            );
+          } else {
+            setValue(typedKey, value.toString());
+          }
+        });
 
-      setIsActive(naturezaParaEditar.ativo);
-    }
+        setIsActive(naturezaParaEditar.ativo);
+        setSelectedPlan(naturezaParaEditar.planoId);
+      }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [
     isModalOpen,
