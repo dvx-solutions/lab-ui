@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.42
+
+### Patch Changes
+
+- 725226f: ajuste na query para buscar produto para editar
+
 ## 1.12.41
 
 ### Patch Changes
