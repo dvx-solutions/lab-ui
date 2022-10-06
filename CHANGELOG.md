@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.46
+
+### Patch Changes
+
+- 7971435: Select: ordenação dos itens por nome e valor default como -100
+
 ## 1.12.45
 
 ### Patch Changes
