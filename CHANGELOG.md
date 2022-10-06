@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.45
+
+### Patch Changes
+
+- 6d5f908: CUProduto: adição do ID para editar
+
 ## 1.12.44
 
 ### Patch Changes
