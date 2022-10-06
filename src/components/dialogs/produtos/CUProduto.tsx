@@ -33,9 +33,9 @@ export function CUProduto({
           {
             children: (
               <InformacoesBasicasTab
-                recordIdToEdit={recordIdToEdit}
                 axiosInstance={axiosInstance}
-                id={recordIdToEdit}
+                isModalOpen={disclousure.isOpen}
+                recordIdToEdit={recordIdToEdit}
               />
             ),
             tabFor: 'dados_cadastrais',
@@ -43,8 +43,8 @@ export function CUProduto({
           {
             children: (
               <DescritivosTab
-                produtoId={recordIdToEdit}
                 axiosInstance={axiosInstance}
+                produtoId={recordIdToEdit}
               />
             ),
             tabFor: 'descritivos',
