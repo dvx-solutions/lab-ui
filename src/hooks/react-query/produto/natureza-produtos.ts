@@ -31,6 +31,8 @@ export const useNaturezaProdutoPorId = ({
 export const useNaturezaProdutos = ({
   API_Instance,
   advancedSearch,
+  keyword,
+  orderBy,
   pageNumber = 1,
   pageSize = 100000,
 }: IQueryParams<keyof INaturezaProduto>) =>
@@ -40,12 +42,30 @@ export const useNaturezaProdutos = ({
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
-    () =>
-      API_Instance.post<IAPIPaginatedResponse<INaturezaProduto[]>>(
-        'produtos/naturezas-produtos/listar',
-        { advancedSearch, pageNumber, pageSize }
-      ).then(({ data }) => ({
+    async () => {
+      const payload = {
+        advancedSearch,
+        keyword,
+        orderBy,
+        pageNumber,
+        pageSize,
+      };
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<INaturezaProduto[]>
+      >('produtos/naturezas-produtos/listar', payload);
+
+      return {
         data: data.data,
         options: getDataAsSelectOptions(data),
-      }))
+      };
+    }
+
+    // () =>
+    //   API_Instance.post<IAPIPaginatedResponse<INaturezaProduto[]>>(
+    //     'produtos/naturezas-produtos/listar',
+    //     { advancedSearch, pageNumber, pageSize }
+    //   ).then(({ data }) => ({
+    //     data: data.data,
+    //     options: getDataAsSelectOptions(data),
+    //   }))
   );

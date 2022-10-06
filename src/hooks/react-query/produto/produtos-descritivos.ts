@@ -2,6 +2,7 @@ import { useQuery } from 'react-query';
 
 import {
   convertAdvancedSearchToReactQueryKeys,
+  getDataAsSelectOptions,
   getReactQueryPaginationKeys,
 } from '+/lib';
 import {
@@ -17,8 +18,10 @@ interface UseProdutosDescritivosProps
 }
 
 export const useProdutosDescritivos = ({
-  advancedSearch,
   API_Instance,
+  advancedSearch,
+  keyword,
+  orderBy,
   pageNumber = 1,
   pageSize = 100000,
   produtoId,
@@ -30,16 +33,34 @@ export const useProdutosDescritivos = ({
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
-    () =>
-      produtoId > 0
-        ? API_Instance.post<
-            IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
-          >('produtos/produtos-descritivos/listar', {
-            advancedSearch,
-            pageNumber,
-            pageSize,
-            produtoId,
-          }).then(({ data }) => data.data)
-        : null,
-    { enabled: produtoId > 0 }
+    async () => {
+      const payload = {
+        advancedSearch,
+        keyword,
+        orderBy,
+        pageNumber,
+        pageSize,
+        produtoId,
+      };
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
+      >('produtos/produtos-descritivos/listar', payload);
+
+      return {
+        data: data.data,
+        options: getDataAsSelectOptions(data),
+      };
+    }
+    // () =>
+    //   produtoId > 0
+    //     ? API_Instance.post<
+    //         IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
+    //       >('produtos/produtos-descritivos/listar', {
+    //         advancedSearch,
+    //         pageNumber,
+    //         pageSize,
+    //         produtoId,
+    //       }).then(({ data }) => data.data)
+    //     : null,
+    // { enabled: produtoId > 0 }
   );

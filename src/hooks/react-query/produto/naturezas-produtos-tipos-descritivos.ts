@@ -23,6 +23,8 @@ export const useNaturezasProdutosTiposDescritivos = ({
   naturezaProdutoId,
   API_Instance,
   advancedSearch,
+  keyword,
+  orderBy,
   pageNumber = 1,
   pageSize = 100000,
 }: useNaturezasProdutosTiposDescritivosProps) =>
@@ -33,24 +35,43 @@ export const useNaturezasProdutosTiposDescritivos = ({
       convertAdvancedSearchToReactQueryKeys(advancedSearch),
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
-    () =>
-      API_Instance.post<
-        IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
-      >('produtos/naturezas-produtos-tipos-descritivos/listar', {
+    async () => {
+      const payload = {
+        advancedSearch,
+        naturezaProdutoId,
+        keyword,
+        orderBy,
         pageNumber,
         pageSize,
-        advancedSearch,
-      }).then(({ data }) => {
-        if (naturezaProdutoId)
-          data.data = data.data.filter(
-            x => x.naturezaProdutoId === naturezaProdutoId
-          );
+      };
 
-        return {
-          data: data.data,
-          options: getApiDataAsSelectOptions(data.data),
-        };
-      })
+      const { data } = await API_Instance.post<
+        IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
+      >('produtos/naturezas-produtos-tipos-descritivos/listar', payload);
+
+      return {
+        data: data.data,
+        options: getApiDataAsSelectOptions(data.data),
+      };
+    }
+    // () =>
+    //   API_Instance.post<
+    //     IAPIPaginatedResponse<INaturezasProdutosTiposDescritivos[]>
+    //   >('produtos/naturezas-produtos-tipos-descritivos/listar', {
+    //     pageNumber,
+    //     pageSize,
+    //     advancedSearch,
+    //   }).then(({ data }) => {
+    //     if (naturezaProdutoId)
+    //       data.data = data.data.filter(
+    //         x => x.naturezaProdutoId === naturezaProdutoId
+    //       );
+
+    //     return {
+    //       data: data.data,
+    //       options: getApiDataAsSelectOptions(data.data),
+    //     };
+    //   })
   );
 
 export const useNaturezasProdutosTiposDescritivosPorId = ({

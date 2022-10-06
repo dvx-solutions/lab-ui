@@ -10,6 +10,8 @@ import { IAPIPaginatedResponse, IQueryParams, TabelaBasicaType } from '+/types';
 export const useTiposProdutos = ({
   API_Instance,
   advancedSearch,
+  keyword,
+  orderBy,
   pageNumber = 1,
   pageSize = 100000,
 }: IQueryParams<keyof TabelaBasicaType>) =>
@@ -20,9 +22,16 @@ export const useTiposProdutos = ({
       getReactQueryPaginationKeys(pageNumber, pageSize),
     ],
     async () => {
+      const payload = {
+        advancedSearch,
+        keyword,
+        orderBy,
+        pageNumber,
+        pageSize,
+      };
       const { data } = await API_Instance.post<
         IAPIPaginatedResponse<TabelaBasicaType[]>
-      >('produtos/tipos-produtos/listar', { pageNumber, pageSize });
+      >('produtos/tipos-produtos/listar', payload);
 
       return {
         data: data.data,

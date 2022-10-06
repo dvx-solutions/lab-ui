@@ -61,6 +61,7 @@ export interface INaturezasProdutosTiposDescritivos {
   obrigatorio: boolean;
   sequencia: number;
   terminoValidade: string;
+  codigo: string;
 
   naturezaProdutoTipoDescritivo: INaturezasProdutosTiposDescritivos;
   naturezaProdutoTipoDescritivoId: number;
