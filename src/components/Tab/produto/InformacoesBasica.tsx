@@ -29,6 +29,7 @@ const schema = z.object({
   combo: z.boolean(),
   descricao: z.string().min(1),
   homologado: z.boolean(),
+  id: z.union([z.number(), z.undefined()]),
   inicioValidade: z.string(),
   naturezaProdutoId: z.number(),
   nome: z.string().min(1),
