@@ -106,6 +106,7 @@ export function CUPessoaJuridica({
     setValue,
   } = useForm<TCriarPJFormValues>({
     resolver: zodResolver(schema),
+    mode: 'onChange',
   });
 
   const closeAndResetForm = () => {
@@ -146,9 +147,9 @@ export function CUPessoaJuridica({
       ) : (
         <form
           onSubmit={handleSubmit(onFormSubmit)}
-          className="h-[36rem] max-h-[40rem]"
+          className="h-[38rem] max-h-[40rem]"
         >
-          <div className="grid max-h-[36rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
+          <div className="grid max-h-[38rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
             <div className="grid h-fit w-full grid-cols-2 gap-2 p-2">
               <div className="col-span-full">
                 <span className="text-lg font-semibold">
@@ -277,7 +278,7 @@ export function CUPessoaJuridica({
                       {
                         tabFor: 'dados-gerais',
                         children: (
-                          <div className="grid grid-cols-2 gap-2">
+                          <div className="grid max-h-[23rem] grid-cols-2 gap-2 overflow-auto">
                             <Input
                               disabled
                               readOnly
@@ -430,7 +431,7 @@ export function CUPessoaJuridica({
                       {
                         tabFor: 'socios',
                         children: (
-                          <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
+                          <div className="grid max-h-[23rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
                             {dataReceita?.socios
                               ? dataReceita?.socios.map(socio => (
                                   <div
@@ -469,7 +470,7 @@ export function CUPessoaJuridica({
                       {
                         tabFor: 'cnaes',
                         children: (
-                          <div className="grid max-h-[36rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
+                          <div className="grid max-h-[23rem] grid-cols-1 gap-4 divide-y-2 divide-gray-400 overflow-y-auto pr-4">
                             <div>
                               <span className="font-semibold text-gray-700">
                                 CNAE Primário

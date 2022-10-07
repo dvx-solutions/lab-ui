@@ -56,8 +56,10 @@ export const useAgrupadorPorId = ({
   useQuery(
     ['agrupadores', `id-${id}`],
     () =>
-      axiosInstance
-        .get<IAPIResponse<IAgrupador>>(`empresarial/agrupadores/${id}`)
-        .then(({ data }) => data),
+      id > 0
+        ? axiosInstance
+            .get<IAPIResponse<IAgrupador>>(`empresarial/agrupadores/${id}`)
+            .then(({ data }) => data)
+        : null,
     { enabled: id > 0 }
   );

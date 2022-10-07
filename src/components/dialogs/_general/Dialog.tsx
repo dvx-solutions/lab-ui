@@ -3,6 +3,7 @@ import { ReactNode } from 'react';
 import { FiX } from 'react-icons/fi';
 
 import { Button } from '+/components/buttons/Button';
+import { classNames } from '+/lib';
 
 export interface DialogDisclosureProps {
   isOpen: boolean;
@@ -22,7 +23,7 @@ export function Dialog({
   onClose,
   onOpen,
   title,
-  zIndex = 99999,
+  zIndex = 999,
 }: DialogProps) {
   const handleStateChange = (state: boolean) => {
     if (state) {
@@ -34,10 +35,13 @@ export function Dialog({
 
   return (
     <Root open={isOpen} onOpenChange={handleStateChange}>
-      <Overlay className="fixed inset-0 z-[999] bg-black/25" />
+      <Overlay className="fixed inset-0 z-[998] bg-black/25" />
 
       <Content
-        className={`fixed top-2/4 left-2/4 z-[${zIndex}] w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md`}
+        className={classNames(
+          `fixed top-2/4 left-2/4 w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md`,
+          `z-[999]`
+        )}
       >
         <Title className="mb-4 flex items-center justify-between gap-16 text-xl font-medium">
           {title}
