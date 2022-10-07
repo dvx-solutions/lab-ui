@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.51
+
+### Patch Changes
+
+- 638e57a: Select: valor default undefined
+
 ## 1.12.50
 
 ### Patch Changes
