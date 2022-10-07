@@ -11,7 +11,7 @@ export function FormErrorMessage({
 }: FormErrorMessageProps) {
   if (error) {
     return (
-      <span className={`"mt-1 text-red-500" text-xs ${className}`}>
+      <span className={`mt-1 text-xs text-red-500 ${className}`}>
         {error.message}
       </span>
     );
