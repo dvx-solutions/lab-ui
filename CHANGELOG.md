@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.60
+
+### Patch Changes
+
+- 47121d8: dialog
+
 ## 1.12.59
 
 ### Patch Changes
