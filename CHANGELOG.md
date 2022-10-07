@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.48
+
+### Patch Changes
+
+- 9bdea35: CUPessoaFisica: set das datas na edição
+
 ## 1.12.47
 
 ### Patch Changes
