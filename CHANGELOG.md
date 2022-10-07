@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.67
+
+### Patch Changes
+
+- ddd412f: adicao do hook de municipio
+
 ## 1.12.66
 
 ### Patch Changes
