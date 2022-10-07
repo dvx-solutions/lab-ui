@@ -69,3 +69,16 @@ export interface ICodigoTributacaoMunicipio {
   id: number;
   nome: string;
 }
+
+export interface IMunicipio {
+  estadoId: number;
+  regiaoEstadoId: number;
+  codigoIbge: string;
+  nome: string;
+  sigla: string;
+  ddd: string;
+  inicioValidade: string;
+  terminoValidade: string;
+  ativo: boolean;
+  id: number;
+}
