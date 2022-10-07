@@ -1,5 +1,17 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.56
+
+### Patch Changes
+
+- 463d974: ajuste no modal
+
+## 1.12.55
+
+### Patch Changes
+
+- 96abe92: modal
+
 ## 1.12.54
 
 ### Patch Changes
