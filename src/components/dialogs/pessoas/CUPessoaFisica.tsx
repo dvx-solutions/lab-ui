@@ -1,6 +1,5 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosInstance } from 'axios';
-import { format } from 'date-fns';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -42,26 +41,22 @@ const schema = z.object({
   quantidadeFuncionarios: z.number(),
   porteEstabelecimento: z.number(),
   genero: z.number().optional(),
-  id: z.union([z.number(), z.undefined()]),
+  raca: z.number().optional(),
   industria: z.boolean(),
-  naturalidade: z.string(),
-  nome: z.string(),
-  nomeMae: z.string().optional(),
+  deficiencia: z.number().optional(),
   nomePai: z.string().optional(),
+  nomeMae: z.string().optional(),
   nomeResponsavel: z.string().optional(),
-  numeroCtps: z.string().optional(),
   numeroGfip: z.string().optional(),
-  numeroNIT: z.string().optional(),
-  numeroPisPasep: z.string().optional(),
   numeroRG: z.string().min(7, { message: 'RG inválido' }),
   orgemExpeditorRG: z.string().min(1, { message: 'Campo obrigatório' }),
-  pessoaContribuinte: z.number(),
-  pessoaFisicaTratadaComoJuridica: z.boolean(),
-  porteEstabelecimento: z.number(),
-  quantidadeEmpregados: z.number(),
-  raca: z.number().optional(),
+  dataEmissaoRG: z.string().min(1, { message: 'Campo obrigatório' }),
+  numeroCtps: z.string().optional(),
   serieCtps: z.string().optional(),
+  dataEmissaoCtps: z.string().optional(),
   ufCtps: z.string().optional(),
+  numeroNIT: z.string().optional(),
+  numeroPisPasep: z.string().optional(),
 });
 
 export type TCriarPFFormValues = z.infer<typeof schema>;
@@ -123,17 +118,11 @@ export function CUPessoaFisica({
   }, [errors]);
 
   useEffect(() => {
-    if (disclousure.isOpen)
-      if (registerToEdit) {
-        Object.entries(registerToEdit).forEach(([key, value]) => {
-          const typedKey = key as keyof TCriarPFFormValues;
-          if (typedKey.toLowerCase().includes('data')) {
-            setValue(typedKey, format(new Date(value), 'yyyy-MM-dd'));
-          } else {
-            setValue(typedKey, value);
-          }
-        });
-      }
+    if (registerToEdit) {
+      Object.entries(registerToEdit).forEach(([key, value]) => {
+        setValue(key as keyof TCriarPFFormValues, value);
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registerToEdit, disclousure.isOpen]);
 
@@ -143,7 +132,7 @@ export function CUPessoaFisica({
         <Spinner />
       ) : (
         <form
-          className="grid h-[85vh] min-w-[40vw] grid-cols-2 items-end gap-4 overflow-y-auto rounded bg-white"
+          className="grid min-w-[40vw] grid-cols-2 items-end gap-4 rounded bg-white"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <Input
