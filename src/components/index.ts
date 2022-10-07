@@ -6,3 +6,4 @@ export * from './form';
 export * from './Spinner';
 export * from './Tabs';
 export * from './Tooltip';
+export * from './Drawer';
