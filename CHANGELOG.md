@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.57
+
+### Patch Changes
+
+- 88b9cfa: pessoas e hook de agrupador por id
+
 ## 1.12.56
 
 ### Patch Changes
