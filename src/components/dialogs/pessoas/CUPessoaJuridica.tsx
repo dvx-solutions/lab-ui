@@ -148,7 +148,7 @@ export function CUPessoaJuridica({
           onSubmit={handleSubmit(onFormSubmit)}
           className="h-[36rem] max-h-[40rem]"
         >
-          <div className="grid max-h-[40rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
+          <div className="grid max-h-[36rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
             <div className="grid h-fit w-full grid-cols-2 gap-2 p-2">
               <div className="col-span-full">
                 <span className="text-lg font-semibold">
