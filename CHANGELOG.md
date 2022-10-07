@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.47
+
+### Patch Changes
+
+- 9b5a286: CUPessoaFisica: ajuste no height do componente
+
 ## 1.12.46
 
 ### Patch Changes
