@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { AxiosError, AxiosInstance } from 'axios';
+import { format } from 'date-fns';
 import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useQuery } from 'react-query';
@@ -117,7 +118,12 @@ export function CUPessoaFisica({
   useEffect(() => {
     if (registerToEdit) {
       Object.entries(registerToEdit).forEach(([key, value]) => {
-        setValue(key as keyof TCriarPFFormValues, value);
+        const typedKey = key as keyof TCriarPFFormValues;
+        if (typedKey.toLowerCase().includes('data')) {
+          setValue(typedKey, format(new Date(value), 'yyyy-MM-dd'));
+        } else {
+          setValue(typedKey, value);
+        }
       });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
