@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.65
+
+### Patch Changes
+
+- 82ecb84: pessoa juridica
+
 ## 1.12.64
 
 ### Patch Changes
