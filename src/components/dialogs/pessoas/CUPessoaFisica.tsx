@@ -34,10 +34,13 @@ const schema = z.object({
     .string()
     .min(11, { message: 'CPF inválido' })
     .max(11, { message: 'CPF inválido' }),
-  dataEmissaoCtps: z.string().optional(),
-  dataEmissaoRG: z.string().min(1, { message: 'Campo obrigatório' }),
-  dataNascimento: z.string(),
-  deficiencia: z.number().optional(),
+  nome: z.string().min(1, { message: 'Campo obrigatório' }),
+  dataNascimento: z.string().min(1, { message: 'Campo obrigatório' }),
+  naturalidade: z.string().min(1, { message: 'Campo obrigatório' }),
+  pessoaFisicaTratadaComoJuridica: z.boolean(),
+  pessoaContribuinte: z.number(),
+  quantidadeFuncionarios: z.number(),
+  porteEstabelecimento: z.number(),
   genero: z.number().optional(),
   id: z.union([z.number(), z.undefined()]),
   industria: z.boolean(),
@@ -101,11 +104,11 @@ export function CUPessoaFisica({
   };
 
   const onFormSubmit = async (values: TCriarPFFormValues) => {
-    await axiosInstance({
-      method: registryIdToEdit > 0 ? 'PUT' : 'POST',
-      url: 'pessoas/pessoas-fisicas',
-      data: values,
-    })
+    values.dataEmissaoCtps = values.dataEmissaoCtps
+      ? values.dataEmissaoCtps
+      : undefined;
+    await axiosInstance
+      .post('pessoas/pessoas-fisicas', values)
       .then(onSubmitSuccess)
       .catch(onSubmitError);
   };
@@ -193,8 +196,8 @@ export function CUPessoaFisica({
           </div>
 
           <Input
-            {...register('quantidadeEmpregados', { valueAsNumber: true })}
-            error={errors.quantidadeEmpregados}
+            {...register('quantidadeFuncionarios', { valueAsNumber: true })}
+            error={errors.quantidadeFuncionarios}
             label="Qtde. de empregados"
             type="number"
           />
