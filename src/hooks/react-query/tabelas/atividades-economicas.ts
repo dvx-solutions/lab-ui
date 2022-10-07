@@ -29,7 +29,7 @@ export const useAtividadesEconomicas = ({
         pageNumber,
         pageSize,
       };
-      API_Instance.post<IAPIPaginatedResponse<IAtividadeEconomica[]>>(
+      return API_Instance.post<IAPIPaginatedResponse<IAtividadeEconomica[]>>(
         'tabelas/atividades-economicas/listar',
         payload
       ).then(({ data }) => ({

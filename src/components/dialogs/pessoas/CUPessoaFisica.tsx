@@ -129,7 +129,7 @@ export function CUPessoaFisica({
         <Spinner />
       ) : (
         <form
-          className="grid min-w-[40vw] grid-cols-2 items-end gap-4 rounded bg-white"
+          className="grid h-[85vh] min-w-[40vw] grid-cols-2 items-end gap-4 overflow-y-auto rounded bg-white"
           onSubmit={handleSubmit(onFormSubmit)}
         >
           <Input

@@ -117,10 +117,10 @@ export function DescritivosTab({ produtoId, axiosInstance }: Props) {
   };
 
   useEffect(() => {
-    if (produtosDescritivos?.length) {
+    if (produtosDescritivos?.data.length) {
       remove();
 
-      produtosDescritivos
+      produtosDescritivos.data
         .sort(
           (a, b) =>
             a.naturezaProdutoTipoDescritivo.sequencia -

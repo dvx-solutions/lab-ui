@@ -1,10 +1,10 @@
 import { useQuery } from 'react-query';
 
-import { getApiDataAsSelectOptions } from '+/lib/getDataAsSelectOptions';
 import {
   convertAdvancedSearchToReactQueryKeys,
   getReactQueryPaginationKeys,
 } from '+/lib';
+import { getApiDataAsSelectOptions } from '+/lib/getDataAsSelectOptions';
 import {
   IAPIPaginatedResponse,
   ICodigoTributacaoMunicipio,
@@ -29,12 +29,13 @@ export const useCodigoTributacaoMunicipios = ({
         pageNumber,
         pageSize,
       };
-      API_Instance.post<IAPIPaginatedResponse<ICodigoTributacaoMunicipio[]>>(
-        'tabelas/codigo-tributacao-municipios/listar',
-        payload
-      ).then(({ data }) => ({
-        data: data.data,
-        options: getApiDataAsSelectOptions(data.data),
-      }));
+      return API_Instance.post<
+        IAPIPaginatedResponse<ICodigoTributacaoMunicipio[]>
+      >('tabelas/codigo-tributacao-municipios/listar', payload).then(
+        ({ data }) => ({
+          data: data.data,
+          options: getApiDataAsSelectOptions(data.data),
+        })
+      );
     }
   );
