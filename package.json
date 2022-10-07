@@ -1,6 +1,10 @@
 {
   "name": "@dvx-solutions/lab-ui",
+<<<<<<< HEAD
   "version": "1.12.56",
+=======
+  "version": "1.12.55",
+>>>>>>> d530f31 (RELEASING: Releasing 1 package(s))
   "license": "MIT",
   "scripts": {
     "dev": "vite",
