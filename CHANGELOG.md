@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.52
+
+### Patch Changes
+
+- b3fee12: cupessoafisica
+
 ## 1.12.51
 
 ### Patch Changes
