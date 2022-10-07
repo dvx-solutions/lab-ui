@@ -411,10 +411,11 @@ export enum ESituacaoContrato {
 }
 
 export enum EModeloGestaoContrato {
-  'Faturamento sob demanda' = 0,
-  'Faturamento conclusão atendimento' = 1,
-  'Faturamento antecipado' = 2,
-  'Faturamento conclusão contrato' = 3,
+  'A Classificar' = 1,
+  'Faturamento Sob Demanda' = 2,
+  'Faturamento Conclusão Atendimento' = 3,
+  'Faturamento Antecipado' = 4,
+  'Faturamento Conclusão Contrato' = 5,
 }
 
 export enum ETipoComposicaoProduto {
