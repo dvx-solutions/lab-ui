@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.50
+
+### Patch Changes
+
+- f4a048f: CUPessoaFisica: adição do ID para preenchimento e edição
+
 ## 1.12.49
 
 ### Patch Changes
