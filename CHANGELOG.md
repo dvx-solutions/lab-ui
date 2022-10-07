@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.66
+
+### Patch Changes
+
+- a4ad062: modelogestao enum corrigido
+
 ## 1.12.65
 
 ### Patch Changes
