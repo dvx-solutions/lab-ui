@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.49
+
+### Patch Changes
+
+- 4668698: CUPessoaFisica: ajuste no method de edição do axios
+
 ## 1.12.48
 
 ### Patch Changes
