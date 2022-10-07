@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.56
+
+### Patch Changes
+
+- ef1f415: cupessoafisica
+
 ## 1.12.55
 
 ### Patch Changes
