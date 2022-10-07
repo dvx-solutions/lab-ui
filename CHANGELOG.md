@@ -1,16 +1,23 @@
 # @dvx-solutions/lab-ui
 
+<<<<<<< HEAD
 ## 1.12.68
 
 ### Patch Changes
 
 - 4ca89a2: form error message: ajuste no classname
 
+=======
+>>>>>>> RELEASING: Releasing 1 package(s)
 ## 1.12.67
 
 ### Patch Changes
 
+<<<<<<< HEAD
 - ddd412f: adicao do hook de municipio
+=======
+- 8e52762: drawer
+>>>>>>> RELEASING: Releasing 1 package(s)
 
 ## 1.12.66
 
