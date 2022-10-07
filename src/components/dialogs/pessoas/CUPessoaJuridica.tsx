@@ -164,6 +164,7 @@ export function CUPessoaJuridica({
                   label="CNPJ"
                   onChange={({ target: { value } }) => {
                     setCnpjSelecionado(value);
+                    setValue('cnpj', value);
                     // setValue(
                     //   'cnpj',
                     //   value.replace(
