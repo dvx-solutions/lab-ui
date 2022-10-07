@@ -1,6 +1,6 @@
 import * as Dialog from '@radix-ui/react-dialog';
 
-export function DrawerDevex() {
+export function Drawer() {
   return (
     <Dialog.Root>
       <Dialog.Trigger asChild>
