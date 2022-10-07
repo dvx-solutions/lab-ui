@@ -69,7 +69,7 @@ const BaseComponent: ForwardRefRenderFunction<
         ref={ref}
         disabled={isDisabled || props.disabled || isReadOnly}
       >
-        <option selected value={-100}>
+        <option selected value={undefined}>
           {placeholder}
         </option>
 
