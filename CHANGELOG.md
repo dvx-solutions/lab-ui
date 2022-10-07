@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.54
+
+### Patch Changes
+
+- cd2e994: cupessoafisica ajustado e finalizado
+
 ## 1.12.53
 
 ### Patch Changes
