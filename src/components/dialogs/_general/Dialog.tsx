@@ -8,6 +8,7 @@ export interface DialogDisclosureProps {
   isOpen: boolean;
   onClose: () => void;
   onOpen: () => void;
+  zIndex?: number;
 }
 
 export interface DialogProps extends DialogDisclosureProps {
@@ -21,6 +22,7 @@ export function Dialog({
   onClose,
   onOpen,
   title,
+  zIndex = 99999,
 }: DialogProps) {
   const handleStateChange = (state: boolean) => {
     if (state) {
@@ -34,7 +36,9 @@ export function Dialog({
     <Root open={isOpen} onOpenChange={handleStateChange}>
       <Overlay className="fixed inset-0 z-[999] bg-black/25" />
 
-      <Content className="fixed top-2/4 left-2/4 z-[9999] w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md">
+      <Content
+        className={`fixed top-2/4 left-2/4 z-[${zIndex}] w-fit min-w-[25vw] -translate-y-2/4 -translate-x-2/4 rounded bg-white p-4 shadow-md`}
+      >
         <Title className="mb-4 flex items-center justify-between gap-16 text-xl font-medium">
           {title}
           <Close>
