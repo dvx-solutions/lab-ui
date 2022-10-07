@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.55
+
+### Patch Changes
+
+- 2fe7275: cupessoajuridica
+
 ## 1.12.54
 
 ### Patch Changes
