@@ -144,8 +144,11 @@ export function CUPessoaJuridica({
       {isFetchingRegisterToEdit && registryIdToEdit > 0 ? (
         <Spinner />
       ) : (
-        <form onSubmit={handleSubmit(onFormSubmit)}>
-          <div className="grid max-h-[48rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
+        <form
+          onSubmit={handleSubmit(onFormSubmit)}
+          className="h-[36rem] max-h-[40rem]"
+        >
+          <div className="grid max-h-[40rem] w-full min-w-[60vw] grid-cols-2 items-start gap-2 divide-x-2 divide-gray-300 rounded bg-white">
             <div className="grid h-fit w-full grid-cols-2 gap-2 p-2">
               <div className="col-span-full">
                 <span className="text-lg font-semibold">
@@ -168,7 +171,7 @@ export function CUPessoaJuridica({
                     //   )
                     // );
                   }}
-                  placeholder="Digite o CNPJ para buscar os dados da receita federal"
+                  placeholder="Digite o CNPJ (somente números)"
                   type="number"
                 />
               </div>
