@@ -100,8 +100,11 @@ export function CUPessoaFisica({
   };
 
   const onFormSubmit = async (values: TCriarPFFormValues) => {
-    await axiosInstance
-      .post('pessoas/pessoas-fisicas', values)
+    await axiosInstance({
+      method: registryIdToEdit > 0 ? 'PUT' : 'POST',
+      url: 'pessoas/pessoas-fisicas',
+      data: values,
+    })
       .then(onSubmitSuccess)
       .catch(onSubmitError);
   };
@@ -116,16 +119,17 @@ export function CUPessoaFisica({
   }, [errors]);
 
   useEffect(() => {
-    if (registerToEdit) {
-      Object.entries(registerToEdit).forEach(([key, value]) => {
-        const typedKey = key as keyof TCriarPFFormValues;
-        if (typedKey.toLowerCase().includes('data')) {
-          setValue(typedKey, format(new Date(value), 'yyyy-MM-dd'));
-        } else {
-          setValue(typedKey, value);
-        }
-      });
-    }
+    if (disclousure.isOpen)
+      if (registerToEdit) {
+        Object.entries(registerToEdit).forEach(([key, value]) => {
+          const typedKey = key as keyof TCriarPFFormValues;
+          if (typedKey.toLowerCase().includes('data')) {
+            setValue(typedKey, format(new Date(value), 'yyyy-MM-dd'));
+          } else {
+            setValue(typedKey, value);
+          }
+        });
+      }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [registerToEdit, disclousure.isOpen]);
 
