@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.58
+
+### Patch Changes
+
+- d54c241: dialog zindex
+
 ## 1.12.57
 
 ### Patch Changes
