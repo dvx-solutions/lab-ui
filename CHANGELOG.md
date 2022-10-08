@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.68
+
+### Patch Changes
+
+- 4ca89a2: form error message: ajuste no classname
+
 ## 1.12.67
 
 ### Patch Changes
