@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.70
+
+### Patch Changes
+
+- cd3300c: pj
+
 ## 1.12.69
 
 ### Patch Changes
