@@ -44,6 +44,7 @@ const schema = z.object({
 
 export type TCriarPJFormValues = z.infer<typeof schema> & {
   poloIndustrialId: number | undefined;
+  id: number;
 };
 
 export interface CUPessoaJuridicaProps extends DialogDisclosureProps {
@@ -116,10 +117,17 @@ export function CUPessoaJuridica({
   };
 
   const onFormSubmit = async (values: TCriarPJFormValues) => {
-    await axiosInstance
-      .post('pessoas/pessoas-juridicas', values)
-      .then(onSubmitSuccess)
-      .catch(onSubmitError);
+    if (values.id) {
+      await axiosInstance
+        .put('pessoas/pessoas-juridicas', values)
+        .then(onSubmitSuccess)
+        .catch(onSubmitError);
+    } else {
+      await axiosInstance
+        .post('pessoas/pessoas-juridicas', values)
+        .then(onSubmitSuccess)
+        .catch(onSubmitError);
+    }
   };
 
   useEffect(() => {
