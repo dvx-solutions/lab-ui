@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.71
+
+### Patch Changes
+
+- 33b5418: put de PJ
+
 ## 1.12.70
 
 ### Patch Changes
