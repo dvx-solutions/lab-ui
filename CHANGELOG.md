@@ -1,5 +1,11 @@
 # @dvx-solutions/lab-ui
 
+## 1.12.72
+
+### Patch Changes
+
+- db417f7: put d ePJ
+
 ## 1.12.71
 
 ### Patch Changes
